@@ -86,31 +86,31 @@
     <Content Include="Hyperspin Data\Settings\Atari ST.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="RocketLauncherData\Data\Statistics\Amstrad CPC.ini">
+    <Content Include="RocketLauncherData\Data\Statistics\Amstrad CPC.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
-    <None Include="RocketLauncherData\Data\Statistics\Global Statistics.ini">
+    <Content Include="RocketLauncherData\Data\Statistics\Global Statistics.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Bezel.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Bezel.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Emulators.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Emulators.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Games.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Games.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Pause.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Pause.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Plugins.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Plugins.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\RocketLauncher.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\RocketLauncher.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="xunit.runner.json" />
   </ItemGroup>
   <ItemGroup>
