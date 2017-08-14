@@ -117,12 +117,15 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC New.xml" />
+    <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Serializer Test.xml" />
     <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Stripped 2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Stripped.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Test.xml" />
     <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
