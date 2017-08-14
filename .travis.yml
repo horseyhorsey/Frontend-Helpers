@@ -1,2 +1,10 @@
 language: csharp
 solution: Horsesoft Frontend Helpers.sln
+
+install:
+  - sudo apt-get install nunit-console
+  - nuget restore Horsesoft Frontend Helpers.sln
+
+script:
+  - xbuild Horsesoft Frontend Helpers.sln
+  - nunit-console Horsesoft.Frontends.Helper.Tests/bin/Release/Horsesoft.Frontends.Helper.Tests.dll
