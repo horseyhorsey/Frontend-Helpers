@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Horsesoft.Frontends.Helper</PackageId>
+    <PackageVersion>1.0.2</PackageVersion>
+    <Authors>Horsesoft</Authors>
+    <Description>Helper for arcade/pinball frontends</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Added stats</PackageReleaseNotes>
+    <Copyright>Copyright 2017 (c) horsesoft All rights reserved.</Copyright>
+    <PackageTags>arcade hyperspin rocketlauncher pinballx</PackageTags>
+    <Version>1.0.2</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <FileVersion>1.0.0.2</FileVersion>
+    <Product>Horsesoft Frontends Helper</Product>
+    <AssemblyName>Horsesoft.Frontends.Helper</AssemblyName>
+    <RootNamespace>Horsesoft.Frontends.Helper</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="NugetPackHelp.txt" />
+    <None Remove="Resources\systemSettings.ini" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\systemSettings.ini" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\Hyperpin\" />
+  </ItemGroup>
+
+</Project>
