@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horsesoft.Frontends.Helper.Tests", "Horsesoft.Frontends.Helper.Tests\Horsesoft.Frontends.Helper.Tests.csproj", "{7111C2A6-23F0-466B-844B-56E2DBA57016}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{778F8DB6-C3F9-414B-8E67-542F8B173075}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
