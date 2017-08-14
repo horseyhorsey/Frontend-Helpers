@@ -28,9 +28,14 @@ namespace Horsesoft.Frontends.Helper.Settings
             return Task.Run(() =>
             {
                 if (string.IsNullOrWhiteSpace(systemName))
-                    return false;
+                {
+                    if (string.IsNullOrWhiteSpace(_systemName))
+                        return false;
+                    else
+                        systemName = _systemName;
+                }
 
-                var iniPath = Path.Combine(_frontend.Path, Root.Settings, $"{_systemName}.ini");
+                var iniPath = Path.Combine(_frontend.Path, Root.Settings, $"{systemName}.ini");
 
                 if (!File.Exists(iniPath))
                     throw new FileNotFoundException($"Ini not found: {iniPath}");
