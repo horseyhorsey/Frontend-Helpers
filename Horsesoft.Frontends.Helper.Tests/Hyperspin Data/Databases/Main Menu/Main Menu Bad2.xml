@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="American Laser Games" enabled="1" />
+  <game name="Amstrad CPC" enabled="1" />
+  <game name="Atari Jaguar" enabled="1" />
+  <game name="Atari Lynx" enabled="1" />
+  <game name="Commodore Vic 20" enabled="1" />
+  <game name="Daphne&" enabled="1" />
+  <game name="DizzyAGE" enabled="1" />
+  <game name="Future Pinball" enabled="1" />
+  <game name="GCE Vectrex" enabled="1" />
+  <game name="MAME" enabled="1" />
+  <game name="Media" enabled="1" />
+  <game name="MFME" enabled="1" />
+  <game name="NEC PC Engine" enabled="1" />
+  <game name="Nintendo 64" enabled="1" />
+  <game name="Nintendo DS" enabled="1" />
+  <game name="Nintendo Entertainment System" enabled="1" />
+  <game name="Nintendo Game Boy Advance" enabled="1" />
+  <game name="Nintendo Game Boy Color" enabled="1" />
+  <game name="Nintendo Gamecube" enabled="1" />
+  <game name="Nintendo Wii" enabled="1" />
+  <game name="OpenBOR" enabled="1" />
+  <game name="Panasonic 3DO" enabled="1" />
+  <game name="PC Games" enabled="1" />
+  <game name="PopCap" enabled="1" />
+  <game name="Sammy Atomiswave" enabled="1" />
+  <game name="ScummVM" enabled="1" />
+  <game name="Sega 32X" enabled="1" />
+  <game name="Sega CD" enabled="1" />
+  <game name="Sega Dreamcast" enabled="1" />
+  <game name="Sega Game Gear" enabled="1" />
+  <game name="Sega Genesis" enabled="1" />
+  <game name="Sega Master System" enabled="1" />
+  <game name="Sega Model 2" enabled="1" />
+  <game name="Sega Model 3" enabled="1" />
+  <game name="Sega Naomi" enabled="1" />
+  <game name="Sega Saturn" enabled="1" />
+  <game name="Sega Triforce" enabled="1" />
+  <game name="Sinclair ZX Spectrum" enabled="1" />
+  <game names="Sony Playstation" enabled="1" unused ="1"/>
+  <game name="Sony Playstation 2" enabled="1" />
+  <game name="Sony PSP" enabled="1" />
+  <game name="Super Nintendo Entertainment System" enabled="1" />
+  <game name="Taito Type X" enabled="1" />
+  <game name="Pinball FX2" enabled="1" />
+  <game name="Unit3d Pinball" enabled="1" />
+  <game name="Visual Pinball" enabled="1" />
+  <game name="aaaa" enabled="1" />
+  <game name="kkkk" enabled="1" />
+  <game name="wwwww" enabled="1" />
+  <game name="adad" enabled="1" />
+  <game name="eeeeeeeeee" enabled="1" />
+  <game name="asasasasaasas" enabled="1" />
+</menu>
