@@ -55,6 +55,16 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             Assert.True(games.Count() == expectedCount);
         }
 
+        [Theory]
+        [InlineData("Amstrad CPC")]
+        public async void SerializeGenres(string systemName)
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
+            var games = await _fixture._hyperSerializer.DeserializeAsync();
+
+            Assert.True(await _fixture._hyperSerializer.SerializeGenresAsync(games));
+        }
+
         [Fact(DisplayName = "Deserialize Main Menu Items (Systems): Count should be 53")]
         public async void DeserializeHyperspinMainMenu()
         {
@@ -94,6 +104,19 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         }
 
         //[Theory]
+        //[InlineData("Amstrad CPC", "Amstrad")]
+        //public async void DeserializeGenres(string systemName, string expected)
+        //{
+        //    _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
+        //    var genres = await _fixture._hyperSerializer.DeserializeGenresAsync(); 
+            
+        //}
+
+
+
+
+
+        //[Theory]
         //[InlineData("Amstrad CPC")]
         //[InlineData("MAME")]
         //[InlineData("Nintendo 64")]
@@ -102,10 +125,10 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         //    _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
         //    var faves = await _fixture._hyperSerializer.DeserializeFavoritesAsync();            
 
-        //    Assert.True(await _fixture._hyperSerializer.SerializeFavoritesAsync(games));
+            //    Assert.True(await _fixture._hyperSerializer.SerializeFavoritesAsync(games));
 
-        //    var txtPath = Path.Combine(frontend.Path, "Databases", systemName, "favorites.txt");
-        //    Assert.True(File.Exists(txtPath));            
-        //}
-    }
+            //    var txtPath = Path.Combine(frontend.Path, "Databases", systemName, "favorites.txt");
+            //    Assert.True(File.Exists(txtPath));            
+            //}
+        }
 }

@@ -377,6 +377,11 @@ namespace Horsesoft.Frontends.Helper.Serialization
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Serializes the genres from a gamelist to seperate xmls in the database directory asynchronously.
+        /// </summary>
+        /// <param name="games">The games.</param>
+        /// <returns></returns>
         public Task<bool> SerializeGenresAsync(IEnumerable<Game> games)
         {
             return Task.Run(async () =>
@@ -469,8 +474,12 @@ namespace Horsesoft.Frontends.Helper.Serialization
         private IEnumerable<Genre> GetGenreNames(IEnumerable<Game> gamesList)
         {
             var genres = gamesList
-                .Select(x => new Genre { GenreName = x.Genre })
-                .Distinct().OrderBy(x=> x.GenreName);
+                .GroupBy(x => x.Genre)
+                .Select(x => new Genre { GenreName = x.Key })
+                .OrderBy(x=> x.GenreName)
+                .Distinct();
+
+            var count = genres.Count();
 
             foreach (var genre in genres)
             {
@@ -520,11 +529,10 @@ namespace Horsesoft.Frontends.Helper.Serialization
             if (!Directory.Exists(databasePath))
                 Directory.CreateDirectory(databasePath);
 
+            //Setup Xml
             XmlSerializer serializer;
-
             var xmlNameSpace = new XmlSerializerNamespaces();
             xmlNameSpace.Add("", "");
-
             var xmlRootAttr = new XmlRootAttribute("menu");
 
             var menuItems = new List<MainMenu>();
