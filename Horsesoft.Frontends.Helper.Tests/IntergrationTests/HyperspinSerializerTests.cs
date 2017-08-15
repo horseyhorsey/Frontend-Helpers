@@ -2,6 +2,8 @@
 using System.Linq;
 using Xunit;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
+using System;
+using System.Xml;
 
 namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 {
@@ -61,6 +63,22 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             var systems = await _fixture._hyperSerializer.DeserializeMenusAsync();
 
             Assert.True(systems.Count() == 53);            
+        }
+
+        [Fact]
+        public async void DeserializeHyperspinBadMainMenu__ElementNotClosed__ThrowsException()
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase("Main Menu", "Main Menu Bad");
+
+            var systems = await Assert.ThrowsAnyAsync<Exception>(async () => await _fixture._hyperSerializer.DeserializeMenusAsync());
+        }
+
+        [Fact]
+        public async void DeserializeBad2MainMenu__ThrowsXmlExceptionBadFormatting()
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase("Main Menu", "Main Menu Bad2");
+
+            var systems = await Assert.ThrowsAnyAsync<XmlException>(async () => await _fixture._hyperSerializer.DeserializeMenusAsync());
         }
 
         [Theory]
