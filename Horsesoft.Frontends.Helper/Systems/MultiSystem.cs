@@ -102,10 +102,7 @@ namespace Horsesoft.Frontends.Helper.Systems
 
                 if (Options.CopyMedia)
                 {
-                    foreach (var game in Games)
-                    {
-                        await _mediaCopier.CopyMediaAsync(game, HsMediaType.Artwork, Options.MultiSystemName, Options.CreateSymbolicLinks);
-                    }
+                    await _mediaCopier.CopyAllMediaAsync(Games, Options.MultiSystemName, Options.CreateSymbolicLinks);
                 }
 
                 return true;
