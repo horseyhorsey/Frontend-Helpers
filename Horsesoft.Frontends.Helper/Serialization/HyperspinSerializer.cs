@@ -177,14 +177,14 @@ namespace Horsesoft.Frontends.Helper.Serialization
         {
             return Task.Run<IEnumerable<MainMenu>>(() =>
             {
-                var mainMenuXml = Path.Combine(_frontEndPath, Root.Databases, "Main Menu", "Main Menu.xml");
+                var mainMenuXmlPath = Path.Combine(_frontEndPath, Root.Databases, "Main Menu", _databaseName + ".xml");
 
-                if (!File.Exists(mainMenuXml))
-                    throw new FileNotFoundException($"Main menu xml doesn't exist: {mainMenuXml}");
+                if (!File.Exists(mainMenuXmlPath))
+                    throw new FileNotFoundException($"Main menu xml doesn't exist: {mainMenuXmlPath}");
 
                 var _systems = new List<MainMenu>();
 
-                string[,] systems = GetSystems(mainMenuXml);
+                string[,] systems = GetSystems(mainMenuXmlPath);
 
                 try
                 {
@@ -196,14 +196,9 @@ namespace Horsesoft.Frontends.Helper.Serialization
                     {
                         try
                         {
+                            //Add the enabled flag to the xml if null
                             if (systems[i, 1] == null) { systems[i, 1] = "1"; }
 
-                            //if (iconsPath != string.Empty && Directory.Exists(iconsPath))
-                            //{
-                            //    Uri iconImage = new Uri(Path.Combine(iconsPath, systems[i, 0] + ".png"));
-                            //    _systems.Add(new MainMenu(systems[i, 0], iconImage, Convert.ToInt32(systems[i, 1])));
-                            //}
-                            //else
                             _systems.Add(new MainMenu(systems[i, 0], Convert.ToInt32(systems[i, 1])));
 
                         }
