@@ -79,48 +79,57 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Hyperspin Data\Settings\Amstrad CPC.ini">
+    <Content Include="Hyperspin Data\Settings\Amstrad CPC.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <None Include="app.config" />
-    <EmbeddedResource Include="Hyperspin Data\Settings\Atari ST.ini">
+    <Content Include="Hyperspin Data\Settings\Atari ST.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <None Include="RocketLauncherData\Data\Statistics\Amstrad CPC.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Data\Statistics\Amstrad CPC.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
-    <None Include="RocketLauncherData\Data\Statistics\Global Statistics.ini">
+    <Content Include="RocketLauncherData\Data\Statistics\Global Statistics.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Bezel.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Bezel.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Emulators.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Emulators.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Games.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Games.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Pause.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Pause.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\Plugins.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\Plugins.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="RocketLauncherData\Settings\Amstrad CPC\RocketLauncher.ini">
+    </Content>
+    <Content Include="RocketLauncherData\Settings\Amstrad CPC\RocketLauncher.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="xunit.runner.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC New.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Serializer Test.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Stripped 2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Stripped.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC Test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Hyperspin Data\Databases\Amstrad CPC\Amstrad CPC.xml">
