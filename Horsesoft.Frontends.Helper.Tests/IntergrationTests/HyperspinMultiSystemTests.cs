@@ -35,7 +35,8 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             //Create a serializer for new multi system
             var options = new MultiSystemOptions
             {
-                MultiSystemName = "My Multi System"
+                MultiSystemName = "My Multi System",
+                CopyMedia = true
             };
 
             //Create new seriliazer with multisystem path
