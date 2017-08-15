@@ -11,9 +11,4 @@ namespace Horsesoft.Frontends.Helper.Settings
 
         SystemSetting Settings { get; set; }
     }
-
-    public class Settings
-    {
-
-    }
 }
