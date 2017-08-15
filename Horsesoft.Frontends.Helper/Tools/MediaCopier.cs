@@ -3,6 +3,8 @@ using Horsesoft.Frontends.Helper.Model.Hyperspin;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System.IO;
 using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
 
 namespace Horsesoft.Frontends.Helper.Tools
 {
@@ -16,106 +18,71 @@ namespace Horsesoft.Frontends.Helper.Tools
         }
 
         #region Public Methods
-        public async Task CopyMediaAsync(Game game, HsMediaType hsMediaType, string systemName, bool symbolicLink = false)
+
+        public async Task CopyAllMediaAsync(IEnumerable<Game> games, string systemName, bool symbolicLink = false)
+        {
+            await Task.Run(async () =>
+            {
+                foreach (var game in games)
+                {
+                    foreach (HsMediaType mediaType in Enum.GetValues(typeof(HsMediaType)))
+                    {
+                        await CopyGameMediaAsync(game, mediaType, systemName, symbolicLink);
+                    }
+                }
+            });
+        }
+
+        public async Task CopyGameMediaAsync(Game game, HsMediaType hsMediaType, string systemName, bool symbolicLink = false)
         {
             await Task.Run(() =>
             {
                 switch (hsMediaType)
                 {
                     case HsMediaType.Artwork:
-                        CopyArtworksForGame(game, systemName, symbolicLink);
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork1), symbolicLink);
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork2), symbolicLink);
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork3), symbolicLink);
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork4), symbolicLink);
                         break;
                     case HsMediaType.Backgrounds:
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Backgrounds), symbolicLink);
                         break;
                     case HsMediaType.Wheel:
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Wheels), symbolicLink);
                         break;
                     case HsMediaType.Video:
+                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Root.Video), symbolicLink);
                         break;
                 }
             });
         }
+
         #endregion
 
         #region Support Methods
-        private void CopyArtworksForGame(Game game, string systemName, bool symbolicLink = false)
-        {
-            for (int i = 1; i < 5; i++)
-            {
-                var fileToCopy = Path.Combine(_frontend.Path, Root.Media, game.System, "Images\\Artwork" + i, game.RomName + ".png");
-                var fileDestination = Path.Combine(_frontend.Path, Root.Media, systemName, "Images\\Artwork" + i, game.RomName + ".png");
 
-                if (!File.Exists(fileDestination))
+        private void CopyMedia(Game game, string mediaPath, bool symbolicLink = false)
+        {
+            var fileToCopy = Path.Combine(mediaPath, game.RomName + ".png");
+            var fileDestination = Path.Combine(mediaPath, game.RomName + ".png");
+
+            CopyFile(fileDestination, fileToCopy, symbolicLink);
+        }
+
+        private void CopyFile(string fileDestination, string fileToCopy, bool symbolicLink)
+        {
+            if (!File.Exists(fileDestination))
+            {
+                if (File.Exists(fileToCopy))
                 {
-                    if (File.Exists(fileToCopy))
-                    {
-                        if (symbolicLink)
-                            SymbolicLinker.CheckThenCreate(fileToCopy, fileDestination);
-                        else
-                            File.Copy(fileToCopy, fileDestination, true);
-                    }
+                    if (symbolicLink)
+                        SymbolicLinker.CheckThenCreate(fileToCopy, fileDestination);
+                    else
+                        File.Copy(fileToCopy, fileDestination, true);
                 }
             }
-        } 
+        }
         #endregion
-
-        //private void CopyVideos(ref string hsPath, Game game)
-        //{
-        //    var FileToLink = Path.Combine(hsPath, Root.Media, game.System, Root.Video, game.RomName + ".mp4");
-        //    var tempSymlinkFile = Path.Combine(hsPath, Root.Media, MultiSystemName, Root.Video, game.RomName + ".mp4");
-
-        //    if (!File.Exists(tempSymlinkFile))
-        //    {
-        //        if (File.Exists(FileToLink))
-        //        {
-        //            SymbolicLinkService.CheckThenCreate(FileToLink, tempSymlinkFile);
-        //            return;
-        //        }
-        //    }
-
-        //    FileToLink = Path.Combine(hsPath, Root.Media, game.System, Root.Video, game.RomName + ".flv");
-        //    tempSymlinkFile = Path.Combine(hsPath, Root.Media, MultiSystemName, Root.Video, game.RomName + ".flv");
-
-        //    if (File.Exists(FileToLink))
-        //    {
-        //        if (CreateSymbolicLinks)
-        //            SymbolicLinkService.CheckThenCreate(FileToLink, tempSymlinkFile);
-        //        else
-        //            File.Copy(FileToLink, tempSymlinkFile, true);
-        //    }
-        //}
-
-        //private void CopyWheels(ref string hsPath, Game game)
-        //{
-        //    var FileToLink = Path.Combine(hsPath, Root.Media, game.System, Images.Wheels, game.RomName + ".png");
-        //    var tempSymlinkFile = Path.Combine(hsPath, Root.Media, MultiSystemName, Images.Wheels, game.RomName + ".png");
-
-        //    if (File.Exists(FileToLink))
-        //    {
-        //        if (CreateSymbolicLinks)
-        //            SymbolicLinkService.CheckThenCreate(FileToLink, tempSymlinkFile);
-        //        else
-        //            File.Copy(FileToLink, tempSymlinkFile, true);
-        //    }
-        //}
-
-        //private void CopyThemes(ref string hsPath, Game game)
-        //{
-        //    var FileToLink = Path.Combine(hsPath, Root.Media, game.System, Root.Themes, game.RomName + ".zip");
-        //    var tempSymlinkFile = Path.Combine(hsPath, Root.Media, MultiSystemName, Root.Themes, game.RomName + ".zip");
-
-        //    if (DefaultTheme)
-        //    {
-        //        if (!File.Exists(tempSymlinkFile))
-        //        {
-        //            if (!File.Exists(FileToLink))
-        //                FileToLink = Path.Combine(hsPath, Root.Media, game.System, Root.Themes, "default.zip");
-        //        }
-        //    }
-
-        //    if (CreateSymbolicLinks)
-        //        SymbolicLinkService.CheckThenCreate(FileToLink, tempSymlinkFile);
-        //    else
-        //        File.Copy(FileToLink, tempSymlinkFile, true);
-        //}
     }
 }
