@@ -164,95 +164,12 @@ namespace Horsesoft.Frontends.Helper.Serialization
         /// <returns></returns>
         internal async Task<IEnumerable<GameStat>> GetStatsForSystemAsync(string frontendPath, MainMenu menuSystem)
         {
-            return await Task.Run(async () =>
+            return await Task.Run(()  =>
             {
-                var iniPath = Path.Combine(frontendPath, Paths.RocketLauncherMediaPaths.Statistics, menuSystem.Name + ".ini");
-
-                if (!File.Exists(iniPath)) throw new FileNotFoundException();
-
-                var statList = new List<GameStat>();
-
-                _ini.Load(iniPath);
-                int count = _ini.Sections.Count;
-
-                foreach (IniFile.IniSection s in _ini.Sections)
-                {
-                    string section = s.Name.ToString();
-                    if (_genStats[0] != section)
-                        if (_genStats[1] != section)
-                            if (_genStats[2] != section)
-                                if (_genStats[3] != section)
-                                {
-                                    if (section == GeneralStats.General.ToString())
-                                    {
-                                    }
-                                    else
-                                    {
-                                        var t = new TimeSpan();
-                                        var gameStat = new Model.RocketLauncher.Stats.GameStat();
-                                        gameStat.Rom = section;
-
-                                        gameStat.SystemName = menuSystem.Name;
-                                        try
-                                        {
-                                            gameStat.TimesPlayed = Convert.ToInt32(_ini.GetKeyValue(section, "Number_of_Times_Played"));
-
-                                        }
-                                        catch (Exception)
-                                        {
-
-                                        }
-
-                                        try
-                                        {
-                                            gameStat.LastTimePlayed = Convert.ToDateTime(_ini.GetKeyValue(section, "Last_Time_Played"));
-                                        }
-                                        catch (Exception)
-                                        {
-                                        }
-                                        try
-                                        {
-
-                                            //AvgTimePlayed = ;
-                                            var avgTime = TimeSpan.Parse(_ini.GetKeyValue(section, "Average_Time_Played")).Days;
-                                            gameStat.AvgTimePlayed = new TimeSpan(0, 0, avgTime);
-                                        }
-                                        catch (Exception)
-                                        {
-                                        }
-
-                                        try
-                                        {
-                                            var TotalTime = TimeSpan.Parse(_ini.GetKeyValue(section, "Total_Time_Played")).Days;
-
-                                            gameStat.TotalTimePlayed = new TimeSpan(0, 0, TotalTime);
-                                            gameStat.TotalOverallTime = gameStat.TotalOverallTime + gameStat.TotalTimePlayed;
-
-
-                                        }
-                                        catch (Exception)
-                                        {
-
-
-                                        }
-
-                                        statList.Add(new GameStat
-                                        {
-                                            AvgTimePlayed = gameStat.AvgTimePlayed,
-                                            LastTimePlayed = gameStat.LastTimePlayed,
-                                            TimesPlayed = gameStat.TimesPlayed,
-                                            Rom = gameStat.Rom,
-                                            TotalTimePlayed = gameStat.TotalTimePlayed,
-                                            TotalOverallTime = gameStat.TotalOverallTime,
-                                            SystemName = gameStat.SystemName
-                                        });
-                                    }
-                                }
-                }
-
-                return statList.AsEnumerable();
+                return GetGameStats(frontendPath, menuSystem);
             });
-        }
+        }        
+
         #endregion
 
         #region Support Methods
@@ -339,6 +256,94 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
                 globalStats.LastPlayedGames.Add(lastPlayedStat);
             }
+        }
+
+        private IEnumerable<GameStat> GetGameStats(string frontendPath, MainMenu menuSystem)
+        {
+            var iniPath = Path.Combine(frontendPath, Paths.RocketLauncherMediaPaths.Statistics, menuSystem.Name + ".ini");
+
+            if (!File.Exists(iniPath)) throw new FileNotFoundException();
+
+            var statList = new List<GameStat>();
+
+            _ini.Load(iniPath);
+            int count = _ini.Sections.Count;
+
+            foreach (IniFile.IniSection s in _ini.Sections)
+            {
+                string section = s.Name.ToString();
+                if (_genStats[0] != section)
+                    if (_genStats[1] != section)
+                        if (_genStats[2] != section)
+                            if (_genStats[3] != section)
+                            {
+                                if (section == GeneralStats.General.ToString())
+                                {
+                                }
+                                else
+                                {
+                                    var gameStat = new Model.RocketLauncher.Stats.GameStat();
+                                    gameStat.Rom = section;
+
+                                    gameStat.SystemName = menuSystem.Name;
+                                    try
+                                    {
+                                        gameStat.TimesPlayed = Convert.ToInt32(_ini.GetKeyValue(section, "Number_of_Times_Played"));
+
+                                    }
+                                    catch (Exception)
+                                    {
+
+                                    }
+
+                                    try
+                                    {
+                                        gameStat.LastTimePlayed = Convert.ToDateTime(_ini.GetKeyValue(section, "Last_Time_Played"));
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+                                    try
+                                    {
+
+                                        //AvgTimePlayed = ;
+                                        var avgTime = TimeSpan.Parse(_ini.GetKeyValue(section, "Average_Time_Played")).Days;
+                                        gameStat.AvgTimePlayed = new TimeSpan(0, 0, avgTime);
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+
+                                    try
+                                    {
+                                        var TotalTime = TimeSpan.Parse(_ini.GetKeyValue(section, "Total_Time_Played")).Days;
+
+                                        gameStat.TotalTimePlayed = new TimeSpan(0, 0, TotalTime);
+                                        gameStat.TotalOverallTime = gameStat.TotalOverallTime + gameStat.TotalTimePlayed;
+
+
+                                    }
+                                    catch (Exception)
+                                    {
+
+
+                                    }
+
+                                    statList.Add(new GameStat
+                                    {
+                                        AvgTimePlayed = gameStat.AvgTimePlayed,
+                                        LastTimePlayed = gameStat.LastTimePlayed,
+                                        TimesPlayed = gameStat.TimesPlayed,
+                                        Rom = gameStat.Rom,
+                                        TotalTimePlayed = gameStat.TotalTimePlayed,
+                                        TotalOverallTime = gameStat.TotalOverallTime,
+                                        SystemName = gameStat.SystemName
+                                    });
+                                }
+                            }
+            }
+
+            return statList.AsEnumerable();
         }
 
         #region Common Ini Methods

@@ -1,8 +1,0 @@
-language: csharp
-solution: Horsesoft Frontend Helpers.sln
-
-install:  
-  - nuget restore Horsesoft Frontend Helpers.sln
-
-script:
-  - msbuild Horsesoft Frontend Helpers.sln
