@@ -37,7 +37,7 @@ namespace Horsesoft.Frontends.Helper.Tools.Search
                     if (exactMatch)
                     {
                         foundGames = from item in xdoc.Descendants("game")
-                                     where (item.Attribute("name").Value == name
+                                     where (item.Attribute("name").Value.ToLower() == name.ToLower()
                                            && (item.Element("cloneof").Value == ""))
 
                                      select new Game
@@ -57,7 +57,7 @@ namespace Horsesoft.Frontends.Helper.Tools.Search
                     else
                     {
                         foundGames = from item in xdoc.Descendants("game")
-                                     where (item.Attribute("name").Value.Contains(name)
+                                     where (item.Attribute("name").Value.ToLower().Contains(name.ToLower())
                                            && (item.Element("cloneof").Value == ""))
 
                                      select new Game
@@ -92,7 +92,7 @@ namespace Horsesoft.Frontends.Helper.Tools.Search
                                 Genre = game.Genre,
                                 Rating = game.Rating,
                                 GameEnabled = game.GameEnabled,
-                                System = game.System,
+                                System = game.System, 
                                 IsFavorite = true
                             };
                         }
