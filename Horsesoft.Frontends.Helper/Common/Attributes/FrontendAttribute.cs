@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Helper.Model;
+﻿using Horsesoft.Frontends.Models;
 using System;
 
 namespace Horsesoft.Frontends.Helper.Common.Attributes

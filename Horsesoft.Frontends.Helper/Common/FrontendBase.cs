@@ -1,5 +1,5 @@
 ﻿using Horsesoft.Frontends.Helper.Common.Attributes;
-using Horsesoft.Frontends.Helper.Model;
+using Horsesoft.Frontends.Models;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System;
 using System.Collections.Generic;

@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Horsesoft.Frontends.Helper.Common
 {
-    [Frontend(Model.FrontendType.Csume)]
+    [Frontend(Models.FrontendType.Csume)]
     public class CsumeMameHub : FrontendBase, ICsume
     {
         public override bool Launch()

@@ -29,8 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Hyperpin\" />
     <Folder Include="Paths\Hyperspin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Horsesoft.Frontends.Models\Horsesoft.Frontends.Models.csproj" />
   </ItemGroup>
 
 </Project>

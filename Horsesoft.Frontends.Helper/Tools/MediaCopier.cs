@@ -1,5 +1,5 @@
 ﻿using Horsesoft.Frontends.Helper.Common;
-using Horsesoft.Frontends.Helper.Model.Hyperspin;
+using Horsesoft.Frontends.Models.Hyperspin;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System.IO;
 using System.Threading.Tasks;

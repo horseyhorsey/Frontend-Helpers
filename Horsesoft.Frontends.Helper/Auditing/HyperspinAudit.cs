@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Horsesoft.Frontends.Helper.Model.Hyperspin;
+using Horsesoft.Frontends.Models.Hyperspin;
 using Horsesoft.Frontends.Helper.Common;
 using System.Linq;
 using System.IO;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using Horsesoft.Frontends.Helper.Media;
-using Horsesoft.Frontends.Helper.Model;
+using Horsesoft.Frontends.Models;
 
 namespace Horsesoft.Frontends.Helper.Auditing
 {

@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Helper.Model;
+﻿using Horsesoft.Frontends.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;

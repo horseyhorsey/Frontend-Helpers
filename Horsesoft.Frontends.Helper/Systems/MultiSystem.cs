@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Helper.Model.Hyperspin;
+﻿using Horsesoft.Frontends.Models.Hyperspin;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using Horsesoft.Frontends.Helper.Serialization;
 using Horsesoft.Frontends.Helper.Settings;

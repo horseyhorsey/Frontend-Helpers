@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Horsesoft.Frontends.Helper.Model.Hyperspin;
-using Horsesoft.Frontends.Helper.Model.RocketLauncher;
+using Horsesoft.Frontends.Models.Hyperspin;
+using Horsesoft.Frontends.Models.RocketLauncher;
 using Horsesoft.Frontends.Helper.Common;
 using System.IO;
 using System.Linq;

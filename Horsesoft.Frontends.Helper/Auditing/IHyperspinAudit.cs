@@ -1,5 +1,5 @@
-﻿using Horsesoft.Frontends.Helper.Model;
-using Horsesoft.Frontends.Helper.Model.Hyperspin;
+﻿using Horsesoft.Frontends.Models;
+using Horsesoft.Frontends.Models.Hyperspin;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

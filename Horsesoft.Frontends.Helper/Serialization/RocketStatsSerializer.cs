@@ -1,6 +1,6 @@
-﻿using Horsesoft.Frontends.Helper.Model.Hyperspin;
-using Horsesoft.Frontends.Helper.Model.RocketLauncher.Stats;
-using Horsesoft.Frontends.Helper.Model.Stats;
+﻿using Horsesoft.Frontends.Models.Hyperspin;
+using Horsesoft.Frontends.Models.RocketLauncher.Stats;
+using Horsesoft.Frontends.Models.Stats;
 using Hs.Hypermint.Services.Helpers;
 using System;
 using System.Collections.Generic;
@@ -282,7 +282,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
                                 }
                                 else
                                 {
-                                    var gameStat = new Model.RocketLauncher.Stats.GameStat();
+                                    var gameStat = new Models.RocketLauncher.Stats.GameStat();
                                     gameStat.Rom = section;
 
                                     gameStat.SystemName = menuSystem.Name;

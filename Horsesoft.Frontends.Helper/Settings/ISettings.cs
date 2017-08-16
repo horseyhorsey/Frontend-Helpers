@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Helper.Model.Hyperspin;
+﻿using Horsesoft.Frontends.Models.Hyperspin;
 using System.Threading.Tasks;
 
 namespace Horsesoft.Frontends.Helper.Settings
