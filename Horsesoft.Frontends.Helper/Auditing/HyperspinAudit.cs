@@ -37,7 +37,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
         /// <param name="gamesList">The games list.</param>
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Media helper is null</exception>
-        public async Task<IEnumerable<IFile>> GetUnusedMediaFilesAsync(IEnumerable<Game> gamesList)
+        public async Task<IEnumerable<IFile>> GetUnusedMediaFilesAsync(IEnumerable<Game> gamesList, HsMediaType hsMediaType)
         {
             if (_mediaHelper == null)
                 throw new NullReferenceException("Media helper is null");
@@ -45,7 +45,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
             if (gamesList == null || gamesList.Count() == 0)
                 throw new NullReferenceException("Games list is null or count is Zero");
 
-            return await _mediaHelper.GetUnusedMediaFiles(gamesList);
+            return await _mediaHelper.GetUnusedMediaFilesAsync(gamesList, hsMediaType);
         }
 
         public async Task<bool> ScanForMediaAsync(IEnumerable<Game> gamesList)

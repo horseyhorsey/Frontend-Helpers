@@ -18,6 +18,10 @@ namespace Horsesoft.Frontends.Helper.Tools
             _rlStatSerializer = new RocketStatsSerializer();
         }
 
+        /// <summary>
+        /// Gets the global stats.
+        /// </summary>
+        /// <returns></returns>
         public async Task<GlobalStats> GetGlobalStatsAsync()
         {
             return await _rlStatSerializer.GetGlobalStatsAsync(rlPath);

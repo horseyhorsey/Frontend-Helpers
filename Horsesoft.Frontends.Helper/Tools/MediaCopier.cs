@@ -37,24 +37,7 @@ namespace Horsesoft.Frontends.Helper.Tools
         {
             await Task.Run(() =>
             {
-                switch (hsMediaType)
-                {
-                    case HsMediaType.Artwork:
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork1), symbolicLink);
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork2), symbolicLink);
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork3), symbolicLink);
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Artwork4), symbolicLink);
-                        break;
-                    case HsMediaType.Backgrounds:
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Backgrounds), symbolicLink);
-                        break;
-                    case HsMediaType.Wheel:
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Images.Wheels), symbolicLink);
-                        break;
-                    case HsMediaType.Video:
-                        CopyMedia(game, Path.Combine(_frontend.Path, "Media", systemName, Root.Video), symbolicLink);
-                        break;
-                }
+                CopyMedia(game, PathHelper.GetMediaDirectoryForMediaType(_frontend.Path, systemName,hsMediaType), symbolicLink);
             });
         }
 
@@ -62,6 +45,12 @@ namespace Horsesoft.Frontends.Helper.Tools
 
         #region Support Methods
 
+        /// <summary>
+        /// Copies the media. TODO: THIS IS ONLY COPYING .PNG....
+        /// </summary>
+        /// <param name="game">The game.</param>
+        /// <param name="mediaPath">The media path.</param>
+        /// <param name="symbolicLink">if set to <c>true</c> [symbolic link].</param>
         private void CopyMedia(Game game, string mediaPath, bool symbolicLink = false)
         {
             var fileToCopy = Path.Combine(mediaPath, game.RomName + ".png");

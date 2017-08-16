@@ -14,7 +14,8 @@ namespace Horsesoft.Frontends.Helper.Media
     /// <seealso cref="Horsesoft.Frontends.Helper.Media.IMediaHelper" />
     public class MediaHelperHs : IMediaHelper
     {
-        public string CurrentFolder { get; private set; }
+        private string _frontendPath;
+        private string _systemName;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaHelperHs"/> class and sets the CurrentFolder when created.
@@ -22,25 +23,42 @@ namespace Horsesoft.Frontends.Helper.Media
         /// <param name="fe">The fe.</param>
         /// <param name="systemName">Name of the system.</param>
         /// <param name="mediaFolder">The media folder.</param>
-        public MediaHelperHs(string frontendPath, string systemName, string mediaType, string mediaFolder)
+        public MediaHelperHs(string frontendPath, string systemName)
         {
-            CurrentFolder = Path.Combine(frontendPath, Root.Media, systemName, mediaType, mediaFolder);
+            _frontendPath = frontendPath;
+            _systemName = systemName;
         }
 
         /// <summary>
         /// Gets the unused media files.
         /// </summary>
         /// <param name="gamesList">The games list.</param>
+        /// <param name="mediaType">Type of the media.</param>
         /// <returns></returns>
-        /// <exception cref="DirectoryNotFoundException"></exception>
-        public async Task<IEnumerable<IFile>> GetUnusedMediaFiles(IEnumerable<Game> gamesList)
-        {
-            if (!Directory.Exists(CurrentFolder))
-                throw new DirectoryNotFoundException();
+        /// <exception cref="DirectoryNotFoundException">
+        /// </exception>
+        public async Task<IEnumerable<IFile>> GetUnusedMediaFilesAsync(IEnumerable<Game> gamesList, HsMediaType mediaType)
+        {            
+            //Join the path for this media type
+            var fullPath = PathHelper.GetMediaDirectoryForMediaType(_frontendPath,_systemName, mediaType);
 
+            if (!Directory.Exists(fullPath))
+                throw new DirectoryNotFoundException(fullPath);
+
+            return await GetUnusedMediaAsync(gamesList, fullPath);
+        }
+
+        /// <summary>
+        /// Gets the unused media files from a full hyperspin media path
+        /// </summary>
+        /// <param name="gamesList">The games list.</param>
+        /// <param name="mediaFolder">The media folder.</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<IFile>> GetUnusedMediaAsync(IEnumerable<Game> gamesList, string mediaFolder)
+        {
             return await Task.Run(() =>
             {
-                var files = Directory.GetFiles(CurrentFolder);
+                var files = Directory.GetFiles(mediaFolder);
 
                 var hyperspinMediaFiles = new List<IFile>();
 

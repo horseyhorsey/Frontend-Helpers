@@ -20,7 +20,8 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiSystem"/> class and the games list
         /// </summary>
-        public MultiSystem(IHyperspinSerializer hyperspinSerializer, ISystemCreator systemsCreator, IMediaCopier mediaCopier, MultiSystemOptions options)
+        public MultiSystem(IHyperspinSerializer hyperspinSerializer, 
+            ISystemCreator systemsCreator, IMediaCopier mediaCopier, MultiSystemOptions options)
         {
             Games = new List<Game>();
 
@@ -110,24 +111,6 @@ namespace Horsesoft.Frontends.Helper.Systems
         }
 
         /// <summary>
-        /// Copies the template file if exists or uses the default settings.
-        /// </summary>
-        /// <param name="multiSystemName">Name of the multi system.</param>
-        /// <param name="frontEndPath">The front end path.</param>
-        private void UseTemplatedSettings(string multiSystemName, string frontEndPath)
-        {
-            if (File.Exists(Options.SettingsTemplateFile))
-            {
-                var settingsIniPath = Path.Combine(frontEndPath, Root.Settings, multiSystemName + ".ini");
-
-                if (File.Exists(settingsIniPath))
-                    File.Delete(settingsIniPath);
-
-                File.Copy(Options.SettingsTemplateFile, settingsIniPath);
-            }
-        }
-
-        /// <summary>
         /// Removes the specified game.
         /// </summary>
         /// <param name="game">The game.</param>
@@ -145,12 +128,81 @@ namespace Horsesoft.Frontends.Helper.Systems
             return result;
         }
 
+        public async Task<bool> ScanFavorites(string frontEndPath, IEnumerable<MainMenu> systems)
+        {
+            var hsPath = frontEndPath;
+
+            foreach (MainMenu system in systems)
+            {
+                var isMultiSystem = File.Exists(Path.Combine(
+                    hsPath, Root.Databases, system.Name, "_multisystem"));
+
+                // Dont want to be scanning the favorites of a multisystem
+                if (system.Name != "Main Menu" && !isMultiSystem)
+                {
+                    //Change name and get favorites
+                    _hyperspinSerializer.ChangeSystemAndDatabase(system.Name);
+                    var favorites = await _hyperspinSerializer.DeserializeFavoritesAsync();
+
+                    if (favorites.Count() > 0)
+                    {
+                        //var games = _xmlService.SearchRomStringsListFromXml(favoritesList, system.Name, hsPath);
+
+                        //foreach (Game game in games)
+                        //{
+                        //    await ScanGames(game, tempGames);
+                        //}                        
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private Task ScanGames(Game game, List<Game> tempGames)
+        {
+            return Task.Run(() =>
+            {
+                if (!tempGames.Exists(x => x.RomName == game.RomName))
+                {
+                    tempGames.Add(game);
+                }
+
+                tempGames.Sort();
+
+                //_multiSystemRepo.MultiSystemList.Clear();
+
+                //foreach (Game sortedGame in tempGames)
+                //{
+                //    _multiSystemRepo.MultiSystemList.Add(sortedGame);
+                //}
+            });
+        }
+
         #endregion
 
         #region Support Methods
         private bool GameExists(Game game)
         {
             return Games.Any(x => x.RomName == game.RomName) ? true : false;
+        }
+
+        /// <summary>
+        /// Copies the template file if exists or uses the default settings.
+        /// </summary>
+        /// <param name="multiSystemName">Name of the multi system.</param>
+        /// <param name="frontEndPath">The front end path.</param>
+        private void UseTemplatedSettings(string multiSystemName, string frontEndPath)
+        {
+            if (File.Exists(Options.SettingsTemplateFile))
+            {
+                var settingsIniPath = Path.Combine(frontEndPath, Root.Settings, multiSystemName + ".ini");
+
+                if (File.Exists(settingsIniPath))
+                    File.Delete(settingsIniPath);
+
+                File.Copy(Options.SettingsTemplateFile, settingsIniPath);
+            }
         }
 
         #endregion

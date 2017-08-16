@@ -2,7 +2,10 @@
 {
     public enum HsMediaType
     {
-        Artwork,
+        Artwork1,
+        Artwork2,
+        Artwork3,
+        Artwork4,
         Backgrounds,
         Wheel,
         Video

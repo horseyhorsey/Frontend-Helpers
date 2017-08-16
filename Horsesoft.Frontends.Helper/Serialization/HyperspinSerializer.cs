@@ -493,7 +493,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
         /// Get genres from Hyperspins genre.xml
         /// </summary>
         /// <param name="genreXmlPath"></param>
-        private Task<IEnumerable<Genre>> PopulateGenresAsync(string genreXmlPath)
+        private Task<IEnumerable<Genre>> GetGenresAsync(string genreXmlPath)
         {
             return Task.Run(() =>
             {

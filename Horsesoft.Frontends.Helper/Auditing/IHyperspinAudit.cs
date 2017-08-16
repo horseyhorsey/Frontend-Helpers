@@ -7,7 +7,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
 {
     public interface IHyperspinAudit
     {
-        Task<IEnumerable<IFile>> GetUnusedMediaFilesAsync(IEnumerable<Game> gamesList);
+        Task<IEnumerable<IFile>> GetUnusedMediaFilesAsync(IEnumerable<Game> gamesList, HsMediaType hsMediaType);
 
         Task<bool> ScanForMediaAsync(IEnumerable<Game> gamesList);
 
