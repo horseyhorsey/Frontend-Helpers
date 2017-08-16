@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Horsesoft.Frontends.Models\Horsesoft.Frontends.Models.csproj" />
+    <ProjectReference Include="..\Horsesoft.Frontends.Models\Frontends.Models.csproj" />
   </ItemGroup>
 
 </Project>

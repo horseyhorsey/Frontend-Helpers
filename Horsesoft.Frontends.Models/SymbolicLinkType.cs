@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Models
+﻿namespace Frontends.Models
 {
     public enum SymbolicLinkType
     {

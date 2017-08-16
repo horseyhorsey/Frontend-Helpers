@@ -1,4 +1,5 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Models;
+using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Common.Attributes;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Horsesoft.Frontends.Helper.Hyperspin
 {
-    [Frontend(Models.FrontendType.Hyperspin)]
+    [Frontend(FrontendType.Hyperspin)]
     public class HyperspinFrontend : FrontendBase, IHyperspinFrontend
     {
         public HyperspinFrontend()

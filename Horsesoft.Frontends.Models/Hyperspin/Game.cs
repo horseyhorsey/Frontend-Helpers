@@ -1,8 +1,8 @@
-﻿using Horsesoft.Frontends.Models.RocketLauncher;
+﻿using Frontends.Models.RocketLauncher;
 using System;
 using System.Xml.Serialization;
 
-namespace Horsesoft.Frontends.Models.Hyperspin
+namespace Frontends.Models.Hyperspin
 {
     [XmlType(TypeName = "game")]
     public class Game : IComparable<Game>

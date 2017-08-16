@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Models.Stats
+﻿namespace Frontends.Models.Stats
 {
     public enum GeneralStats
     {

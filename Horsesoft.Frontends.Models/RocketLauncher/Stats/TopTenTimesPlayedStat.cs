@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Horsesoft.Frontends.Models.RocketLauncher.Stats
+namespace Frontends.Models.RocketLauncher.Stats
 {
     public class TopTenTimesPlayedStat : GlobalStatBase, ITimesPlayedStat
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Horsesoft.Frontends.Models.RocketLauncher
+namespace Frontends.Models.RocketLauncher
 {
     public class Audits : ObservableCollection<RlAudit>
     {

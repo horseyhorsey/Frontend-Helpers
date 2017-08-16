@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Horsesoft.Frontends.Models.PinballX
+namespace Frontends.Models.PinballX
 {
     public abstract class GamePinball
     {

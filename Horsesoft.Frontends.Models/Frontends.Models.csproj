@@ -15,8 +15,8 @@
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.0.1</FileVersion>
     <Product>Horsesoft Frontends Helper</Product>
-    <AssemblyName>Horsesoft.Frontends.Helper</AssemblyName>
-    <RootNamespace>Horsesoft.Frontends.Helper</RootNamespace>
+    <AssemblyName>Frontends.Models</AssemblyName>
+    <RootNamespace>Frontends.Models</RootNamespace>
   </PropertyGroup>
 
   

@@ -2,7 +2,6 @@
 using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Media;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
-using Horsesoft.Frontends.Models.Hyperspin;
 using System.Linq;
 using Xunit;
 
@@ -39,14 +38,14 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         }
 
         [Theory]
-        [InlineData("Amstrad CPC", HsMediaType.Artwork1, 1)]
-        [InlineData("Amstrad CPC", HsMediaType.Artwork2, 1)]
-        [InlineData("Amstrad CPC", HsMediaType.Artwork3, 1)]
-        [InlineData("Amstrad CPC", HsMediaType.Artwork4, 1)]
-        [InlineData("Amstrad CPC", HsMediaType.Backgrounds, 1)]
-        [InlineData("Amstrad CPC", HsMediaType.Video, 1)]
-        [InlineData("Amstrad CPC", HsMediaType.Wheel, 1)]
-        public async void GetUnusedHyperspinMediaFiles(string systemName, HsMediaType mediaType, int expectedUnusedCount)
+        [InlineData("Amstrad CPC", Frontends.Models.Hyperspin.HsMediaType, 1)]
+        [InlineData("Amstrad CPC", Frontends.Models.HsMediaTypeHsMediaType.Artwork2, 1)]
+        [InlineData("Amstrad CPC", Frontends.Models.HsMediaTypeHsMediaType.Artwork3, 1)]
+        [InlineData("Amstrad CPC", Frontends.Models.HsMediaTypeHsMediaType.Artwork4, 1)]
+        [InlineData("Amstrad CPC", Frontends.Models.HsMediaTypeHsMediaType.Backgrounds, 1)]
+        [InlineData("Amstrad CPC", Frontends.Models.HsMediaTypeHsMediaType.Video, 1)]
+        [InlineData("Amstrad CPC", Frontends.Models.HsMediaType.Wheel, 1)]
+        public async void GetUnusedHyperspinMediaFiles(string systemName, Frontends.Models.HsMediaType mediaType, int expectedUnusedCount)
         {
             //Get some games to test  from
             _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);

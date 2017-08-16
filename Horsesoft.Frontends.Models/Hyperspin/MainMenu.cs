@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace Horsesoft.Frontends.Models.Hyperspin
+namespace Frontends.Models.Hyperspin
 {
     [Serializable]
     [XmlType(TypeName = "game")]

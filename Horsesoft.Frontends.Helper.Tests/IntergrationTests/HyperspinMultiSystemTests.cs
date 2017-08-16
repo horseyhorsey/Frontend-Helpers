@@ -3,7 +3,6 @@ using Horsesoft.Frontends.Helper.Settings;
 using Horsesoft.Frontends.Helper.Systems;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using Horsesoft.Frontends.Helper.Tools;
-using Horsesoft.Frontends.Models.Hyperspin;
 using System.Collections.Generic;
 using Xunit;
 

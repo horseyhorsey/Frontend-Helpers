@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Models.Hyperspin
+﻿namespace Frontends.Models.Hyperspin
 {
     /// <summary>
     /// Media audits for games

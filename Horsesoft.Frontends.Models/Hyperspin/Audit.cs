@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Models.Hyperspin
+﻿namespace Frontends.Models.Hyperspin
 {
     /// <summary>
     /// Global media audits

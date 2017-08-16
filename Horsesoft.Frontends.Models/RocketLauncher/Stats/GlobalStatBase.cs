@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Models.RocketLauncher.Stats
+﻿namespace Frontends.Models.RocketLauncher.Stats
 {
     public abstract class GlobalStatBase : IGlobalStat
     {

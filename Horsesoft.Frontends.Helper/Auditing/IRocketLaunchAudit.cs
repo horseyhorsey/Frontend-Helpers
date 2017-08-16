@@ -1,5 +1,5 @@
-﻿using Horsesoft.Frontends.Models.Hyperspin;
-using Horsesoft.Frontends.Models.RocketLauncher;
+﻿using Frontends.Models.Hyperspin;
+using Frontends.Models.RocketLauncher;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

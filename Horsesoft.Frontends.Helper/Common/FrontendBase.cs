@@ -1,11 +1,11 @@
 ﻿using Horsesoft.Frontends.Helper.Common.Attributes;
-using Horsesoft.Frontends.Models;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Frontends.Models;
 
 namespace Horsesoft.Frontends.Helper.Common
 {
