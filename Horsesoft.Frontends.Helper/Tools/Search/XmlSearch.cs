@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Models.Hyperspin;
+﻿using Frontends.Models.Hyperspin;
 using System;
 using System.Collections.Generic;
 using System.Linq;

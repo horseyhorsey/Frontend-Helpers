@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Horsesoft.Frontends.Models.Hyperspin
+namespace Frontends.Models.Hyperspin
 {
     public class AuditsMenu : ObservableCollection<AuditMenu>
     {

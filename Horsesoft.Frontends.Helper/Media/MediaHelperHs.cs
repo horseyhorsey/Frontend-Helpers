@@ -1,10 +1,10 @@
-﻿using Horsesoft.Frontends.Models;
-using Horsesoft.Frontends.Models.Hyperspin;
-using Horsesoft.Frontends.Helper.Paths.Hyperspin;
+﻿using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Frontends.Models.Hyperspin;
+using Frontends.Models;
 
 namespace Horsesoft.Frontends.Helper.Media
 {

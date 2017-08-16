@@ -1,4 +1,5 @@
-﻿using Horsesoft.Frontends.Models.Hyperspin;
+﻿
+using Frontends.Models.Hyperspin;
 using System.IO;
 
 namespace Horsesoft.Frontends.Helper.Paths.Hyperspin

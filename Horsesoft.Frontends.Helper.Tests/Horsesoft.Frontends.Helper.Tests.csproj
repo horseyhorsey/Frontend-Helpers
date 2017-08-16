@@ -78,9 +78,9 @@
       <Project>{431f6499-5035-478b-ab6e-acdcd999666f}</Project>
       <Name>Horsesoft.Frontends.Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Horsesoft.Frontends.Models\Horsesoft.Frontends.Models.csproj">
-      <Project>{801AF89B-B867-4403-89FA-2468825554B6}</Project>
-      <Name>Horsesoft.Frontends.Models</Name>
+    <ProjectReference Include="..\Horsesoft.Frontends.Models\Frontends.Models.csproj">
+      <Project>{801af89b-b867-4403-89fa-2468825554b6}</Project>
+      <Name>Frontends.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

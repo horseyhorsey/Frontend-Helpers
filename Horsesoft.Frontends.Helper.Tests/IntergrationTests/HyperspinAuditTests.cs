@@ -1,8 +1,8 @@
-﻿using Horsesoft.Frontends.Helper.Auditing;
+﻿using Frontends.Models.Hyperspin;
+using Horsesoft.Frontends.Helper.Auditing;
 using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Media;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
-using Horsesoft.Frontends.Models.Hyperspin;
 using System.Linq;
 using Xunit;
 

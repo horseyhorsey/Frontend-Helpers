@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Xunit;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
-using Horsesoft.Frontends.Models.Hyperspin;
+using Frontends.Models.Hyperspin;
 
 namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 {

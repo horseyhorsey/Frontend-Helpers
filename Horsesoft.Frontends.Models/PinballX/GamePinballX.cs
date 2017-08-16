@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Horsesoft.Frontends.Models.PinballX
+namespace Frontends.Models.PinballX
 {
     [XmlType("game")]
     public class GamePinballX : GamePinball

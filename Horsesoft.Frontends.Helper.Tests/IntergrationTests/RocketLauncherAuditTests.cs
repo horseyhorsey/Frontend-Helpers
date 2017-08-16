@@ -2,8 +2,8 @@
 using System.Linq;
 using Xunit;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
-using Horsesoft.Frontends.Models.RocketLauncher;
-using Horsesoft.Frontends.Models.Hyperspin;
+using Frontends.Models.Hyperspin;
+using Frontends.Models.RocketLauncher;
 
 namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 {

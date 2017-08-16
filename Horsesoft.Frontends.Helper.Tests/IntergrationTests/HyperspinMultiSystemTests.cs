@@ -1,9 +1,9 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Models.Hyperspin;
+using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Settings;
 using Horsesoft.Frontends.Helper.Systems;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using Horsesoft.Frontends.Helper.Tools;
-using Horsesoft.Frontends.Models.Hyperspin;
 using System.Collections.Generic;
 using Xunit;
 

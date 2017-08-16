@@ -1,12 +1,19 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Models;
+using Frontends.Models.Hyperspin;
+using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Common.Attributes;
+using Horsesoft.Frontends.Helper.Paths.Hyperspin;
+using Horsesoft.Frontends.Helper.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Horsesoft.Frontends.Helper.Hyperspin
 {
-    [Frontend(Models.FrontendType.Hyperspin)]
+    [Frontend(FrontendType.Hyperspin)]
     public class HyperspinFrontend : FrontendBase, IHyperspinFrontend
     {
         public HyperspinFrontend()
@@ -56,7 +63,7 @@ namespace Horsesoft.Frontends.Helper.Hyperspin
             {
                 var fetchedGames = new List<Game>();
 
-                string mainMenuXml = System.IO.Path.Combine(Path, Root.Databases, systemName, $"{systemName}.xml");
+                string mainMenuXml = System.IO.Path.Combine(PathHelper.GetSystemDatabasePath(Path,systemName), $"{systemName}.xml");
 
                 //Set up reader , returning null games list.
                 XDocument xdoc = null;

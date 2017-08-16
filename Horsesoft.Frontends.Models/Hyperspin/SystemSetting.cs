@@ -1,6 +1,6 @@
-﻿using Horsesoft.Frontends.Models.Hyperspin.Settings;
+﻿using Frontends.Models.Hyperspin.Settings;
 
-namespace Horsesoft.Frontends.Models.Hyperspin
+namespace Frontends.Models.Hyperspin
 {
     public class SystemSetting
     {

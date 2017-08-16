@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Models.Hyperspin.Settings
+﻿namespace Frontends.Models.Hyperspin.Settings
 {
     /// <summary>
     /// Hyperspins ini exeinfo

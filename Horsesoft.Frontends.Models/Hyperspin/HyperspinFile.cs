@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Horsesoft.Frontends.Models.Hyperspin
+namespace Frontends.Models.Hyperspin
 {
     public class HyperspinFile : IFile
     {

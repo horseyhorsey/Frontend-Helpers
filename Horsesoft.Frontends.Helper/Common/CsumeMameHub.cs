@@ -1,10 +1,11 @@
-﻿using Horsesoft.Frontends.Helper.Common.Attributes;
+﻿using Frontends.Models;
+using Horsesoft.Frontends.Helper.Common.Attributes;
 using System;
 using System.Diagnostics;
 
 namespace Horsesoft.Frontends.Helper.Common
 {
-    [Frontend(Models.FrontendType.Csume)]
+    [Frontend(FrontendType.Csume)]
     public class CsumeMameHub : FrontendBase, ICsume
     {
         public override bool Launch()
