@@ -1,6 +1,7 @@
 ﻿using Horsesoft.Frontends.Helper.Auditing;
 using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Media;
+using Horsesoft.Frontends.Helper.Model.Hyperspin;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using System.Linq;
 using Xunit;
@@ -38,16 +39,24 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         }
 
         [Theory]
-        [InlineData("Amstrad CPC", "Images", "Artwork1", 1)]
-        public async void GetUnusedHyperspinMediaFiles(string systemName, string hsMediaFolder, string childMediaFolder, int expectedUnusedCount)
+        [InlineData("Amstrad CPC", HsMediaType.Artwork1, 1)]
+        [InlineData("Amstrad CPC", HsMediaType.Artwork2, 1)]
+        [InlineData("Amstrad CPC", HsMediaType.Artwork3, 1)]
+        [InlineData("Amstrad CPC", HsMediaType.Artwork4, 1)]
+        [InlineData("Amstrad CPC", HsMediaType.Backgrounds, 1)]
+        [InlineData("Amstrad CPC", HsMediaType.Video, 1)]
+        [InlineData("Amstrad CPC", HsMediaType.Wheel, 1)]
+        public async void GetUnusedHyperspinMediaFiles(string systemName, HsMediaType mediaType, int expectedUnusedCount)
         {
-            IMediaHelper mediaHelper = new MediaHelperHs(frontend.Path, systemName, hsMediaFolder, childMediaFolder);
-            IHyperspinAudit auditer = new HyperspinAudit(frontend, mediaHelper);
-
+            //Get some games to test  from
             _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
             var games = await _fixture._hyperSerializer.DeserializeAsync();
 
-            var unusedFiles = await auditer.GetUnusedMediaFilesAsync(games);
+            //Build an auditer with a mediahelper
+            IMediaHelper mediaHelper = new MediaHelperHs(frontend.Path, systemName);
+            IHyperspinAudit auditer = new HyperspinAudit(frontend, mediaHelper);
+
+            var unusedFiles = await auditer.GetUnusedMediaFilesAsync(games, mediaType);
 
             //Make sure scan fully completed
             Assert.True(unusedFiles.Count() == expectedUnusedCount);

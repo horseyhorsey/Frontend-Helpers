@@ -23,7 +23,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         public async void GetDatabasesForSystem(string systemName, int expectedCount)
         {
             var databases = await frontend
-                .GetDatabaseFilesForSystemAsync(systemName);
+                .GetDatabaseFilesForSystemAsync(systemName);            
             
             Assert.True(databases.Count() >= expectedCount);
         }

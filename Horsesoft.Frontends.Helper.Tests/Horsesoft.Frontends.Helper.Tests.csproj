@@ -65,6 +65,7 @@
     <Compile Include="IntergrationTests\HyperspinCreateSystemTests.cs" />
     <Compile Include="IntergrationTests\HyperspinFrontendTests.cs" />
     <Compile Include="IntergrationTests\HyperspinMultiSystemTests.cs" />
+    <Compile Include="IntergrationTests\HyperspinSearchTests.cs" />
     <Compile Include="IntergrationTests\HyperspinSerializerTests.cs" />
     <Compile Include="IntergrationTests\HyperspinSettingsTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherAuditTests.cs" />
@@ -83,6 +84,51 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Hyperspin Data\Databases\Main Menu\Main Menu Bad.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Artwork2\10th Frame %28Europe%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Artwork2\UnusedFile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Artwork3\10th Frame %28Europe%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Artwork3\UnusedFile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Artwork4\10th Frame %28Europe%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Artwork4\UnusedFile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Backgrounds\10th Frame %28Europe%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Backgrounds\UnusedFile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Genre\Backgrounds\Arcade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Genre\Wheel\Arcade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Letters\A.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Wheel\10th Frame %28Europe%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Images\Wheel\UnusedFile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Video\10th Frame %28Europe%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Hyperspin Data\Media\Amstrad CPC\Video\UnusedFile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Hyperspin Data\Settings\Amstrad CPC.ini">
@@ -181,6 +227,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fixtures\Fake\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Images\Other\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Images\Special\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Sound\Background Music\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Sound\System Exit\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Sound\System Start\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Sound\Wheel Sounds\" />
+    <Folder Include="Hyperspin Data\Media\Amstrad CPC\Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
