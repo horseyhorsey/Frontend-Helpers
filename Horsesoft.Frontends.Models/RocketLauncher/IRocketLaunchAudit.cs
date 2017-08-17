@@ -1,9 +1,8 @@
 ﻿using Frontends.Models.Hyperspin;
-using Frontends.Models.RocketLauncher;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Auditing
+namespace Frontends.Models.RocketLauncher
 {
     public interface IRocketLaunchAudit
     {

@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Tests.Fixtures
 {

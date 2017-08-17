@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Horsesoft.Frontends.Helper.Common;
 using System.IO;
 using System.Linq;
 using Horsesoft.Frontends.Helper.Paths;
 using System.Reflection;
 using Frontends.Models.RocketLauncher;
 using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Auditing
 {
@@ -85,12 +85,11 @@ namespace Horsesoft.Frontends.Helper.Auditing
                         case RlMediaType.SavedGames:
                             ScanRocketLauncherPath(gamesList, "HaveSavedGames", RocketLauncherMediaPaths.SavedGames, systemName);
                             break;
-                        case RlMediaType.Settings:
-                            break;
                         case RlMediaType.Videos:
                             ScanRocketLauncherPath(gamesList, "HaveVideos", RocketLauncherMediaPaths.Video, systemName);
                             break;
-                        case RlMediaType.Wheels:
+                        case RlMediaType.Logos:
+                            ScanRocketLauncherPath(gamesList, "HaveLogos", RocketLauncherMediaPaths.Video, systemName);
                             break;
                     }
 

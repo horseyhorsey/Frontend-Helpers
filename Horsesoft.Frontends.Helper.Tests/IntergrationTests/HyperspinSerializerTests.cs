@@ -1,9 +1,9 @@
-﻿using Horsesoft.Frontends.Helper.Common;
-using System.Linq;
+﻿using System.Linq;
 using Xunit;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using System;
 using System.Xml;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 {

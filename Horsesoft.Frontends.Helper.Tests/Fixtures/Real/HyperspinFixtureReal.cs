@@ -1,9 +1,8 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Helper.Hyperspin;
 using Horsesoft.Frontends.Helper.Serialization;
 using Horsesoft.Frontends.Helper.Settings;
 using Horsesoft.Frontends.Helper.Systems;
 using System;
-using Xunit;
 
 namespace Horsesoft.Frontends.Helper.Tests.Fixtures.Real
 {

@@ -1,5 +1,5 @@
 ﻿using Frontends.Models.Hyperspin;
-using Horsesoft.Frontends.Helper.Common;
+using Frontends.Models.Interfaces;
 using Horsesoft.Frontends.Helper.Settings;
 using Horsesoft.Frontends.Helper.Systems;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;

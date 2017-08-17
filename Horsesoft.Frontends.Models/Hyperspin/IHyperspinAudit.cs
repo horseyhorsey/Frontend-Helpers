@@ -1,9 +1,7 @@
-﻿using Frontends.Models;
-using Frontends.Models.Hyperspin;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Auditing
+namespace Frontends.Models.Hyperspin
 {
     public interface IHyperspinAudit
     {

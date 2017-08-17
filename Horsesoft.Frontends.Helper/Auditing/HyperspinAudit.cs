@@ -8,6 +8,7 @@ using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using Horsesoft.Frontends.Helper.Media;
 using Frontends.Models.Hyperspin;
 using Frontends.Models;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Auditing
 {
