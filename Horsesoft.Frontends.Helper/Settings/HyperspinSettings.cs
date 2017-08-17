@@ -16,6 +16,7 @@ namespace Horsesoft.Frontends.Helper.Settings
 
         public SystemSetting Settings { get; set; }
 
+        #region Support Methods
         public HyperspinSettings(IFrontend frontend, string systemName)
         {
             _frontend = frontend;
@@ -23,6 +24,11 @@ namespace Horsesoft.Frontends.Helper.Settings
             Settings = new SystemSetting();
         }
 
+        /// <summary>
+        /// Deserializes a settings ini asynchronous.
+        /// </summary>
+        /// <param name="systemName">Name of the system.</param>
+        /// <returns></returns>
         public Task<bool> DeserializeSettingsAsync(string systemName = null)
         {
             return Task.Run(() =>
@@ -55,8 +61,14 @@ namespace Horsesoft.Frontends.Helper.Settings
                 }
             });
 
-        }
+        } 
+        #endregion
 
+        /// <summary>
+        /// Gets the executable information.
+        /// </summary>
+        /// <param name="ini">The ini.</param>
+        /// <returns></returns>
         private ExeInfo GetExeInfo(IniFile ini)
         {
             var exeInfo = new ExeInfo();
@@ -78,6 +90,10 @@ namespace Horsesoft.Frontends.Helper.Settings
             return exeInfo;
         }
 
+        /// <summary>
+        /// Serializes the settings.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void SerializeSettings()
         {
             throw new NotImplementedException();

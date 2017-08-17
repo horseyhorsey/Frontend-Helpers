@@ -10,5 +10,7 @@ namespace Horsesoft.Frontends.Helper.Common
         Task<IEnumerable<Game>> SearchXmlForGamesAsync(IEnumerable<string> gamesListToSearch, string systemName, IHyperspinSerializer serializer);
 
         Task<IEnumerable<Favorite>> GetFavoritesAsync(string systemName, IHyperspinSerializer serializer);
+
+        Task<IEnumerable<string>> GetMainMenuDatabases();
     }
 }

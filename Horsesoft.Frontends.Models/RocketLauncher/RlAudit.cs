@@ -1,7 +1,10 @@
 ﻿namespace Frontends.Models.RocketLauncher
 {
     public class RlAudit
-    {   
+    {
+        public string RomName { get; set; }
+        public string Description { get; set; }
+
         public bool HaveArtwork { get; set; }
         public bool HaveBackgrounds { get; set; }
         public bool HaveBezels { get; set; }

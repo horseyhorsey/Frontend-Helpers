@@ -27,5 +27,14 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             
             Assert.True(databases.Count() >= expectedCount);
         }
+
+        [Fact]
+        public async void GetMainMenuDatabases()
+        {
+            var meh = (IHyperspinFrontend)frontend;
+            var dbs = await meh.GetMainMenuDatabases();
+
+            Assert.True(dbs.Count() > 0);
+        }
     }
 }
