@@ -1,11 +1,11 @@
-﻿using Horsesoft.Frontends.Helper.Common;
-using Horsesoft.Frontends.Helper.Paths.Hyperspin;
+﻿using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using Hs.Hypermint.Services.Helpers;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using Frontends.Models.Hyperspin.Settings;
 using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Settings
 {

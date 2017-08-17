@@ -1,9 +1,9 @@
 ﻿using Frontends.Models.Hyperspin;
-
+using Frontends.Models.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Serialization
+namespace Frontends.Helper.Hyperspin
 {
     public interface IHyperspinSerializer : 
         IDeserializer<Game>, ISerializer<Game>, ISerializer<MainMenu>

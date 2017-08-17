@@ -1,4 +1,6 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
+using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using System.Linq;
 using Xunit;

@@ -1,4 +1,4 @@
-﻿using Horsesoft.Frontends.Helper.Common;
+﻿using Frontends.Models.Interfaces;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using Xunit;
 

@@ -1,9 +1,8 @@
-﻿using Frontends.Models.Hyperspin;
-using Horsesoft.Frontends.Helper.Serialization;
+﻿using Frontends.Helper.Hyperspin;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Common
+namespace Frontends.Models.Hyperspin
 {
     public interface IHyperspinFrontend
     {

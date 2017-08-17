@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Frontends.Models;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Common
 {

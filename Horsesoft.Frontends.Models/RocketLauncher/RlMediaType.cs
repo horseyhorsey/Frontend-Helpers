@@ -7,14 +7,23 @@
         Bezels,
         Cards,
         Controller,
+        Cursors,
+        Developer,    
         Fade,
+        Fonts,
+        Genre,
         Guides,
+        Keymapper,
+        Logos,
         Manuals,        
+        MovesList,
         MultiGame,
         Music,
+        Publisher,
+        Rating,
         SavedGames,
-        Settings,
+        Sounds,
         Videos,
-        Wheels
+        Year
     }
 }

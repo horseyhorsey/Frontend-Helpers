@@ -33,8 +33,10 @@
         public bool HavePublisher { get; set; }
         public bool HaveRating { get; set; }
         public bool HaveScreenshots { get; set; }
-        public bool HaveSaves { get; set; }        
+        public bool HaveSavedGames { get; set; }        
         public bool HaveYear { get; set; }
         public bool HaveVideo { get; set; }
+        public bool HaveLogos { get; set; }
+        public bool HaveMovesList { get; set; }
     }
 }

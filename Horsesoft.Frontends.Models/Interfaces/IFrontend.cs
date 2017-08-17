@@ -1,8 +1,7 @@
-﻿using Frontends.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Common
+namespace Frontends.Models.Interfaces
 {
     public interface IFrontend
     {

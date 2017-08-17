@@ -1,11 +1,10 @@
-﻿using Horsesoft.Frontends.Helper.Common;
-
-using Horsesoft.Frontends.Helper.Paths.Hyperspin;
+﻿using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System.IO;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Tools
 {
