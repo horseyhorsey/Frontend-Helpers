@@ -1,4 +1,5 @@
 ﻿using Frontends.Models.Hyperspin;
+using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Serialization;
 using Horsesoft.Frontends.Helper.Settings;
 using Horsesoft.Frontends.Helper.Systems;
@@ -17,7 +18,7 @@ namespace Horsesoft.Frontends.Helper.Tests.Fixtures.Real
 
         public HyperspinFixtureReal()
         {
-            _frontend = new Hyperspin.HyperspinFrontend()
+            _frontend = new HyperspinFrontend()
             {
                 Executable = "",
                 HasSettingsFile = true,

@@ -2,6 +2,7 @@
 using Frontends.Models.Interfaces;
 using Frontends.Models.RocketLauncher;
 using Horsesoft.Frontends.Helper.Auditing;
+using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Serialization;
 using Horsesoft.Frontends.Helper.Tools;
 using System;
@@ -18,14 +19,14 @@ namespace Horsesoft.Frontends.Helper.Tests.Fixtures.Real
         public RocketLaunchFixtureReal()
         {
             //Create a hyperspin frontend based on this working directory
-            _frontend = new Hyperspin.HyperspinFrontend()
+            _frontend = new HyperspinFrontend()
             {
                 Executable = "",
                 HasSettingsFile = true,
                 Path = Environment.CurrentDirectory + "\\Hyperspin Data"
             };
 
-            _frontendRl = new Hyperspin.HyperspinFrontend()
+            _frontendRl = new HyperspinFrontend()
             {
                 Executable = "",
                 HasSettingsFile = true,
