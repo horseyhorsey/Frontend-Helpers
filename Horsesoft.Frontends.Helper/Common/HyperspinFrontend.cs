@@ -6,7 +6,6 @@ using Horsesoft.Frontends.Helper.Common.Attributes;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
@@ -33,8 +32,8 @@ namespace Horsesoft.Frontends.Helper.Hyperspin
         {
             return Task.Run(() =>
             {
-                if (systemName.Contains("Main Menu"))
-                    throw new Exception("Can't get databases for a Main Menu");
+                //if (systemName.Contains("Main Menu"))
+                //    throw new Exception("Can't get databases for a Main Menu");
 
                 return GetDatabaseFilesForSystem(systemName, "*.xml");
             });
@@ -134,38 +133,6 @@ namespace Horsesoft.Frontends.Helper.Hyperspin
                 catch { }
 
                 return fetchedGames.AsEnumerable();
-            });
-        }
-
-        /// <summary>
-        /// Gets the main menu databases.
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IEnumerable<string>> GetMainMenuDatabases()
-        {
-            return await Task.Run(() =>
-            {
-                var mainmenuPath = PathHelper.GetSystemDatabasePath(this.Path, "Main Menu");
-
-                if (!Directory.Exists(mainmenuPath))
-                    throw new NullReferenceException("Hyperspin Main menu database directory not found");
-
-                var files = Directory.GetFiles(mainmenuPath, "*.xml");
-
-                if (files.Count() == 0)
-                    throw new FileNotFoundException($"Main Menu.xml not found: {mainmenuPath}");
-
-                string[] menuXmls;
-                int i = 0;
-                menuXmls = new string[files.Count()];
-                foreach (var item in files)
-                {
-                    menuXmls[i] = item;
-                    i++;
-                }
-
-                return menuXmls.AsEnumerable();
-
             });
         }
 

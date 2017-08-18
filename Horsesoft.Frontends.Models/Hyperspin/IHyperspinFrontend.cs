@@ -10,6 +10,10 @@ namespace Frontends.Models.Hyperspin
 
         Task<IEnumerable<Favorite>> GetFavoritesAsync(string systemName, IHyperspinSerializer serializer);
 
-        Task<IEnumerable<string>> GetMainMenuDatabases();
+        /// <summary>
+        /// Gets the databases that include the given system name in the frontend path.<para/>
+        /// Also use for main menu xmls
+        /// </summary>
+        Task<IEnumerable<string>> GetDatabaseFilesForSystemAsync(string systemName);
     }
 }

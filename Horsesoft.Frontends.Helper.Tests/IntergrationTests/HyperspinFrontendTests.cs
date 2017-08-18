@@ -22,21 +22,13 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         [Theory]
         [InlineData("Amstrad CPC", 5)]
         [InlineData("Atari ST", 0)]
+        [InlineData("Main Menu", 2)]
         public async void GetDatabasesForSystem(string systemName, int expectedCount)
         {
             var databases = await frontend
                 .GetDatabaseFilesForSystemAsync(systemName);            
             
             Assert.True(databases.Count() >= expectedCount);
-        }
-
-        [Fact]
-        public async void GetMainMenuDatabases()
-        {
-            var meh = (IHyperspinFrontend)frontend;
-            var dbs = await meh.GetMainMenuDatabases();
-
-            Assert.True(dbs.Count() > 0);
         }
     }
 }
