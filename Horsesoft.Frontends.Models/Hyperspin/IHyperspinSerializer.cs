@@ -14,14 +14,38 @@ namespace Frontends.Models.Hyperspin
         /// <param name="database">The name of the database.</param>
         void ChangeSystemAndDatabase(string systemName, string database = "");
 
-        Task<IEnumerable<MainMenu>> DeserializeMenusAsync();
-
+        /// <summary>
+        /// Deserializes the favorites asynchronous.
+        /// </summary>
         Task<IEnumerable<Favorite>> DeserializeFavoritesAsync();
 
+        /// <summary>
+        /// Deserializes the genres asynchronous.
+        /// </summary>
         Task<IEnumerable<Genre>> DeserializeGenresAsync();
 
+        /// <summary>
+        /// Deserializes the menus asynchronous.
+        /// </summary>
+        Task<IEnumerable<MainMenu>> DeserializeMenusAsync();
+
+        /// <summary>
+        /// Gets the genre files asynchronous.
+        /// </summary>
+        /// <param name="genreXmlPath">The genre XML path.</param>
+        /// <returns></returns>
+        Task<IEnumerable<Genre>> GetGenresAsync(string genreXmlPath);
+
+        /// <summary>
+        /// Serializes the favorites asynchronous.
+        /// </summary>
+        /// <param name="games">The games.</param>
         Task<bool> SerializeFavoritesAsync(IEnumerable<Game> games);
 
+        /// <summary>
+        /// Serializes the genres asynchronous.
+        /// </summary>
+        /// <param name="games">The games.</param>
         Task<bool> SerializeGenresAsync(IEnumerable<Game> games);
     }
 }

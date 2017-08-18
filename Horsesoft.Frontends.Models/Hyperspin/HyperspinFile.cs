@@ -8,6 +8,10 @@ namespace Frontends.Models.Hyperspin
         public string Extension { get; set; }
         public string FullPath { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HyperspinFile"/> class.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
         public HyperspinFile(string fileName)
         {
             FullPath = fileName;

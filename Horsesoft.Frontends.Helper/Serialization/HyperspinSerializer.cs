@@ -1,6 +1,5 @@
 ﻿using Frontends.Models.Hyperspin;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -168,7 +167,17 @@ namespace Horsesoft.Frontends.Helper.Serialization
                 }
                 catch (Exception) { throw; }
             });
-        }        
+        }
+
+        /// <summary>
+        /// Deserializes the genres asynchronous.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public Task<IEnumerable<Genre>> DeserializeGenresAsync()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Deserializes hyperspin systems from the main menu.xml
@@ -211,6 +220,36 @@ namespace Horsesoft.Frontends.Helper.Serialization
                 catch (Exception) { throw; }
             });
 
+        }
+
+        /// <summary>
+        /// Get genres from Hyperspins genre.xml
+        /// </summary>
+        /// <param name="genreXmlPath"></param>
+        public async Task<IEnumerable<Genre>> GetGenresAsync(string genreXmlPath)
+        {
+            return await Task.Run(() =>
+            {
+                var genreList = new List<Genre>();
+
+                using (var reader = new XmlTextReader(genreXmlPath))
+                {
+                    while (reader.Read())
+                    {
+                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "game"))
+                        {
+                            if (reader.HasAttributes)
+                            {
+                                var genreName = reader.GetAttribute("name");
+
+                                genreList.Add(new Genre { GenreName = genreName });
+                            }
+                        }
+                    }
+
+                    return genreList.AsEnumerable();
+                }
+            });
         }
 
         /// <summary>
@@ -373,11 +412,6 @@ namespace Horsesoft.Frontends.Helper.Serialization
             });
         }
 
-        public Task<IEnumerable<Genre>> DeserializeGenresAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Serializes the genres from a gamelist to seperate xmls in the database directory asynchronously.
         /// </summary>
@@ -488,36 +522,6 @@ namespace Horsesoft.Frontends.Helper.Serialization
             }
 
             return genres;
-        }
-
-        /// <summary>
-        /// Get genres from Hyperspins genre.xml
-        /// </summary>
-        /// <param name="genreXmlPath"></param>
-        private Task<IEnumerable<Genre>> GetGenresAsync(string genreXmlPath)
-        {
-            return Task.Run(() =>
-            {
-                var genreList = new List<Genre>();
-
-                using (var reader = new XmlTextReader(genreXmlPath))
-                {
-                    while (reader.Read())
-                    {
-                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "game"))
-                        {
-                            if (reader.HasAttributes)
-                            {
-                                var genreName = reader.GetAttribute("name");
-
-                                genreList.Add(new Genre { GenreName = genreName });
-                            }
-                        }
-                    }
-
-                    return genreList.AsEnumerable();
-                }
-            }); 
         }
 
         private bool SerializeGenreMainMenu(IEnumerable<Genre> genres)

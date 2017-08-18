@@ -30,5 +30,16 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             
             Assert.True(databases.Count() >= expectedCount);
         }
+
+
+        [Theory]
+        [InlineData("Amstrad CPC", 8)]
+        public async void Genres__GetFiles(string systemName, int expected)
+        {
+            var hyperFrontend = (IHyperspinFrontend)(frontend);
+            var databases = await hyperFrontend.GetGenreFilesForSystemAsync(systemName, _fixture._hyperSerializer);
+
+            Assert.True(databases.Count() >= expected);
+        }
     }
 }

@@ -18,31 +18,58 @@ namespace Horsesoft.Frontends.Helper.Common
         {
         }
 
-        #region Public Methods
-        public override bool Launch()
-        {
-            Console.WriteLine($"Launching {nameof(HyperspinFrontend)}...");
+        #region Public Methods        
 
-            return true;
-        }
-
+        /// <summary>
+        /// Gets the database files for system asynchronous. Includes main menu items
+        /// </summary>
+        /// <param name="systemName">Name of the system.</param>
+        /// <returns></returns>
         public override Task<IEnumerable<string>> GetDatabaseFilesForSystemAsync(string systemName)
         {
             return Task.Run(() =>
             {
-                //if (systemName.Contains("Main Menu"))
-                //    throw new Exception("Can't get databases for a Main Menu");
-
                 return GetDatabaseFilesForSystem(systemName, "*.xml");
             });
         }
 
+        /// <summary>
+        /// Gets the genre files for system asynchronous.
+        /// </summary>
+        /// <param name="systemName">Name of the system.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Genre>> GetGenreFilesForSystemAsync(string systemName, IHyperspinSerializer serializer)
+        {
+            serializer.ChangeSystemAndDatabase(systemName);
+
+            var path = PathHelper.GetSystemDatabasePath(Path, systemName);
+
+            return await serializer.GetGenresAsync(path + "\\genre.xml");
+        }
+
+        /// <summary>
+        /// Gets the favorites asynchronous.
+        /// </summary>
+        /// <param name="systemName">Name of the system.</param>
+        /// <param name="serializer">The serializer.</param>
         public async Task<IEnumerable<Favorite>> GetFavoritesAsync(string systemName, IHyperspinSerializer serializer)
         {
             //Get favorites
             serializer.ChangeSystemAndDatabase(systemName);
 
             return await serializer.DeserializeFavoritesAsync();
+        }
+
+        /// <summary>
+        /// Launch the frontend
+        /// </summary>
+        /// <returns></returns>
+        public override bool Launch()
+        {
+            Console.WriteLine($"Launching {nameof(HyperspinFrontend)}...");
+
+            return true;
         }
 
         /// <summary>
