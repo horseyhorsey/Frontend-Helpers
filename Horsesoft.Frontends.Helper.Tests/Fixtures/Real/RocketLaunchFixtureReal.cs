@@ -1,4 +1,4 @@
-﻿using Frontends.Helper.Hyperspin;
+﻿using Frontends.Models.Hyperspin;
 using Frontends.Models.Interfaces;
 using Frontends.Models.RocketLauncher;
 using Horsesoft.Frontends.Helper.Auditing;

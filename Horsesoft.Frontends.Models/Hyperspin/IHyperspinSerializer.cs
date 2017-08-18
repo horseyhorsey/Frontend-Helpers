@@ -1,9 +1,8 @@
-﻿using Frontends.Models.Hyperspin;
-using Frontends.Models.Interfaces;
+﻿using Frontends.Models.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Frontends.Helper.Hyperspin
+namespace Frontends.Models.Hyperspin
 {
     public interface IHyperspinSerializer : 
         IDeserializer<Game>, ISerializer<Game>, ISerializer<MainMenu>
