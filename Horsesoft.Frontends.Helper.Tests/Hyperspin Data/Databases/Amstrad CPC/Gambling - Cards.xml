@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="7 Card Stud (Europe)" enabled="1" index="true" image="7">
+    <description>7 Card Stud</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Martech Games Ltd.</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Animated Strip Poker (Europe)" enabled="1" index="" image="">
+    <description>Animated Strip Poker</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Knightsoft</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1985</year>
+    <rating />
+  </game>
+  <game name="Bridge (Europe)" enabled="1" index="" image="">
+    <description>Bridge</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Infogrames</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Bridge Player 3 (Europe)" enabled="1" index="" image="">
+    <description>Bridge Player 3</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Colossus Bridge 4 (Europe) (Disk 1)" enabled="1" index="" image="">
+    <description>Colossus Bridge 4</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CDS Software Ltd.</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Las Vegas Video Poker (Europe)" enabled="1" index="" image="">
+    <description>Las Vegas Video Poker</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Mastertronic Ltd.</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Samantha Fox Strip Poker (Europe)" enabled="1" index="" image="">
+    <description>Samantha Fox Strip Poker</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Martech Games Ltd.</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Strip Poker II (Europe) (Tape 1 Side A)" enabled="1" index="" image="">
+    <description>Strip Poker II</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Byte Back</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Strip Poker II Plus (Europe) (Tape 1 Side A)" enabled="1" index="" image="">
+    <description>Strip Poker II Plus</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Anco Software Ltd.</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1988</year>
+    <rating />
+  </game>
+  <game name="Teenage Queen (Europe) (Disk 1)" enabled="1" index="" image="">
+    <description>Teenage Queen</description>
+    <cloneof />
+    <crc />
+    <manufacturer>ERE Informatique</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Tensions (Europe)" enabled="1" index="" image="">
+    <description>Tensions</description>
+    <cloneof />
+    <crc />
+    <manufacturer>ERE Informatique</manufacturer>
+    <genre>Gambling - Cards</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+</menu>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Dominoes (Europe)" enabled="1" index="" image="">
+    <description>Dominoes</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Blue Ribbon Software Ltd.</manufacturer>
+    <genre>Gambling - Dominoes</genre>
+    <year>1990</year>
+    <rating />
+  </game>
+</menu>

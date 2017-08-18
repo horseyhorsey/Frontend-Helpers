@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Classic Punter (Europe)" enabled="1" index="" image="">
+    <description>Classic Punter</description>
+    <cloneof />
+    <crc />
+    <manufacturer>G.T.I. Software</manufacturer>
+    <genre>Gambling - Horseracing</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="National, The (Europe)" enabled="1" index="" image="">
+    <description>National , The</description>
+    <cloneof />
+    <crc />
+    <manufacturer>D &amp; H Games</manufacturer>
+    <genre>Gambling - Horseracing</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Sport of Kings (Europe)" enabled="1" index="" image="">
+    <description>Sport of Kings</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Mastertronic Ltd.</manufacturer>
+    <genre>Gambling - Horseracing</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+</menu>

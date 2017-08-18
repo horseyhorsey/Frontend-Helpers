@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Monte Carlo Casino (Europe)" enabled="1" index="" image="">
+    <description>Monte Carlo Casino</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Codemasters</manufacturer>
+    <genre>Gambling - Multi-Event</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Pub Games (Europe)" enabled="1" index="" image="">
+    <description>Pub Games</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Alligata Software Ltd.</manufacturer>
+    <genre>Gambling - Multi-Event</genre>
+    <year>1987</year>
+    <rating />
+  </game>
+</menu>

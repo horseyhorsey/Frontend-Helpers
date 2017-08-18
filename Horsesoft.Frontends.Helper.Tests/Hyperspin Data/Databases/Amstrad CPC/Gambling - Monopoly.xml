@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Monopoly (Europe)" enabled="1" index="" image="">
+    <description>Monopoly</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Leisure Genius</manufacturer>
+    <genre>Gambling - Monopoly</genre>
+    <year>1984</year>
+    <rating />
+  </game>
+</menu>

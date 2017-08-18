@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Colossus Mah Jong (Europe)" enabled="1" index="" image="">
+    <description>Colossus Mah Jong</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CDS Software Ltd.</manufacturer>
+    <genre>Gambling - Mah Jong</genre>
+    <year>1987</year>
+    <rating />
+  </game>
+</menu>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Miami Dice (Europe)" enabled="1" index="" image="">
+    <description>Miami Dice</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Bug Byte</manufacturer>
+    <genre>Gambling - Dice</genre>
+    <year>1987</year>
+    <rating />
+  </game>
+</menu>

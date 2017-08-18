@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Computer Scrabble (Europe)" enabled="1" index="" image="">
+    <description>Computer Scrabble</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Leisure Genius</manufacturer>
+    <genre>Gambling - Scrabble</genre>
+    <year>1985</year>
+    <rating />
+  </game>
+  <game name="Scrabble Deluxe (Europe)" enabled="1" index="" image="">
+    <description>Scrabble Deluxe</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Leisure Genius</manufacturer>
+    <genre>Gambling - Scrabble</genre>
+    <year>1987</year>
+    <rating />
+  </game>
+</menu>

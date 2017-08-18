@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Backgammon (Europe)" enabled="1" index="" image="">
+    <description>Backgammon</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Backgammon</genre>
+    <year>1985</year>
+    <rating />
+  </game>
+</menu>

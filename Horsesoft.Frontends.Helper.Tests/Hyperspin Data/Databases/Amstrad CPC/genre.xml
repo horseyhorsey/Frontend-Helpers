@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Action - Adventure" enabled="1" />
+  <game name="Action Adventure" enabled="1" />
+  <game name="Adventure" enabled="1" />
+  <game name="Adventure - [uncategorized]" enabled="1" />
+  <game name="Adventure - Arcade 2D" enabled="1" />
+  <game name="Adventure - Arcade 3D" enabled="1" />
+  <game name="Adventure - Click and Type" enabled="1" />
+  <game name="Adventure - Cursors" enabled="1" />
+  <game name="Adventure - Graphic" enabled="1" />
+  <game name="Adventure - Graphic(Charset)-Text" enabled="1" />
+  <game name="Adventure - Graphic(Hi-Res)-Text" enabled="1" />
+  <game name="Adventure - Graphic-Text" enabled="1" />
+  <game name="Adventure - Icons" enabled="1" />
+  <game name="Adventure - Menus" enabled="1" />
+  <game name="Adventure - Move and Type" enabled="1" />
+  <game name="Adventure - Platform" enabled="1" />
+  <game name="Adventure - RPG 2D" enabled="1" />
+  <game name="Adventure - RPG 3D" enabled="1" />
+  <game name="Adventure - Selectable Answers" enabled="1" />
+  <game name="Adventure - Text" enabled="1" />
+  <game name="Adventure - Text only" enabled="1" />
+  <game name="Adventure Graphic-Text" enabled="1" />
+  <game name="Adventure Text" enabled="1" />
+  <game name="American Football Sim" enabled="1" />
+  <game name="Aracde Action" enabled="1" />
+  <game name="Arcade" enabled="1" />
+  <game name="Arcade - Action" enabled="1" />
+  <game name="Arcade - Avoid it" enabled="1" />
+  <game name="Arcade - Beat'em Up" enabled="1" />
+  <game name="Arcade - Bomberman" enabled="1" />
+  <game name="Arcade - Boulder Dash" enabled="1" />
+  <game name="Arcade - Breakout-Pong" enabled="1" />
+  <game name="Arcade - Catch it" enabled="1" />
+  <game name="Arcade - Collect'em Up" enabled="1" />
+  <game name="Arcade - Commando" enabled="1" />
+  <game name="Arcade - Frogger" enabled="1" />
+  <game name="Arcade - Labyrinth-Maze" enabled="1" />
+  <game name="Arcade - Lemmings" enabled="1" />
+  <game name="Arcade - Logical Game" enabled="1" />
+  <game name="Arcade - Miscellaneous" enabled="1" />
+  <game name="Arcade - Multi-Event" enabled="1" />
+  <game name="Arcade - Pac Man" enabled="1" />
+  <game name="Arcade - Pacman" enabled="1" />
+  <game name="Arcade - Pinball" enabled="1" />
+  <game name="Arcade - Platformer" enabled="1" />
+  <game name="Arcade - Platformer (3D)" enabled="1" />
+  <game name="Arcade - Platformer (Multi Screen)" enabled="1" />
+  <game name="Arcade - Platformer (Scrolling Screen)" enabled="1" />
+  <game name="Arcade - Platformer (Single Screen)" enabled="1" />
+  <game name="Arcade - Puzzle" enabled="1" />
+  <game name="Arcade - Qix" enabled="1" />
+  <game name="Arcade - Run &amp; Gun" enabled="1" />
+  <game name="Arcade - Shooting" enabled="1" />
+  <game name="Arcade - Tetris" enabled="1" />
+  <game name="Arcade - Tron" enabled="1" />
+  <game name="Arcade Action" enabled="1" />
+  <game name="Beat em Up" enabled="1" />
+  <game name="Brain - Hangman" enabled="1" />
+  <game name="Brain - Logical Game" enabled="1" />
+  <game name="Brain - Miscellaneous" enabled="1" />
+  <game name="Brain - Puzzle" enabled="1" />
+  <game name="Brain - Quiz" enabled="1" />
+  <game name="Brain - Sokoban" enabled="1" />
+  <game name="Brain Puzzle" enabled="1" />
+  <game name="BreakOut" enabled="1" />
+  <game name="Educational - Biology" enabled="1" />
+  <game name="Educational - Coding" enabled="1" />
+  <game name="Educational - Language" enabled="1" />
+  <game name="Educational - Maths" enabled="1" />
+  <game name="Educational - Miscellaneous" enabled="1" />
+  <game name="Educational - Multi-Topic" enabled="1" />
+  <game name="Educational - Quiz" enabled="1" />
+  <game name="Educational - Spelling" enabled="1" />
+  <game name="Educational - Typing" enabled="1" />
+  <game name="Fighter" enabled="1" />
+  <game name="Fighting" enabled="1" />
+  <game name="Gambling - 4 Wins" enabled="1" />
+  <game name="Gambling - Backgammon" enabled="1" />
+  <game name="Gambling - Board Game" enabled="1" />
+  <game name="Gambling - Cards" enabled="1" />
+  <game name="Gambling - Chess" enabled="1" />
+  <game name="Gambling - Dice" enabled="1" />
+  <game name="Gambling - Dominoes" enabled="1" />
+  <game name="Gambling - Horseracing" enabled="1" />
+  <game name="Gambling - Mah Jong" enabled="1" />
+  <game name="Gambling - Monopoly" enabled="1" />
+  <game name="Gambling - Multi-Event" enabled="1" />
+  <game name="Gambling - Scrabble" enabled="1" />
+  <game name="Gambling - Slot Machine" enabled="1" />
+  <game name="Gunstick" enabled="1" />
+  <game name="Management" enabled="1" />
+  <game name="Miscellaneous - Compilation" enabled="1" />
+  <game name="Pinball" enabled="1" />
+  <game name="Platform" enabled="1" />
+  <game name="Platformer" enabled="1" />
+  <game name="Racing" enabled="1" />
+  <game name="Racing - [uncategorized]" enabled="1" />
+  <game name="Racing - Bicycle" enabled="1" />
+  <game name="Racing - Cars" enabled="1" />
+  <game name="Racing - Formula One" enabled="1" />
+  <game name="Racing - Miscellaneous" enabled="1" />
+  <game name="Racing - Motorbike" enabled="1" />
+  <game name="Racing - Motorcycle" enabled="1" />
+  <game name="Racing - Overhead" enabled="1" />
+  <game name="Racing - Running" enabled="1" />
+  <game name="Racing - Stay on Track" enabled="1" />
+  <game name="Racing Car" enabled="1" />
+  <game name="Reflection" enabled="1" />
+  <game name="Run &amp; Gun" enabled="1" />
+  <game name="Run and Gun" enabled="1" />
+  <game name="Run n Gun" enabled="1" />
+  <game name="Shoot em up" enabled="1" />
+  <game name="Shoot em Up" enabled="1" />
+  <game name="Shoot em up Driving" enabled="1" />
+  <game name="Shoot'em Up" enabled="1" />
+  <game name="Shoot'em Up - 3D" enabled="1" />
+  <game name="Shoot'em Up - Centipede" enabled="1" />
+  <game name="Shoot'em Up - Defender" enabled="1" />
+  <game name="Shoot'em Up - Duel" enabled="1" />
+  <game name="Shoot'em Up - Gallery" enabled="1" />
+  <game name="Shoot'em Up - Gauntlet" enabled="1" />
+  <game name="Shoot'em Up - H-Scrolling" enabled="1" />
+  <game name="Shoot'em Up - LightGun" enabled="1" />
+  <game name="Shoot'em Up - Multi-Event" enabled="1" />
+  <game name="Shoot'em Up - Multi-Screen" enabled="1" />
+  <game name="Shoot'em Up - Multi-Scrolling" enabled="1" />
+  <game name="Shoot'em Up - Single Screen" enabled="1" />
+  <game name="Shoot'em Up - Space Invaders" enabled="1" />
+  <game name="Shoot'em Up - V-Scrolling" enabled="1" />
+  <game name="Shooter - Gunstick" enabled="1" />
+  <game name="Shooter - Light Gun" enabled="1" />
+  <game name="Shooter - Lightgun" enabled="1" />
+  <game name="Shooter - LightGun" enabled="1" />
+  <game name="Shooting" enabled="1" />
+  <game name="Shooting - Light Gun" enabled="1" />
+  <game name="Shooting - LightGun" enabled="1" />
+  <game name="Simulation - Aircraft" enabled="1" />
+  <game name="Simulation - Boxing" enabled="1" />
+  <game name="Simulation - Flight (Civil)" enabled="1" />
+  <game name="Simulation - Flight (Military)" enabled="1" />
+  <game name="Simulation - Golf" enabled="1" />
+  <game name="Simulation - Life" enabled="1" />
+  <game name="Simulation - Marine" enabled="1" />
+  <game name="Simulation - Military" enabled="1" />
+  <game name="Simulation - Miscellaneous" enabled="1" />
+  <game name="Simulation - Mountain Climbing" enabled="1" />
+  <game name="Simulation - Racing" enabled="1" />
+  <game name="Simulation - Rugby" enabled="1" />
+  <game name="Simulation - Soccer" enabled="1" />
+  <game name="Simulation - Space" enabled="1" />
+  <game name="Simulation - Stunt" enabled="1" />
+  <game name="Simulation - Tank" enabled="1" />
+  <game name="Simulation - Train" enabled="1" />
+  <game name="Simulation Space" enabled="1" />
+  <game name="Sports - American Football" enabled="1" />
+  <game name="Sports - Athletics" enabled="1" />
+  <game name="Sports - Baseball" enabled="1" />
+  <game name="Sports - Basketball" enabled="1" />
+  <game name="Sports - Bobsleigh" enabled="1" />
+  <game name="Sports - Bowling" enabled="1" />
+  <game name="Sports - Boxing" enabled="1" />
+  <game name="Sports - Cricket" enabled="1" />
+  <game name="Sports - Cycling" enabled="1" />
+  <game name="Sports - Darts" enabled="1" />
+  <game name="Sports - Fighting" enabled="1" />
+  <game name="Sports - Football" enabled="1" />
+  <game name="Sports - Football-Soccer" enabled="1" />
+  <game name="Sports - Golf" enabled="1" />
+  <game name="Sports - Icehockey" enabled="1" />
+  <game name="Sports - Miscellaneous" enabled="1" />
+  <game name="Sports - Multi Event" enabled="1" />
+  <game name="Sports - Multi-Event" enabled="1" />
+  <game name="Sports - Riding" enabled="1" />
+  <game name="Sports - Rugby" enabled="1" />
+  <game name="Sports - Skating" enabled="1" />
+  <game name="Sports - Skiing" enabled="1" />
+  <game name="Sports - Snooker-Pool" enabled="1" />
+  <game name="Sports - Soccer" enabled="1" />
+  <game name="Sports - Squash" enabled="1" />
+  <game name="Sports - Table Tennis" enabled="1" />
+  <game name="Sports - Tennis" enabled="1" />
+  <game name="Sports - Volleyball" enabled="1" />
+  <game name="Sports - Watersports" enabled="1" />
+  <game name="Sports - Wrestling" enabled="1" />
+  <game name="Sports Boating" enabled="1" />
+  <game name="Strategy" enabled="1" />
+  <game name="Strategy - Action" enabled="1" />
+  <game name="Strategy - Company" enabled="1" />
+  <game name="Strategy - Politics" enabled="1" />
+  <game name="Strategy - RPG" enabled="1" />
+  <game name="Strategy - Wallstreet" enabled="1" />
+  <game name="Strategy - War" enabled="1" />
+  <game name="Util" enabled="1" />
+  <game name="Utilities - Azimuth" enabled="1" />
+  <game name="Utilities - Database" enabled="1" />
+  <game name="Utilities - Disk" enabled="1" />
+  <game name="Utilities - Game Maker" enabled="1" />
+  <game name="Utilities - Money Manager" enabled="1" />
+  <game name="Utilities - Multi Purpose" enabled="1" />
+  <game name="Utilities - Pictures" enabled="1" />
+  <game name="Utilities - Printer" enabled="1" />
+  <game name="Utilities - Sound" enabled="1" />
+  <game name="Utilities - Spreadsheet" enabled="1" />
+  <game name="Utilities - Word Processor" enabled="1" />
+</menu>

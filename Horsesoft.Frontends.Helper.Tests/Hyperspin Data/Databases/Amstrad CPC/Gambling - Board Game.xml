@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="Brian Clough's Football Fortunes (Europe)" enabled="1" index="" image="">
+    <description>Brian Clough's Football Fortunes</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CDS Software Ltd.</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1987</year>
+    <rating />
+  </game>
+  <game name="Classic Games 4 - Backgammon (Europe)" enabled="1" index="" image="">
+    <description>Classic Games 4 - Backgammon</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Classic Games 4 - Bridge (Europe)" enabled="1" index="" image="">
+    <description>Classic Games 4 - Bridge</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Classic Games 4 - Chess (Europe)" enabled="1" index="" image="">
+    <description>Classic Games 4 - Chess</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Classic Games 4 - Draughts (Europe)" enabled="1" index="" image="">
+    <description>Classic Games 4 - Draughts</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+  <game name="Cluedo (Europe)" enabled="1" index="" image="">
+    <description>Cluedo</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Leisure Genius</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Detective (Europe)" enabled="1" index="" image="">
+    <description>Detective</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Amsoft</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1984</year>
+    <rating />
+  </game>
+  <game name="Espionage (Europe)" enabled="1" index="" image="">
+    <description>Espionage</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Grandslam Entertainment Ltd.</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1988</year>
+    <rating />
+  </game>
+  <game name="Spaced Out (Europe)" enabled="1" index="" image="">
+    <description>Spaced Out</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Firebird</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1987</year>
+    <rating />
+  </game>
+  <game name="Tank Attack (Europe)" enabled="1" index="" image="">
+    <description>Tank Attack</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CDS Software Ltd.</manufacturer>
+    <genre>Gambling - Board Game</genre>
+    <year>1989</year>
+    <rating />
+  </game>
+</menu>

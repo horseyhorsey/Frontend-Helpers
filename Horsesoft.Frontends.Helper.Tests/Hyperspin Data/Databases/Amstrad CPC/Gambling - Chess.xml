@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <game name="3D Voice Chess (Europe)" enabled="1" index="" image="">
+    <description>3D Voice Chess</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CP Software</manufacturer>
+    <genre>Gambling - Chess</genre>
+    <year>1985</year>
+    <rating />
+  </game>
+  <game name="Colossus Chess 4 (Europe)" enabled="1" index="" image="">
+    <description>Colossus Chess 4</description>
+    <cloneof />
+    <crc />
+    <manufacturer>CDS Software Ltd.</manufacturer>
+    <genre>Gambling - Chess</genre>
+    <year>1986</year>
+    <rating />
+  </game>
+  <game name="Cyrus II Chess (Europe)" enabled="1" index="" image="">
+    <description>Cyrus II Chess</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Amsoft</manufacturer>
+    <genre>Gambling - Chess</genre>
+    <year>1985</year>
+    <rating />
+  </game>
+  <game name="Master Chess (Europe)" enabled="1" index="" image="">
+    <description>Master Chess</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Amsoft</manufacturer>
+    <genre>Gambling - Chess</genre>
+    <year>1985</year>
+    <rating />
+  </game>
+  <game name="Masterchess (Europe)" enabled="1" index="" image="">
+    <description>Masterchess</description>
+    <cloneof />
+    <crc />
+    <manufacturer>Mikro-Gen</manufacturer>
+    <genre>Gambling - Chess</genre>
+    <year>1984</year>
+    <rating />
+  </game>
+</menu>
