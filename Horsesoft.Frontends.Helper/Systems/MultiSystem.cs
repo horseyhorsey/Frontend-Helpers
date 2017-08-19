@@ -76,8 +76,7 @@ namespace Horsesoft.Frontends.Helper.Systems
 
                 //Serialze favorites               
                 if (!await _hyperspinSerializer.SerializeFavoritesAsync(games))
-                {
-                    throw new Exception("Failed to save favorites");
+                {                   
                 }
 
                 //Create genres for the system

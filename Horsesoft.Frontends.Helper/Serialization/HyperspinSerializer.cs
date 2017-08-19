@@ -434,6 +434,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
                 {
                     var favoritesTxtPath = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
 
+                    //Create the favorites text file
                     using (var sWriter = new StreamWriter(favoritesTxtPath))
                     {
                         foreach (var favorite in games.Where(x => x.IsFavorite))
