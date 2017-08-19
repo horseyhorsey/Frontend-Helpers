@@ -1,5 +1,6 @@
 ﻿using Frontends.Models.Hyperspin;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
+using Horsesoft.Frontends.Helper.Tools.Search;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +21,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
         #region Constructor
         public HyperspinSerializer(string frontEndPath, string systemName, string databaseName = null)
-        {            
+        {
             _frontEndPath = frontEndPath;
 
             ChangeSystemAndDatabase(systemName, databaseName);
@@ -28,6 +29,37 @@ namespace Horsesoft.Frontends.Helper.Serialization
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Creates a games list from all favorite texts from all given systems.
+        /// </summary>
+        /// <param name="frontEndPath">The front end path.</param>
+        /// <param name="systems">The systems.</param>
+        /// <returns></returns>
+        public Task<IEnumerable<Game>> CreateGamesListFromAllFavoriteTexts(string frontEndPath, IEnumerable<MainMenu> systems)
+        {
+            return Task.Run(async () =>
+            {
+                if (!Directory.Exists(frontEndPath))
+                    throw new DirectoryNotFoundException($"Frontend path {frontEndPath } doesn't exist.");
+
+                IEnumerable<Game> games = null;
+
+                try
+                {
+                    games = await ScanFavorites(frontEndPath, systems);                    
+                }
+                //Skip file not found because
+                catch (FileNotFoundException){}
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                return games;
+            });
+        }
+
         /// <summary>
         /// Deserializes hyperspin games asynchronously from a database xml
         /// </summary>
@@ -35,7 +67,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
         public async Task<IEnumerable<Game>> DeserializeAsync()
         {
             return await Task.Run<IEnumerable<Game>>(() =>
-            {                
+            {
                 var systemDbPath = Path.Combine(_frontEndPath, Root.Databases, _systemName);
                 var dbPath = Path.Combine(systemDbPath, _databaseName + ".xml");
 
@@ -146,27 +178,29 @@ namespace Horsesoft.Frontends.Helper.Serialization
         /// <returns></returns>
         public async Task<IEnumerable<Favorite>> DeserializeFavoritesAsync()
         {
-            return await  Task.Run<IEnumerable<Favorite>>(() =>
-            {
-                var favoritesList = new List<Favorite>();
+            return await Task.Run<IEnumerable<Favorite>>(() =>
+           {
+               var favoritesList = new List<Favorite>();
 
-                try
-                {
-                    var favoriteTextFile = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
+               try
+               {
+                   var favoriteTextFile = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
 
-                    using (StreamReader reader = new StreamReader(favoriteTextFile))
-                    {
-                        var line = string.Empty;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            favoritesList.Add(new Favorite { RomName = line });
-                        }
+                   if (!File.Exists(favoriteTextFile)) return null;
 
-                        return favoritesList;
-                    }
-                }
-                catch (Exception) { throw; }
-            });
+                   using (StreamReader reader = new StreamReader(favoriteTextFile))
+                   {
+                       var line = string.Empty;
+                       while ((line = reader.ReadLine()) != null)
+                       {
+                           favoritesList.Add(new Favorite { RomName = line });
+                       }
+
+                       return favoritesList;
+                   }
+               }
+               catch (Exception) { throw; }
+           });
         }
 
         /// <summary>
@@ -181,6 +215,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
         /// <summary>
         /// Deserializes hyperspin systems from the main menu.xml
+        /// <para/> Throws exception if process fails
         /// </summary>
         /// <returns></returns>
         public Task<IEnumerable<MainMenu>> DeserializeMenusAsync()
@@ -326,7 +361,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
                         serializer = new XmlSerializer(typeof(List<MainMenu>), xmlRootAttr);
                         serializer.Serialize(txtWriter, menuItems, xmlNameSpace);
-                    }                    
+                    }
                 }
 
                 return true;
@@ -393,22 +428,24 @@ namespace Horsesoft.Frontends.Helper.Serialization
         /// <returns></returns>
         public Task<bool> SerializeFavoritesAsync(IEnumerable<Game> games)
         {
-            if (games.Any(x => !x.IsFavorite))
-                throw new Exception("No favorites have been set on this system");
-
             return Task.Run(() =>
             {
-                var favoritesTxtPath = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
-
-                using (var sWriter = new StreamWriter(favoritesTxtPath))
+                if (games.Any(x => x.IsFavorite))
                 {
-                    foreach (var favorite in games.Where(x => x.IsFavorite))
-                    {
-                        sWriter.WriteLine(favorite.RomName);
-                    }
+                    var favoritesTxtPath = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
 
-                    return true;
+                    using (var sWriter = new StreamWriter(favoritesTxtPath))
+                    {
+                        foreach (var favorite in games.Where(x => x.IsFavorite))
+                        {
+                            sWriter.WriteLine(favorite.RomName);
+                        }
+
+                        return true;
+                    }
                 }
+
+                return false;
             });
         }
 
@@ -511,7 +548,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
             var genres = gamesList
                 .GroupBy(x => x.Genre)
                 .Select(x => new Genre { GenreName = x.Key })
-                .OrderBy(x=> x.GenreName)
+                .OrderBy(x => x.GenreName)
                 .Distinct();
 
             var count = genres.Count();
@@ -552,11 +589,45 @@ namespace Horsesoft.Frontends.Helper.Serialization
                 serializer = new XmlSerializer(typeof(List<MainMenu>), xmlRootAttr);
                 serializer.Serialize(textWriter, menuItems, xmlNameSpace);
             }
-            catch  { return false; }
+            catch { return false; }
 
             textWriter.Close();
 
             return true;
+        }
+
+        private async Task<IEnumerable<Game>> ScanFavorites(string frontEndPath, IEnumerable<MainMenu> systems)
+        {
+            var _hyperspinSerializer = new HyperspinSerializer(frontEndPath, "", "");
+            var search = new XmlSearch<Game>();
+            List<Game> games = new List<Game>();
+
+            foreach (MainMenu system in systems)
+            {
+                var sysPath = Path.Combine(frontEndPath, Root.Databases, system.Name);
+                var isMultiSystem = File.Exists(sysPath + "\\_multisystem");
+
+                // Dont want to be scanning the favorites of a multisystem
+                if (system.Name != "Main Menu" && !isMultiSystem)
+                {
+                    //Change name and get favorites from text file async
+                    _hyperspinSerializer.ChangeSystemAndDatabase(system.Name);
+                    var favorites = await _hyperspinSerializer.DeserializeFavoritesAsync();
+
+                    if(favorites != null)
+                    {
+                        var strfavorites = favorites.Select(x => x.RomName);
+
+                        if (favorites.Count() > 0)
+                        {
+                            var faveGames = await search.Search(system.Name, Path.Combine(sysPath, $"{system.Name}.xml"), strfavorites, true);
+                            games.AddRange(faveGames);
+                        }
+                    }                    
+                }
+            }
+
+            return games;
         }
 
         #endregion

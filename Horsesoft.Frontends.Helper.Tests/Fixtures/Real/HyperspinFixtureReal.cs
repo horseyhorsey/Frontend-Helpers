@@ -1,4 +1,5 @@
 ﻿using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 using Horsesoft.Frontends.Helper.Common;
 using Horsesoft.Frontends.Helper.Serialization;
 using Horsesoft.Frontends.Helper.Settings;

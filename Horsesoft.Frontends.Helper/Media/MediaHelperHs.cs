@@ -11,7 +11,7 @@ namespace Horsesoft.Frontends.Helper.Media
     /// <summary>
     /// Media helper for Hyperspin
     /// </summary>
-    /// <seealso cref="Horsesoft.Frontends.Helper.Media.IMediaHelper" />
+    /// <seealso cref="IMediaHelper" />
     public class MediaHelperHs : IMediaHelper
     {
         private string _frontendPath;

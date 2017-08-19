@@ -1,4 +1,4 @@
-﻿namespace Horsesoft.Frontends.Helper.Settings
+﻿namespace Frontends.Models.Hyperspin
 {
     /// <summary>
     /// Options for creating a Hyperspin multi system
@@ -11,7 +11,7 @@
 
         public bool CreateGenres { get; set; }
 
-        public bool CreateSymbolicLinks { get; internal set; }
+        public bool CreateSymbolicLinks { get; set; }
 
         public string MultiSystemName { get; set; }
 

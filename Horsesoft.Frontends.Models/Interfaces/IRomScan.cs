@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Tools
+namespace Frontends.Models.Interfaces
 {
     public interface IRomScan
     {

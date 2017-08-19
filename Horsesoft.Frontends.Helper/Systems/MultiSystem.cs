@@ -1,6 +1,6 @@
 ﻿using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 using Horsesoft.Frontends.Helper.Paths.Hyperspin;
-using Horsesoft.Frontends.Helper.Settings;
 using Horsesoft.Frontends.Helper.Tools;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         private IHyperspinSerializer _hyperspinSerializer;
         private ISystemCreator _systemsCreator;
         private IMediaCopier _mediaCopier;
+        private IRomMapperRl _romMapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiSystem"/> class and the games list
@@ -29,14 +30,17 @@ namespace Horsesoft.Frontends.Helper.Systems
             _hyperspinSerializer = hyperspinSerializer;
             _systemsCreator = systemsCreator;
             _mediaCopier = mediaCopier;
+            _romMapper = new RomMapperRl();
         }
 
+        #region Properties
         /// <summary>
         /// Gets the games.
         /// </summary>
         public List<Game> Games { get; }
 
-        public MultiSystemOptions Options { get; set; }
+        public MultiSystemOptions Options { get; set; } 
+        #endregion
 
         #region Public Methods
 
@@ -63,7 +67,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Hyperspin serilaizer cannot be null</exception>
         /// <exception cref="Exception">Games has to be greater than 0</exception>
-        public async Task<bool> CreateMultiSystem(string frontEndPath)
+        public async Task<bool> CreateMultiSystem(string frontEndPath, string rlPath)
         {
             if (_hyperspinSerializer == null)
                 throw new NullReferenceException("Hyperspin serilaizer cannot be null");
@@ -75,6 +79,9 @@ namespace Horsesoft.Frontends.Helper.Systems
 
             return await Task.Run(async () =>
             {
+                //Get the systems used in this multisystem
+                var systems = Games.GroupBy(x => x.System).Distinct();
+
                 //Create dirs and settings for hyperspin
                 var result =  await _systemsCreator.CreateSystem(Options.MultiSystemName);                
                 if (!result)
@@ -91,6 +98,12 @@ namespace Horsesoft.Frontends.Helper.Systems
                     throw new Exception("Failed to serialize multi system games");
                 }
 
+                //Serialze favorites               
+                if (!await _hyperspinSerializer.SerializeFavoritesAsync(Games))
+                {
+                    throw new Exception("Failed to save favorites");
+                }
+
                 //Create genres for the system
                 if (Options.CreateGenres)
                 {
@@ -100,9 +113,18 @@ namespace Horsesoft.Frontends.Helper.Systems
                     }
                 }
 
+                //Copy the media or create symbolic links.
                 if (Options.CopyMedia)
                 {
                     await _mediaCopier.CopyAllMediaAsync(Games, Options.MultiSystemName, Options.CreateSymbolicLinks);
+                }
+
+                //Create Rl rom mapping
+                if (Options.CreateRomMap)
+                {
+                    var gamesIniPath = Path.Combine(rlPath, Paths.RocketLauncherPaths.Settings, Options.MultiSystemName);
+
+                    await _romMapper.CreateGamesIniAsync(Games, gamesIniPath);
                 }
 
                 return true;
@@ -125,37 +147,15 @@ namespace Horsesoft.Frontends.Helper.Systems
             }
 
             return result;
-        }
+        }    
 
-        public async Task<bool> ScanFavorites(string frontEndPath, IEnumerable<MainMenu> systems)
+        #endregion
+
+        #region Support Methods
+
+        private bool GameExists(Game game)
         {
-            var hsPath = frontEndPath;
-
-            foreach (MainMenu system in systems)
-            {
-                var isMultiSystem = File.Exists(Path.Combine(
-                    hsPath, Root.Databases, system.Name, "_multisystem"));
-
-                // Dont want to be scanning the favorites of a multisystem
-                if (system.Name != "Main Menu" && !isMultiSystem)
-                {
-                    //Change name and get favorites
-                    _hyperspinSerializer.ChangeSystemAndDatabase(system.Name);
-                    var favorites = await _hyperspinSerializer.DeserializeFavoritesAsync();
-
-                    if (favorites.Count() > 0)
-                    {
-                        //var games = _xmlService.SearchRomStringsListFromXml(favoritesList, system.Name, hsPath);
-
-                        //foreach (Game game in games)
-                        //{
-                        //    await ScanGames(game, tempGames);
-                        //}                        
-                    }
-                }
-            }
-
-            return true;
+            return Games.Any(x => x.RomName == game.RomName) ? true : false;
         }
 
         private Task ScanGames(Game game, List<Game> tempGames)
@@ -176,14 +176,6 @@ namespace Horsesoft.Frontends.Helper.Systems
                 //    _multiSystemRepo.MultiSystemList.Add(sortedGame);
                 //}
             });
-        }
-
-        #endregion
-
-        #region Support Methods
-        private bool GameExists(Game game)
-        {
-            return Games.Any(x => x.RomName == game.RomName) ? true : false;
         }
 
         /// <summary>

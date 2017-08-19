@@ -1,4 +1,5 @@
 ﻿using Frontends.Models;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -13,15 +14,17 @@ namespace Horsesoft.Frontends.Helper.Tools
         public static string FileName { get; set; }
         public static SymbolicLinkType SymLinkType { get; set; }
 
-        public static void CheckThenCreate(string FileToLink, string tempSymlinkFile)
+        public static bool CheckThenCreate(string FileToLink, string tempSymlinkFile)
         {
             if (File.Exists(FileToLink))
             {
                 SymbolicLinkName = tempSymlinkFile;
                 FileName = FileToLink;
                 SymLinkType = SymbolicLinkType.File;
-                CreateSymbolicLink(SymbolicLinkName, FileName, SymLinkType);
+                return CreateSymbolicLink(SymbolicLinkName, FileName, SymLinkType);
             }
+            else
+                return false;
         }
 
         public static void CreateDirectory(string tempSymlinkFile)
@@ -30,5 +33,13 @@ namespace Horsesoft.Frontends.Helper.Tools
                 Directory.CreateDirectory(tempSymlinkFile);
         }
 
+    }
+
+    public class SymbolicLinkerException : Exception
+    {
+        public SymbolicLinkerException(string message) : base(message)
+        {            
+
+        }
     }
 }

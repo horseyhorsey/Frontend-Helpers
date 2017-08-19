@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Systems
+namespace Frontends.Models.Interfaces
 {
     public interface ISystemCreator
     {

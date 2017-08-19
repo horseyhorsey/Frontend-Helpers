@@ -1,4 +1,5 @@
 ﻿using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

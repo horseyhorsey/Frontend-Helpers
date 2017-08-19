@@ -15,6 +15,14 @@ namespace Frontends.Models.Hyperspin
         void ChangeSystemAndDatabase(string systemName, string database = "");
 
         /// <summary>
+        /// Creates a games list from all favorite texts from all given systems. 
+        /// </summary>
+        /// <param name="frontEndPath">The front end path.</param>
+        /// <param name="systems">The systems.</param>
+        /// <returns></returns>
+        Task<IEnumerable<Game>> CreateGamesListFromAllFavoriteTexts(string frontEndPath, IEnumerable<MainMenu> systems);
+
+        /// <summary>
         /// Deserializes the favorites asynchronous.
         /// </summary>
         Task<IEnumerable<Favorite>> DeserializeFavoritesAsync();

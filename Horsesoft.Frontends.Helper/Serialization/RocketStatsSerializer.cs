@@ -28,7 +28,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
         {
             var system = game.System;
             var romName = game.RomName;
-            var iniPath = Path.Combine(frontendPath, Paths.RocketLauncherMediaPaths.Statistics, system + ".ini");
+            var iniPath = Path.Combine(frontendPath, Paths.RocketLauncherPaths.Statistics, system + ".ini");
 
             if (!File.Exists(iniPath)) return null;
 
@@ -61,7 +61,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
         /// <returns></returns>
         internal async Task<GlobalStats> GetGlobalStatsAsync(string frontendPath)
         {
-            var globalStatsIni = Path.Combine(frontendPath, Paths.RocketLauncherMediaPaths.Statistics, "Global Statistics.ini");
+            var globalStatsIni = Path.Combine(frontendPath, Paths.RocketLauncherPaths.Statistics, "Global Statistics.ini");
 
             if (!File.Exists(globalStatsIni)) throw new FileNotFoundException("Cannot find a Global Stats.ini");
 
@@ -260,7 +260,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
         private IEnumerable<GameStat> GetGameStats(string frontendPath, MainMenu menuSystem)
         {
-            var iniPath = Path.Combine(frontendPath, Paths.RocketLauncherMediaPaths.Statistics, menuSystem.Name + ".ini");
+            var iniPath = Path.Combine(frontendPath, Paths.RocketLauncherPaths.Statistics, menuSystem.Name + ".ini");
 
             if (!File.Exists(iniPath)) throw new FileNotFoundException();
 

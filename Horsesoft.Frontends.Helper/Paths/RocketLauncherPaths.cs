@@ -12,10 +12,14 @@
         public const string Manuals = "Manuals";
         public const string MultiGame = "MultiGame";
         public const string Music = "Music";
-        public const string SavedGames = "Saved Games";
-        public const string Settings = "Settings";
-        public const string Statistics = @"Data\Statistics";
+        public const string SavedGames = "Saved Games";        
         public const string Video = "Videos";
         public const string Wheels = "Wheels";
+    }
+
+    public static class RocketLauncherPaths
+    {
+        public const string Settings = "Settings";
+        public const string Statistics = @"Data\Statistics";
     }
 }

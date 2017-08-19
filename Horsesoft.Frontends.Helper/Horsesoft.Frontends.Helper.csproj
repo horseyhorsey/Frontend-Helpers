@@ -3,17 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Horsesoft.Frontends.Helper</PackageId>
-    <PackageVersion>1.0.28</PackageVersion>
+    <PackageVersion>1.0.29</PackageVersion>
     <Authors>Horsesoft</Authors>
     <Description>Helper for arcade/pinball frontends</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) horsesoft All rights reserved.</Copyright>
     <PackageTags>arcade hyperspin rocketlauncher pinballx</PackageTags>
-    <Version>1.0.28</Version>
+    <Version>1.0.29</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.28</AssemblyVersion>
-    <FileVersion>1.0.0.28</FileVersion>
+    <AssemblyVersion>1.0.0.29</AssemblyVersion>
+    <FileVersion>1.0.0.29</FileVersion>
     <Product>Horsesoft Frontends Helper</Product>
     <AssemblyName>Horsesoft.Frontends.Helper</AssemblyName>
     <RootNamespace>Horsesoft.Frontends.Helper</RootNamespace>
@@ -26,10 +26,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\systemSettings.ini" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Paths\Hyperspin\" />
   </ItemGroup>
 
   <ItemGroup>

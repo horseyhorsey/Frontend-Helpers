@@ -103,6 +103,18 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             Assert.True(faves.Count() == expectedCount);
         }
 
+
+        [Fact]
+        public async void GetGamesListFromAllFavorites()
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase("Main Menu");
+            var systems = await _fixture._hyperSerializer.DeserializeMenusAsync();
+
+            var favoriteGames = await _fixture._hyperSerializer.CreateGamesListFromAllFavoriteTexts(_fixture._frontend.Path, systems);
+
+            Assert.True(favoriteGames.Count() > 0);
+        }
+
         //[Theory]
         //[InlineData("Amstrad CPC", "Amstrad")]
         //public async void DeserializeGenres(string systemName, string expected)

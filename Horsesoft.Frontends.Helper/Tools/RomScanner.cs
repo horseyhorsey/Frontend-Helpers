@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.IO;
 using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Tools
 {

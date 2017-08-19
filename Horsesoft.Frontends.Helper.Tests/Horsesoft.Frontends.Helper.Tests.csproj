@@ -69,6 +69,7 @@
     <Compile Include="IntergrationTests\HyperspinSerializerTests.cs" />
     <Compile Include="IntergrationTests\HyperspinSettingsTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherAuditTests.cs" />
+    <Compile Include="IntergrationTests\RocketLauncherRomMapTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherSettingsHelperTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherStatsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

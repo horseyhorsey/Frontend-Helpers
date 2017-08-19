@@ -1,7 +1,7 @@
 ﻿using Frontends.Models.Hyperspin;
 using System.Threading.Tasks;
 
-namespace Horsesoft.Frontends.Helper.Settings
+namespace Frontends.Models.Interfaces
 {
     public interface ISettings
     {

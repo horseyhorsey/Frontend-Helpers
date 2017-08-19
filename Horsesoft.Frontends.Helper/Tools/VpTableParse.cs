@@ -1,4 +1,5 @@
 ﻿using Frontends.Models;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Tools
 {

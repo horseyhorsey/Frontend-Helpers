@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Hs.Hypermint.Services.Helpers;
 using Frontends.Models.Hyperspin;
+using Frontends.Models.Interfaces;
 
 namespace Horsesoft.Frontends.Helper.Tools
 {
@@ -24,6 +25,9 @@ namespace Horsesoft.Frontends.Helper.Tools
             return await Task.Run(() =>
             {
                 bool result = false;
+
+                if (!Directory.Exists(gamesIniPath))
+                    Directory.CreateDirectory(gamesIniPath);
 
                 var iniEndPath = new DirectoryInfo(gamesIniPath);
                 var fi = new FileInfo(gamesIniPath + "\\games.ini");
@@ -58,28 +62,36 @@ namespace Horsesoft.Frontends.Helper.Tools
         /// <summary>
         /// Gets the games from a rocket launch games ini asynchronously.
         /// </summary>
-        /// <param name="gamesIniPath">The games ini path.</param>
+        /// <param name="rlSystemSettingPath">The games ini path.</param>
         /// <returns></returns>
         /// <exception cref="FileNotFoundException">Games.ini not found</exception>
-        public async Task<Dictionary<string, string>> GetGamesFromRocketLaunchGamesIniAsync(string gamesIniPath)
+        public async Task<IEnumerable<Game>> GetGamesFromRocketLaunchGamesIniAsync(string rlSystemSettingPath)
         {
-            if (!File.Exists(gamesIniPath))
+            var iniPath = rlSystemSettingPath + "\\games.ini";
+            if (!File.Exists(iniPath))
                 throw new FileNotFoundException("Games.ini not found");
 
             return await Task.Run(() =>
             {
+                List<Game> games = new List<Game>();
+
+                try
+                {
                 //load the ini file
                 var ini = new IniFile();
-                ini.Load(gamesIniPath);
+                    ini.Load(iniPath);
 
-                //Create a dictionary of game and system name
-                var dict = new Dictionary<string, string>();
-                foreach (var game in ini.Sections)
-                {
-                    dict.Add(game.ToString(), ini.GetKeyValue(game.ToString(), "System"));
+                    foreach (IniFile.IniSection game in ini.Sections)
+                    {
+                        var romname = game.Name;
+                        var system = ini.GetKeyValue(romname, "System");
+                        var iniGame = new Game(romname, romname) { System = system };
+                        games.Add(iniGame);
+                    }
+
+                    return games;
                 }
-
-                return dict;
+                catch (System.Exception) { throw; }
             });
         }
     }
