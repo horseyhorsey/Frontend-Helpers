@@ -23,10 +23,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         public MultiSystem(IHyperspinSerializer hyperspinSerializer, 
             ISystemCreator systemsCreator, IMediaCopier mediaCopier, MultiSystemOptions options)
         {
-            Games = new List<Game>();
-
             Options = options;
-
             _hyperspinSerializer = hyperspinSerializer;
             _systemsCreator = systemsCreator;
             _mediaCopier = mediaCopier;
@@ -34,10 +31,6 @@ namespace Horsesoft.Frontends.Helper.Systems
         }
 
         #region Properties
-        /// <summary>
-        /// Gets the games.
-        /// </summary>
-        public List<Game> Games { get; }
 
         public MultiSystemOptions Options { get; set; } 
         #endregion
@@ -45,34 +38,17 @@ namespace Horsesoft.Frontends.Helper.Systems
         #region Public Methods
 
         /// <summary>
-        /// Adds the specified game.
-        /// </summary>
-        /// <param name="game">The game.</param>
-        /// <returns></returns>
-        public bool Add(Game game)
-        {
-            bool result = false;
-            if (!GameExists(game))
-            {
-                Games.Add(game);
-                result = true;
-            }
-
-            return result;
-        }
-
-        /// <summary>
         /// Creates the multi system.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Hyperspin serilaizer cannot be null</exception>
         /// <exception cref="Exception">Games has to be greater than 0</exception>
-        public async Task<bool> CreateMultiSystem(string frontEndPath, string rlPath)
+        public async Task<bool> CreateMultiSystem(IEnumerable<Game> games, string frontEndPath, string rlPath)
         {
             if (_hyperspinSerializer == null)
                 throw new NullReferenceException("Hyperspin serilaizer cannot be null");
 
-            if (Games.Count <= 0)
+            if (games.Count() <= 0)
                 throw new Exception("Games has to be greater than 0");
 
             if (string.IsNullOrWhiteSpace(Options.MultiSystemName)) throw new NullReferenceException("Multi system name cannot be empty");
@@ -80,7 +56,7 @@ namespace Horsesoft.Frontends.Helper.Systems
             return await Task.Run(async () =>
             {
                 //Get the systems used in this multisystem
-                var systems = Games.GroupBy(x => x.System).Distinct();
+                var systems = games.GroupBy(x => x.System).Distinct();
 
                 //Create dirs and settings for hyperspin
                 var result =  await _systemsCreator.CreateSystem(Options.MultiSystemName);                
@@ -93,13 +69,13 @@ namespace Horsesoft.Frontends.Helper.Systems
                 UseTemplatedSettings(Options.MultiSystemName, frontEndPath);
 
                 //Serialize the Multi system to xml
-                if (!await _hyperspinSerializer.SerializeAsync(Games))
+                if (!await _hyperspinSerializer.SerializeAsync(games))
                 {
                     throw new Exception("Failed to serialize multi system games");
                 }
 
                 //Serialze favorites               
-                if (!await _hyperspinSerializer.SerializeFavoritesAsync(Games))
+                if (!await _hyperspinSerializer.SerializeFavoritesAsync(games))
                 {
                     throw new Exception("Failed to save favorites");
                 }
@@ -107,7 +83,7 @@ namespace Horsesoft.Frontends.Helper.Systems
                 //Create genres for the system
                 if (Options.CreateGenres)
                 {
-                    if (!await _hyperspinSerializer.SerializeGenresAsync(Games))
+                    if (!await _hyperspinSerializer.SerializeGenresAsync(games))
                     {
                         throw new Exception("Failed to serialize genres for multi system games");
                     }
@@ -116,7 +92,7 @@ namespace Horsesoft.Frontends.Helper.Systems
                 //Copy the media or create symbolic links.
                 if (Options.CopyMedia)
                 {
-                    await _mediaCopier.CopyAllMediaAsync(Games, Options.MultiSystemName, Options.CreateSymbolicLinks);
+                    await _mediaCopier.CopyAllMediaAsync(games, Options.MultiSystemName, Options.CreateSymbolicLinks);
                 }
 
                 //Create Rl rom mapping
@@ -124,59 +100,16 @@ namespace Horsesoft.Frontends.Helper.Systems
                 {
                     var gamesIniPath = Path.Combine(rlPath, Paths.RocketLauncherPaths.Settings, Options.MultiSystemName);
 
-                    await _romMapper.CreateGamesIniAsync(Games, gamesIniPath);
+                    await _romMapper.CreateGamesIniAsync(games, gamesIniPath);
                 }
 
                 return true;
             });
         }
 
-        /// <summary>
-        /// Removes the specified game.
-        /// </summary>
-        /// <param name="game">The game.</param>
-        /// <returns></returns>
-        public bool Remove(Game game)
-        {
-            bool result = false;
-
-            if (GameExists(game))
-            {
-                Games.Remove(game);
-                result = true;
-            }
-
-            return result;
-        }    
-
         #endregion
 
         #region Support Methods
-
-        private bool GameExists(Game game)
-        {
-            return Games.Any(x => x.RomName == game.RomName) ? true : false;
-        }
-
-        private Task ScanGames(Game game, List<Game> tempGames)
-        {
-            return Task.Run(() =>
-            {
-                if (!tempGames.Exists(x => x.RomName == game.RomName))
-                {
-                    tempGames.Add(game);
-                }
-
-                tempGames.Sort();
-
-                //_multiSystemRepo.MultiSystemList.Clear();
-
-                //foreach (Game sortedGame in tempGames)
-                //{
-                //    _multiSystemRepo.MultiSystemList.Add(sortedGame);
-                //}
-            });
-        }
 
         /// <summary>
         /// Copies the template file if exists or uses the default settings.
