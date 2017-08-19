@@ -53,14 +53,9 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             _fixture._hyperSerializer.ChangeSystemAndDatabase(options.MultiSystemName);
             IMultiSystem multiSystem = new MultiSystem(_fixture._hyperSerializer, systemCreator, mediaCopier, options);
 
-            foreach (var game in testGames)
-            {
-                multiSystem.Add(game);
-            }
-
             #endregion
 
-            var result = await multiSystem.CreateMultiSystem(frontend.Path, "");
+            var result = await multiSystem.CreateMultiSystem(testGames, frontend.Path, "");
 
             Assert.True(result);
         }
@@ -83,14 +78,9 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             _fixture._hyperSerializer.ChangeSystemAndDatabase(options.MultiSystemName);
             IMultiSystem multiSystem = new MultiSystem(_fixture._hyperSerializer, systemCreator, mediaCopier, options);
 
-            foreach (var game in testGames)
-            {
-                multiSystem.Add(game);
-            }
-
             #endregion
 
-            var result = await multiSystem.CreateMultiSystem(frontend.Path, Environment.CurrentDirectory + "\\RocketLauncherData");
+            var result = await multiSystem.CreateMultiSystem(testGames, frontend.Path, Environment.CurrentDirectory + "\\RocketLauncherData");
             Assert.True(result);
 
             Assert.True(File.Exists(Environment.CurrentDirectory + "\\RocketLauncherData\\Settings\\" + options.MultiSystemName + "\\games.ini"));
@@ -117,14 +107,9 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             _fixture._hyperSerializer.ChangeSystemAndDatabase(options.MultiSystemName);
             IMultiSystem multiSystem = new MultiSystem(_fixture._hyperSerializer, systemCreator, mediaCopier, options);
 
-            foreach (var game in testGames)
-            {
-                multiSystem.Add(game);
-            }
-
             #endregion
 
-            var result = await multiSystem.CreateMultiSystem(frontend.Path, "");
+            var result = await multiSystem.CreateMultiSystem(testGames, frontend.Path, "");
 
             Assert.True(result);
         }

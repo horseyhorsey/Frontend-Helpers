@@ -24,7 +24,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         [InlineData("Mame", 9)]
         [InlineData("Nintendo 64", 18)]
         public async void DeserilaizeGameXml(string systemName, int expectedCount)
-        { 
+        {
             _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
 
             var games = await _fixture._hyperSerializer.DeserializeAsync();
@@ -39,7 +39,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         /// <param name="newDbName">New name of the database.</param>
         /// <param name="expectedCount">The expected count.</param>
         [Theory]
-        [InlineData("Amstrad CPC","Amstrad CPC New", 1789)]
+        [InlineData("Amstrad CPC", "Amstrad CPC New", 1789)]
         [InlineData("Mame", "Mame New", 9)]
         [InlineData("Nintendo 64", "Nintendo 64 New", 18)]
         public async void SerializeToHyperspinXml(string systemName, string newDbName, int expectedCount)
@@ -49,7 +49,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 
             _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName, newDbName);
             Assert.True(await _fixture._hyperSerializer.SerializeAsync(games));
-            
+
             games = await _fixture._hyperSerializer.DeserializeAsync();
 
             Assert.True(games.Count() == expectedCount);
@@ -72,7 +72,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 
             var systems = await _fixture._hyperSerializer.DeserializeMenusAsync();
 
-            Assert.True(systems.Count() == 53);            
+            Assert.True(systems.Count() == 53);
         }
 
         [Fact]
@@ -114,33 +114,5 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 
             Assert.True(favoriteGames.Count() > 0);
         }
-
-        //[Theory]
-        //[InlineData("Amstrad CPC", "Amstrad")]
-        //public async void DeserializeGenres(string systemName, string expected)
-        //{
-        //    _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
-        //    var genres = await _fixture._hyperSerializer.DeserializeGenresAsync(); 
-            
-        //}
-
-
-
-
-
-        //[Theory]
-        //[InlineData("Amstrad CPC")]
-        //[InlineData("MAME")]
-        //[InlineData("Nintendo 64")]
-        //public async void SerializeHyperspinFavorites(string systemName)
-        //{
-        //    _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
-        //    var faves = await _fixture._hyperSerializer.DeserializeFavoritesAsync();            
-
-            //    Assert.True(await _fixture._hyperSerializer.SerializeFavoritesAsync(games));
-
-            //    var txtPath = Path.Combine(frontend.Path, "Databases", systemName, "favorites.txt");
-            //    Assert.True(File.Exists(txtPath));            
-            //}
-        }
+    }
 }
