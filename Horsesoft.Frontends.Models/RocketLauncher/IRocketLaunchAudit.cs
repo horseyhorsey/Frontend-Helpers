@@ -6,8 +6,8 @@ namespace Frontends.Models.RocketLauncher
 {
     public interface IRocketLaunchAudit
     {
-        Task<bool> ScanAllSystemMedia(IEnumerable<Game> gamesList);
+        Task<bool> ScanAllSystemMedia(IEnumerable<Game> gamesList, string rlPath);
 
-        Task<bool> ScanSystemMediaAsync(RlMediaType rlMediaType, IEnumerable<Game> gamesList);
+        Task<bool> ScanSystemMediaAsync(RlMediaType rlMediaType, IEnumerable<Game> gamesList, string rlPath);
     }
 }

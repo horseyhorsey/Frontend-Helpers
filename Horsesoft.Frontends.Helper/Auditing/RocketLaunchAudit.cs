@@ -20,7 +20,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
         }
 
         #region Public Methods
-        public async Task<bool> ScanAllSystemMedia(IEnumerable<Game> gamesList)
+        public async Task<bool> ScanAllSystemMedia(IEnumerable<Game> gamesList, string rlPath)
         {
             return await Task.Run(async () =>
             {
@@ -28,7 +28,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
                 {
                     foreach (var item in (typeof(RlMediaType).GetEnumValues()))
                     {
-                        await ScanSystemMediaAsync((RlMediaType)item, gamesList);
+                        await ScanSystemMediaAsync((RlMediaType)item, gamesList, rlPath);
                     }
 
                     return true;
@@ -38,7 +38,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
             });
         }
 
-        public async Task<bool> ScanSystemMediaAsync(RlMediaType rlMediaType, IEnumerable<Game> gamesList)
+        public async Task<bool> ScanSystemMediaAsync(RlMediaType rlMediaType, IEnumerable<Game> gamesList, string rlMediaPath)
         {
             var systemName = gamesList.ElementAt(0).System;
 
@@ -49,47 +49,47 @@ namespace Horsesoft.Frontends.Helper.Auditing
                     switch (rlMediaType)
                     {
                         case RlMediaType.Artwork:
-                            ScanRocketLauncherPath(gamesList, "HaveArtwork", RocketLauncherMediaPaths.Artwork, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveArtwork", RocketLauncherMediaPaths.Artwork, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Backgrounds:
-                            ScanRocketLauncherPath(gamesList, "HaveBackgrounds", RocketLauncherMediaPaths.Backgrounds, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveBackgrounds", RocketLauncherMediaPaths.Backgrounds, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Bezels:
-                            ScanRocketLauncherPath(gamesList, "HaveBezels", RocketLauncherMediaPaths.Bezels, systemName);
-                            ScanRocketLauncherPath(gamesList, "HaveBezelBg", RocketLauncherMediaPaths.Bezels, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveBezels", RocketLauncherMediaPaths.Bezels, systemName, rlMediaPath);
+                            ScanRocketLauncherPath(gamesList, "HaveBezelBg", RocketLauncherMediaPaths.Bezels, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Cards:
-                            ScanRocketLauncherPath(gamesList, "HaveCards", RocketLauncherMediaPaths.Bezels, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveCards", RocketLauncherMediaPaths.Bezels, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Controller:
-                            ScanRocketLauncherPath(gamesList, "HaveController", RocketLauncherMediaPaths.Controller, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveController", RocketLauncherMediaPaths.Controller, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Fade:
-                            ScanRocketLauncherPath(gamesList, "HaveFadeLayer1", RocketLauncherMediaPaths.Fade, systemName);
-                            ScanRocketLauncherPath(gamesList, "HaveFadeLayer2", RocketLauncherMediaPaths.Fade, systemName);
-                            ScanRocketLauncherPath(gamesList, "HaveFadeLayer3", RocketLauncherMediaPaths.Fade, systemName);
-                            ScanRocketLauncherPath(gamesList, "HaveExtraLayer1", RocketLauncherMediaPaths.Fade, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveFadeLayer1", RocketLauncherMediaPaths.Fade, systemName, rlMediaPath);
+                            ScanRocketLauncherPath(gamesList, "HaveFadeLayer2", RocketLauncherMediaPaths.Fade, systemName, rlMediaPath);
+                            ScanRocketLauncherPath(gamesList, "HaveFadeLayer3", RocketLauncherMediaPaths.Fade, systemName, rlMediaPath);
+                            ScanRocketLauncherPath(gamesList, "HaveExtraLayer1", RocketLauncherMediaPaths.Fade, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Guides:
-                            ScanRocketLauncherPath(gamesList, "HaveGuides", RocketLauncherMediaPaths.Guides, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveGuides", RocketLauncherMediaPaths.Guides, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Manuals:
-                            ScanRocketLauncherPath(gamesList, "HaveManuals", RocketLauncherMediaPaths.Manuals, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveManuals", RocketLauncherMediaPaths.Manuals, systemName, rlMediaPath);
                             break;
                         case RlMediaType.MultiGame:
-                            ScanRocketLauncherPath(gamesList, "HaveMultiGame", RocketLauncherMediaPaths.MultiGame, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveMultiGame", RocketLauncherMediaPaths.MultiGame, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Music:
-                            ScanRocketLauncherPath(gamesList, "HaveMusic", RocketLauncherMediaPaths.Music, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveMusic", RocketLauncherMediaPaths.Music, systemName, rlMediaPath);
                             break;
                         case RlMediaType.SavedGames:
-                            ScanRocketLauncherPath(gamesList, "HaveSavedGames", RocketLauncherMediaPaths.SavedGames, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveSavedGames", RocketLauncherMediaPaths.SavedGames, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Videos:
-                            ScanRocketLauncherPath(gamesList, "HaveVideos", RocketLauncherMediaPaths.Video, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveVideos", RocketLauncherMediaPaths.Video, systemName, rlMediaPath);
                             break;
                         case RlMediaType.Logos:
-                            ScanRocketLauncherPath(gamesList, "HaveLogos", RocketLauncherMediaPaths.Video, systemName);
+                            ScanRocketLauncherPath(gamesList, "HaveLogos", RocketLauncherMediaPaths.Video, systemName, rlMediaPath);
                             break;
                     }
 
@@ -112,10 +112,10 @@ namespace Horsesoft.Frontends.Helper.Auditing
         /// <param name="rlPath">The rl path.</param>
         /// <param name="systemName">Name of the system.</param>
         /// <exception cref="DirectoryNotFoundException">Rocket media path not found.</exception>
-        private void ScanRocketLauncherPath(IEnumerable<Game> gamesList, string propName, string rlPath, string systemName)
+        private void ScanRocketLauncherPath(IEnumerable<Game> gamesList, string propName, string rlPath, string systemName, string rlMediaPath)
         {
             //Get current rlMedia system path for media type
-            var scanPath = Path.Combine(_frontend.MediaPath, rlPath, systemName);
+            var scanPath = Path.Combine(rlMediaPath, rlPath, systemName);
 
             if (!Directory.Exists(scanPath))
                 throw new DirectoryNotFoundException("Rocket media path not found.");
@@ -153,6 +153,13 @@ namespace Horsesoft.Frontends.Helper.Auditing
             }
         }
 
+        /// <summary>
+        /// Sets the bezel audit. Bezels contain more than one media type. backgrounds, cards
+        /// </summary>
+        /// <param name="propName">Name of the property.</param>
+        /// <param name="scanPath">The scan path.</param>
+        /// <param name="game">The game.</param>
+        /// <param name="currProp">The curr property.</param>
         private void SetBezelAudit(string propName, string scanPath, Game game, PropertyInfo currProp)
         {
             string[] files = null;

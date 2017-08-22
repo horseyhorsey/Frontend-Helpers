@@ -3,17 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Frontends.Models</PackageId>
-    <PackageVersion>1.0.7</PackageVersion>
+    <PackageVersion>1.0.8</PackageVersion>
     <Authors>Horsesoft</Authors>
     <Description>Models to use with helper</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) horsesoft All rights reserved.</Copyright>
     <PackageTags>arcade hyperspin rocketlauncher pinballx</PackageTags>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.7</AssemblyVersion>
-    <FileVersion>1.0.0.7</FileVersion>
+    <AssemblyVersion>1.0.0.8</AssemblyVersion>
+    <FileVersion>1.0.0.8</FileVersion>
     <Product>Horsesoft Frontends Helper</Product>
     <AssemblyName>Frontends.Models</AssemblyName>
     <RootNamespace>Frontends.Models</RootNamespace>

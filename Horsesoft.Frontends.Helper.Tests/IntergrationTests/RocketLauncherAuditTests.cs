@@ -26,7 +26,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 
             _games = await _fixture._hyperSerializer.DeserializeAsync();
 
-            Assert.True(await _fixture._auditer.ScanSystemMediaAsync(mediaType, _games));
+            Assert.True(await _fixture._auditer.ScanSystemMediaAsync(mediaType, _games, _fixture._frontendRl.MediaPath));
 
             Assert.True(_games.ElementAt(0).RlAudit.HaveArtwork);
         }
@@ -38,7 +38,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
             _games = await _fixture._hyperSerializer.DeserializeAsync();
 
-            var result = await _fixture._auditer.ScanAllSystemMedia(_games);
+            var result = await _fixture._auditer.ScanAllSystemMedia(_games, _fixture._frontendRl.MediaPath);
 
             Assert.True(result, "Scan RL media failed");
 
