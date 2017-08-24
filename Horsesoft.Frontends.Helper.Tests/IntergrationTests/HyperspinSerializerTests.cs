@@ -4,6 +4,8 @@ using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
 using System;
 using System.Xml;
 using Frontends.Models.Interfaces;
+using Frontends.Models.Hyperspin;
+using System.Collections.Generic;
 
 namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
 {
@@ -103,7 +105,6 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             Assert.True(faves.Count() == expectedCount);
         }
 
-
         [Fact]
         public async void GetGamesListFromAllFavorites()
         {
@@ -113,6 +114,25 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             var favoriteGames = await _fixture._hyperSerializer.CreateGamesListFromAllFavoriteTexts(_fixture._frontend.Path, systems);
 
             Assert.True(favoriteGames.Count() > 0);
+        }
+
+        [Fact]
+        public async void SerializeFavorites()
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase("Amstrad CPC");
+
+            var favoriteGames = await _fixture._hyperSerializer.DeserializeFavoritesAsync();
+            _fixture._hyperSerializer.ChangeSystemAndDatabase("Dizzy Egg");
+
+            var games = new List<Game>();
+            foreach (var item in favoriteGames)
+            {
+                games.Add(new Game() { RomName = item.RomName, IsFavorite = true });
+            }
+
+            games.Add(new Game() { RomName = "nnsns", IsFavorite = true });
+
+            Assert.True(await _fixture._hyperSerializer.SerializeFavoritesAsync(games));
         }
     }
 }

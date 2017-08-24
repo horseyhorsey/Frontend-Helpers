@@ -448,10 +448,17 @@ namespace Horsesoft.Frontends.Helper.Serialization
             {
                 if (games.Any(x => x.IsFavorite))
                 {
-                    var favoritesTxtPath = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
+                    var favoritesTxtPath = Path.Combine(_frontEndPath, Root.Databases, _systemName);
+
+                    if (!Directory.Exists(favoritesTxtPath)) Directory.CreateDirectory(favoritesTxtPath);
+
+                    //Delete the text file before stream
+                    var faveTextFile = Path.Combine(favoritesTxtPath, "favorites.txt");
+                    if (File.Exists(faveTextFile))
+                        File.Delete(faveTextFile);
 
                     //Create the favorites text file
-                    using (var sWriter = new StreamWriter(favoritesTxtPath))
+                    using (var sWriter = new StreamWriter(faveTextFile))
                     {
                         foreach (var favorite in games.Where(x => x.IsFavorite))
                         {
