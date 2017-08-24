@@ -38,6 +38,30 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             Assert.True(games.ElementAt(0).MenuAudit.HaveArt1);
         }
 
+        [Fact]
+        public async void AuditMainMenusAsync()
+        {
+            IHyperspinAudit auditer = new HyperspinAudit(frontend);
+
+            _fixture._hyperSerializer.ChangeSystemAndDatabase("Main Menu");
+            var menus = await _fixture._hyperSerializer.DeserializeAsync();
+            
+            Assert.True(await auditer.ScanMainMenuMediaAsync(menus));
+
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveLetters);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveSpecial);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveWheel);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveVideo);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveGenreBG);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveGenreWheel);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveS_Start);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveS_Exit);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveWheelSounds);
+            Assert.True(menus.ElementAt(1).MenuAudit.HavePointer);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveTheme);
+            Assert.True(menus.ElementAt(1).MenuAudit.HaveWheelClick);
+        }
+
         [Theory]
         [InlineData("Amstrad CPC", HsMediaType.Artwork1, 1)]
         [InlineData("Amstrad CPC", HsMediaType.Artwork2, 1)]

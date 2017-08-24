@@ -38,7 +38,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
             _games = await _fixture._hyperSerializer.DeserializeAsync();
 
-            var result = await _fixture._auditer.ScanAllSystemMedia(_games, _fixture._frontendRl.MediaPath);
+            var result = await _fixture._auditer.ScanAllSystemMediaAsync(_games, _fixture._frontendRl.MediaPath);
 
             Assert.True(result, "Scan RL media failed");
 
@@ -46,6 +46,15 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             //assert we found the media for these
             Assert.True(game.RlAudit.HaveArtwork);
             Assert.True(game.RlAudit.HaveBackgrounds);
+            Assert.True(game.RlAudit.HaveScreenshots);
+        }
+
+        [Theory]
+        [InlineData("Amstrad CPC")]
+        public async void ScanAllDefaultFoldersRocketlauncherMedia(string systemName)
+        {
+            var defaultAudit = await _fixture._auditer.ScanDefaultsForSystem(_fixture._frontendRl.MediaPath, systemName);
+            Assert.True(defaultAudit.HaveArtwork == true);
         }
     }
 }

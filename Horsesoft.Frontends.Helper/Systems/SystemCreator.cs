@@ -17,7 +17,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         }
 
         #region Public Methods
-        public async Task<bool> CreateSystem(string systemName, bool existingDb = false)
+        public async Task<bool> CreateSystem(string systemName, string existingDb = "")
         {
             return await Task.Run(() =>
             {
@@ -28,7 +28,7 @@ namespace Horsesoft.Frontends.Helper.Systems
                     switch (frontendType)
                     {
                         case FrontendType.Hyperspin:
-                            CreateSystemForHyperspin(systemName);
+                            CreateSystemForHyperspin(systemName, existingDb);
                             break;
                         case FrontendType.Hyperpin:
                             break;
@@ -54,7 +54,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// </summary>
         /// <param name="systemName">Name of the system.</param>
         /// <param name="existingDb">if set to <c>true</c> [existing database].</param>
-        private void CreateSystemForHyperspin(string systemName, bool existingDb = false)
+        private void CreateSystemForHyperspin(string systemName, string existingDb = "")
         {
             var systemSettingsPath = Path.Combine(_frontend.Path, Paths.Hyperspin.Root.Settings);
             var systemSettingsIniPath = Path.Combine(systemSettingsPath, $"{systemName}.ini");
@@ -77,23 +77,41 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// Creates an empty system database xml for hyperspin.
         /// </summary>
         /// <param name="systemName">Name of the system.</param>
-        /// <param name="existingDb">if set to <c>true</c> [existing database].</param>
-        private void CreateEmptyHyperspinDb(string systemName, bool existingDb)
+        /// <param name="existingDb">if set to <c>true</c> [existing database]. Leave empty string</param>
+        private void CreateEmptyHyperspinDb(string systemName, string existingDb = "")
         {
             var newSystemDbPath = Path.Combine(_frontend.Path, Root.Databases, systemName);
+            var dbFile = Path.Combine(newSystemDbPath, systemName + ".xml");
 
-            if (!existingDb) //Create a blank database with new system name.
-            {
-                var dbFile = Path.Combine(newSystemDbPath, systemName + ".xml");
+            if (string.IsNullOrWhiteSpace(existingDb)) //Create a blank database with new system name.
+            {                
                 File.Create(dbFile).Close();
             }
-            //else // Create a new database from an existing hyperspin xml
-            //{
-            //    if (!File.Exists(dbDir + NewSystemName + "\\" + NewSystemName + ".xml"))
-            //    {
-            //        File.Copy(PickedDatabaseXml, dbDir + NewSystemName + "\\" + NewSystemName + ".xml");
-            //    }
-            //}
+            else // Create a new database from an existing hyperspin xml
+            {
+                try
+                {
+                    if (!File.Exists(existingDb))
+                    {
+                        throw new FileNotFoundException("Existing hyperspin database not found");
+                    }                    
+                }
+                catch
+                {
+                    File.Create(dbFile).Close();
+                }
+
+                try
+                {
+                    File.Delete(dbFile);
+                    File.Copy(existingDb, dbFile);
+                }
+                catch (System.Exception ex)
+                {
+
+                    throw;
+                }
+            }
         }
 
         /// <summary>

@@ -1,5 +1,7 @@
 ﻿using Frontends.Models.Interfaces;
 using Horsesoft.Frontends.Helper.Tests.Fixtures.Real;
+using System;
+using System.IO;
 using Xunit;
 
 namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
@@ -24,6 +26,17 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         public async void CreateAHyperspinSystem(string systemNameToCreate)
         {
             var result = await _fixture._sysCreator.CreateSystem(systemNameToCreate);
+
+            Assert.True(result);
+        }
+
+        [Theory]
+        [InlineData("Cybernoid Hits")]
+        public async void CreateAHyperspinSystemFromExisting(string systemNameToCreate)
+        {
+            var result = await _fixture._sysCreator
+                .CreateSystem(systemNameToCreate,
+                Path.Combine(Paths.Hyperspin.PathHelper.GetSystemDatabasePath(_fixture._frontend.Path, "Amstrad CPC"), "Amstrad CPC.xml"));
 
             Assert.True(result);
         }

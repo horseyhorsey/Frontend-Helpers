@@ -31,6 +31,22 @@ namespace Horsesoft.Frontends.Helper.Serialization
         #region Public Methods
 
         /// <summary>
+        /// Changes the system and database name. If database is null or empty the system name will be used for the database name
+        /// </summary>
+        /// <param name="systemName">Name of the system.</param>
+        /// <param name="database">The name of the database.</param>
+        public void ChangeSystemAndDatabase(string systemName, string database = "")
+        {
+            _systemName = systemName;
+
+            _systemName = systemName;
+            _databaseName = database;
+
+            if (string.IsNullOrWhiteSpace(_databaseName))
+                _databaseName = _systemName;
+        }
+
+        /// <summary>
         /// Creates a games list from all favorite texts from all given systems.
         /// </summary>
         /// <param name="frontEndPath">The front end path.</param>
@@ -483,22 +499,6 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
                 return true;
             });
-        }
-
-        /// <summary>
-        /// Changes the system and database name. If database is null or empty the system name will be used for the database name
-        /// </summary>
-        /// <param name="systemName">Name of the system.</param>
-        /// <param name="database">The name of the database.</param>
-        public void ChangeSystemAndDatabase(string systemName, string database = "")
-        {
-            _systemName = systemName;
-
-            _systemName = systemName;
-            _databaseName = database;
-
-            if (string.IsNullOrWhiteSpace(_databaseName))
-                _databaseName = _systemName;
         }
 
         #endregion

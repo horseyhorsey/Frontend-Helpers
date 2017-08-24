@@ -10,4 +10,20 @@
         Wheel,
         Video
     }
+
+    public enum HsMenuMediaType
+    {
+        Wheel,
+        Video,
+        Letters,
+        Special,
+        GenreBg,
+        Theme,
+        GenreWheel,
+        Pointer,
+        WheelSounds,
+        SystemStart,
+        SystemExit,
+        WheelClick
+    }
 }

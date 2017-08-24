@@ -1,5 +1,6 @@
 ﻿
 using Frontends.Models.Hyperspin;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Horsesoft.Frontends.Helper.Paths.Hyperspin
@@ -41,6 +42,27 @@ namespace Horsesoft.Frontends.Helper.Paths.Hyperspin
         /// <param name="systemName">Name of the system.</param>
         /// <returns></returns>
         public static string GetSystemDatabasePath(string frontendPath, string systemName) => Path.Combine(frontendPath, Root.Databases, systemName);
+
+        /// <summary>
+        /// Gets the media files for game.
+        /// </summary>
+        /// <param name="frontendPath">The frontend path.</param>
+        /// <param name="systemName">Name of the system.</param>
+        /// <param name="mediaPath">The media path.</param>
+        /// <param name="filter">The filter.</param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetMediaFilesForGame(string frontendPath, string systemName, string mediaPath, string filter = "*.*")
+        {            
+            var pathToScan = Path.Combine(frontendPath, Root.Media, systemName, mediaPath);
+
+            var mediaFiles = new List<string>();
+            if (Directory.Exists(pathToScan))
+            {
+                mediaFiles.AddRange(Directory.EnumerateFiles(pathToScan, filter));
+            }
+
+            return mediaFiles;
+        }
     }
 
     public static class Root

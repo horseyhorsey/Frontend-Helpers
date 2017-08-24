@@ -28,6 +28,13 @@
         public bool HaveBackground { get; set; }
         public bool HaveS_Start { get; set; }
         public bool HaveS_Exit { get; set; }
+        public bool HaveWheelSounds { get; set; }
+        public bool HaveLetters { get; set; }
+        public bool HaveSpecial { get; set; }
+        public bool HaveGenreBG { get; set; }
+        public bool HaveGenreWheel { get; set; }
+        public bool HavePointer { get; set; }
+        public bool HaveWheelClick { get; set; }
         #endregion
     }
 }

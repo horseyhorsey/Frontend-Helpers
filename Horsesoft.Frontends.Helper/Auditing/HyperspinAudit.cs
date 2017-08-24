@@ -16,13 +16,13 @@ namespace Horsesoft.Frontends.Helper.Auditing
     {
         #region Fields
         private IFrontend _frontEnd;
-        private IMediaHelper _mediaHelper; 
+        private IMediaHelper _mediaHelper;
         #endregion
 
         public HyperspinAudit(IFrontend frontEnd, IMediaHelper mediaHelper)
         {
             _frontEnd = frontEnd;
-            _mediaHelper = mediaHelper;            
+            _mediaHelper = mediaHelper;
         }
 
         public HyperspinAudit(IFrontend frontEnd)
@@ -99,25 +99,10 @@ namespace Horsesoft.Frontends.Helper.Auditing
                             currentGameAudit.RomName + ".mp3");
                         currentGameAudit.MenuAudit.HaveBGMusic = CheckForFile(FullPath);
 
-                        FullPath = Path.Combine(tempPath, Sound.SystemStart);
-                        currentGameAudit.MenuAudit.HaveS_Start = CheckMediaFolderFiles(FullPath, "*.mp3");
-
-                        FullPath = Path.Combine(tempPath, Sound.SystemExit);
-                        currentGameAudit.MenuAudit.HaveS_Exit = CheckMediaFolderFiles(FullPath, "*.mp3");
-
                         FullPath = Path.Combine(tempPath, Root.Themes, currentGameAudit.RomName + ".zip");
                         currentGameAudit.MenuAudit.HaveTheme = CheckForFile(FullPath);
 
-                        //Video slightly different, where you have flvs & pngs
-                        FullPath = Path.Combine(tempPath, Root.Video, currentGameAudit.RomName + ".mp4");
-                        if (!CheckForFile(FullPath))
-                            FullPath = Path.Combine(tempPath, Root.Video, currentGameAudit.RomName + ".flv");
-                        if (!CheckForFile(FullPath))
-                            FullPath = Path.Combine(tempPath, Root.Video, currentGameAudit.RomName + ".png");
-                        if (!CheckForFile(FullPath))
-                            currentGameAudit.MenuAudit.HaveVideo = false;
-                        else
-                            currentGameAudit.MenuAudit.HaveVideo = true;
+                        currentGameAudit.MenuAudit.HaveVideo = CheckForVideo(tempPath, currentGameAudit.RomName);
                     }
                 }
 
@@ -125,9 +110,107 @@ namespace Horsesoft.Frontends.Helper.Auditing
             });
         }
 
-        public Task<bool> ScanMainMenuMediaAsync(IEnumerable<Game> gamesList)
+        public async Task<bool> ScanMainMenuMediaAsync(IEnumerable<Game> gamesList)
         {
-            throw new NotImplementedException();
+            var tempPath = "";
+            var fullPath = "";
+
+            return await Task.Run(() =>
+            {
+                foreach (var gameMenu in gamesList)
+                {
+                    foreach (var hsMenuType in Enum.GetNames(typeof(HsMenuMediaType)))
+                    {
+                        switch (hsMenuType)
+                        {
+                            case "Letters":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Images.Letters);
+                                gameMenu.MenuAudit.HaveLetters = CheckMediaFolderFiles(fullPath, "*.*");
+                                break;
+                            case "Special":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Images.Special);
+                                gameMenu.MenuAudit.HaveSpecial = CheckMediaFolderFiles(fullPath, "*.*");
+                                break;
+                            case "Wheel":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, "Main Menu");
+                                fullPath = Path.Combine(tempPath, Images.Wheels, gameMenu.RomName + ".png");
+                                gameMenu.MenuAudit.HaveWheel = CheckForFile(fullPath);
+                                break;
+                            case "WheelSounds":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Sound.WheelSounds);
+                                gameMenu.MenuAudit.HaveWheelSounds = CheckMediaFolderFiles(fullPath, "*.mp3");
+                                break;
+                            case "Video":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, "Main Menu");
+                                gameMenu.MenuAudit.HaveVideo = CheckForVideo(tempPath, gameMenu.RomName);
+                                break;
+                            case "Theme":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, "Main Menu");
+                                fullPath = Path.Combine(tempPath, Root.Themes, gameMenu.RomName + ".zip");
+                                gameMenu.MenuAudit.HaveTheme = CheckForFile(fullPath);
+                                break;
+                            case "GenreBg":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Images.GenreBackgrounds);
+                                gameMenu.MenuAudit.HaveGenreBG = CheckMediaFolderFiles(fullPath, "*.*");
+                                break;
+                            case "Pointer":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Images.Pointer);
+                                gameMenu.MenuAudit.HavePointer = CheckMediaFolderFiles(fullPath, "*.*");
+                                break;
+                            case "GenreWheel":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Images.GenreWheel);
+                                gameMenu.MenuAudit.HaveGenreWheel = CheckMediaFolderFiles(fullPath, "*.*");
+                                break;
+                            case "SystemStart":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Sound.SystemStart);
+                                gameMenu.MenuAudit.HaveS_Start = CheckMediaFolderFiles(fullPath, "*.mp3");
+                                break;
+                            case "SystemExit":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, Sound.SystemExit);
+                                gameMenu.MenuAudit.HaveS_Exit = CheckMediaFolderFiles(fullPath, "*.mp3");
+                                break;
+                            case "WheelClick":
+                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                fullPath = Path.Combine(tempPath, "Sound", "Wheel Click.mp3");
+                                gameMenu.MenuAudit.HaveWheelClick = CheckForFile(fullPath);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Checks for video. Mp4 > FlV > PNG
+        /// </summary>
+        /// <param name="feSystemMediaPath">The frontendpath path.</param>
+        /// <param name="gameName">Name of the game.</param>
+        /// <returns></returns>
+        private bool CheckForVideo(string feSystemMediaPath, string gameName)
+        {
+            //Video slightly different, where you have flvs & pngs
+            var FullPath = Path.Combine(feSystemMediaPath, Root.Video, gameName + ".mp4");
+            if (CheckForFile(FullPath)) return true;
+
+            FullPath = Path.Combine(feSystemMediaPath, Root.Video, gameName + ".flv");
+            if (CheckForFile(FullPath)) return true;
+
+            FullPath = Path.Combine(feSystemMediaPath, Root.Video, gameName + ".png");
+            if (CheckForFile(FullPath)) return true;
+
+            return false;
         }
 
         #endregion

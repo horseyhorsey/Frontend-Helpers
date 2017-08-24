@@ -38,7 +38,7 @@ namespace Horsesoft.Frontends.Helper.Tests.Fixtures.Real
 
             _hyperSerializer = new HyperspinSerializer(_frontend.Path, "", "");
 
-            rlStats = new RocketStats(_frontendRl);
+            rlStats = new RocketStats(_frontendRl.Path);
         }
     }
 }

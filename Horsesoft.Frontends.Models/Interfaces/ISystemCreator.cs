@@ -4,6 +4,6 @@ namespace Frontends.Models.Interfaces
 {
     public interface ISystemCreator
     {
-        Task<bool> CreateSystem(string systemName, bool existingDb = false);
+        Task<bool> CreateSystem(string systemName, string existingDb = "");
     }
 }

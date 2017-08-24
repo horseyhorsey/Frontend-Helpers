@@ -9,12 +9,12 @@ namespace Horsesoft.Frontends.Helper.Tools
 {
     public class RocketStats : IRocketStats
     {
-        private string rlPath;
+        private string _rlPath;
         private readonly RocketStatsSerializer _rlStatSerializer;
 
-        public RocketStats(IFrontend frontend)
+        public RocketStats(string rlPath)
         {
-            rlPath = frontend.Path;
+            _rlPath = rlPath;
             _rlStatSerializer = new RocketStatsSerializer();
         }
 
@@ -24,7 +24,7 @@ namespace Horsesoft.Frontends.Helper.Tools
         /// <returns></returns>
         public async Task<GlobalStats> GetGlobalStatsAsync()
         {
-            return await _rlStatSerializer.GetGlobalStatsAsync(rlPath);
+            return await _rlStatSerializer.GetGlobalStatsAsync(_rlPath);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Horsesoft.Frontends.Helper.Tools
         /// <returns></returns>
         public GameStat GetRlStats(Game game)
         {
-            return _rlStatSerializer.GetSingleGameStats(rlPath, game);
+            return _rlStatSerializer.GetSingleGameStats(_rlPath, game);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Horsesoft.Frontends.Helper.Tools
         /// <returns></returns>
         public async Task<IEnumerable<GameStat>> GetRlStatsAsync(MainMenu mainMenu)
         {
-            return await _rlStatSerializer.GetStatsForSystemAsync(rlPath, mainMenu);
+            return await _rlStatSerializer.GetStatsForSystemAsync(_rlPath, mainMenu);
         }
     }
 }
