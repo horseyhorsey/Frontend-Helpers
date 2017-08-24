@@ -110,6 +110,12 @@ namespace Frontends.Models.Hyperspin
         [XmlIgnore]
         public bool RomExists { get; set; }
 
+        /// <summary>
+        /// Gets or sets the original system. Used for multisystems
+        /// </summary>
+        [XmlIgnore]
+        public string OriginalSystem { get; set; }
+
         private bool isFavorite;
         [XmlIgnore]
         public bool IsFavorite

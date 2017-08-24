@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Horsesoft.Frontends.Helper.Systems
 {
     public class MultiSystem : IMultiSystem
-    {        
+    {
         private IHyperspinSerializer _hyperspinSerializer;
         private ISystemCreator _systemsCreator;
         private IMediaCopier _mediaCopier;
@@ -20,7 +20,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiSystem"/> class and the games list
         /// </summary>
-        public MultiSystem(IHyperspinSerializer hyperspinSerializer, 
+        public MultiSystem(IHyperspinSerializer hyperspinSerializer,
             ISystemCreator systemsCreator, IMediaCopier mediaCopier, MultiSystemOptions options)
         {
             Options = options;
@@ -32,7 +32,8 @@ namespace Horsesoft.Frontends.Helper.Systems
 
         #region Properties
 
-        public MultiSystemOptions Options { get; set; } 
+        public MultiSystemOptions Options { get; set; }
+
         #endregion
 
         #region Public Methods
@@ -59,7 +60,7 @@ namespace Horsesoft.Frontends.Helper.Systems
                 var systems = games.GroupBy(x => x.System).Distinct();
 
                 //Create dirs and settings for hyperspin
-                var result =  await _systemsCreator.CreateSystem(Options.MultiSystemName);                
+                var result = await _systemsCreator.CreateSystem(Options.MultiSystemName);
                 if (!result)
                 {
                     throw new Exception($"Failed to create hyperspin defaults for {Options.MultiSystemName}");
@@ -74,9 +75,14 @@ namespace Horsesoft.Frontends.Helper.Systems
                     throw new Exception("Failed to serialize multi system games");
                 }
 
+                //Create multisystem folder and add a games.ini
+                var dbPath = PathHelper.GetSystemDatabasePath(frontEndPath, Options.MultiSystemName) + "\\MultiSystem";
+                Directory.CreateDirectory(dbPath);
+                await _romMapper.CreateGamesIniAsync(games, dbPath);
+
                 //Serialze favorites               
                 if (!await _hyperspinSerializer.SerializeFavoritesAsync(games))
-                {                   
+                {
                 }
 
                 //Create genres for the system

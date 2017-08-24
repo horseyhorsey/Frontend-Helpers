@@ -39,19 +39,18 @@ namespace Horsesoft.Frontends.Helper.Tools.Search
                     {
                         foundGames = from item in xdoc.Descendants("game")
                                      where (item.Attribute("name").Value.ToLower() == name.ToLower()
-                                           && (item.Element("cloneof").Value == ""))
-
+                                           && (item.Element("cloneof").Value == ""))                                      
                                      select new Game
                                      {
                                          RomName = item.Attribute("name").Value,
                                          GameEnabled = 1,
                                          Description = item.Element("description").Value,
-                                         CloneOf = item.Element("cloneof").Value,
-                                         Crc = item.Element("crc").Value,
-                                         Manufacturer = item.Element("manufacturer").Value,
-                                         Genre = item.Element("genre").Value,
+                                         CloneOf = item.Element("cloneof").Value ?? "",
+                                         Crc = item.Element("crc").Value ?? "",
+                                         Manufacturer = item.Element("manufacturer").Value ?? "",
+                                         Genre = item.Element("genre").Value ?? "",
                                          Year = Convert.ToInt32(item.Element("year").Value),
-                                         Rating = item.Element("rating").Value,
+                                         Rating = item.Element("rating").Value ?? "",
                                          System = systemName
                                      };
                     }
@@ -69,9 +68,9 @@ namespace Horsesoft.Frontends.Helper.Tools.Search
                                          CloneOf = item.Element("cloneof").Value,
                                          Crc = item.Element("crc").Value,
                                          Manufacturer = item.Element("manufacturer").Value,
-                                         Genre = item.Element("genre").Value,
+                                         Genre = item.Element("genre").Value ?? "",
                                          Year = Convert.ToInt32(item.Element("year").Value),
-                                         Rating = item.Element("rating").Value,
+                                         Rating = item.Element("rating").Value ?? "",
                                          System = systemName
                                      };
                     }                   

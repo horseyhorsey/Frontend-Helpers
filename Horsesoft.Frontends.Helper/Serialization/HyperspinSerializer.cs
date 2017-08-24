@@ -606,7 +606,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
             foreach (MainMenu system in systems)
             {
                 var sysPath = Path.Combine(frontEndPath, Root.Databases, system.Name);
-                var isMultiSystem = File.Exists(sysPath + "\\_multisystem");
+                var isMultiSystem = File.Exists(sysPath + "\\MultiSystem");
 
                 // Dont want to be scanning the favorites of a multisystem
                 if (system.Name != "Main Menu" && !isMultiSystem)
@@ -621,8 +621,12 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
                         if (favorites.Count() > 0)
                         {
-                            var faveGames = await search.Search(system.Name, Path.Combine(sysPath, $"{system.Name}.xml"), strfavorites, true);
-                            games.AddRange(faveGames);
+                            try
+                            {
+                                var faveGames = await search.Search(system.Name, Path.Combine(sysPath, $"{system.Name}.xml"), strfavorites, true);
+                                games.AddRange(faveGames);
+                            }
+                            catch { }
                         }
                     }                    
                 }
