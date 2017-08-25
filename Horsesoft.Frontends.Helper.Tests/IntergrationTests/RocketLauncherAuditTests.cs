@@ -56,5 +56,40 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             var defaultAudit = await _fixture._auditer.ScanDefaultsForSystem(_fixture._frontendRl.MediaPath, systemName);
             Assert.True(defaultAudit.HaveArtwork == true);
         }
+
+        [Theory]
+        [InlineData("Amstrad CPC")]
+        public async void ScanFadeMedia(string systemName)
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
+            _games = await _fixture._hyperSerializer.DeserializeAsync();
+
+            var defaultAudit = await _fixture
+                ._auditer.ScanSystemMediaAsync(RlMediaType.Fade, _games, _fixture._frontendRl.MediaPath);
+
+            Assert.True(_games.ElementAt(0).RlAudit.HaveFade);
+            Assert.True(_games.ElementAt(0).RlAudit.HaveFadeLayer1);
+            Assert.True(_games.ElementAt(0).RlAudit.HaveFadeLayer2);
+            Assert.True(_games.ElementAt(0).RlAudit.HaveFadeLayer3);
+            Assert.True(_games.ElementAt(0).RlAudit.HaveExtraLayer1);
+        }
+
+        [Theory]
+        [InlineData("Amstrad CPC")]
+        public async void ScanBezelMedia(string systemName)
+        {
+            _fixture._hyperSerializer.ChangeSystemAndDatabase(systemName);
+            _games = await _fixture._hyperSerializer.DeserializeAsync();
+
+            await _fixture
+                ._auditer.ScanSystemMediaAsync(RlMediaType.Bezels, _games, _fixture._frontendRl.MediaPath);
+
+            await _fixture
+                ._auditer.ScanSystemMediaAsync(RlMediaType.Cards, _games, _fixture._frontendRl.MediaPath);
+
+            Assert.True(_games.ElementAt(0).RlAudit.HaveBezels);
+            Assert.True(_games.ElementAt(0).RlAudit.HaveBezelBg);
+            Assert.True(_games.ElementAt(0).RlAudit.HaveCards);
+        }
     }
 }

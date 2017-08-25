@@ -7,6 +7,7 @@ using System.Reflection;
 using Frontends.Models.RocketLauncher;
 using Frontends.Models.Hyperspin;
 using Frontends.Models.Interfaces;
+using System;
 
 namespace Horsesoft.Frontends.Helper.Auditing
 {
@@ -141,7 +142,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
 
                     return true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     return false;
                 }
@@ -183,9 +184,6 @@ namespace Horsesoft.Frontends.Helper.Auditing
             //Get current rlMedia system path for media type
             var scanPath = Path.Combine(rlMediaPath, rlPath, systemName);
 
-            if (!Directory.Exists(scanPath))
-                throw new DirectoryNotFoundException("Rocket media path not found.");
-
             if (!Directory.Exists(scanPath)) return;
 
             foreach (var game in gamesList)
@@ -203,6 +201,8 @@ namespace Horsesoft.Frontends.Helper.Auditing
         private void SetGameAudit(string propName, string scanPath, Game game)
         {
             scanPath = Path.Combine(scanPath, game.RomName);
+
+            if (!Directory.Exists(scanPath)) return;
 
             var rlAuditType = game.RlAudit.GetType();
             var currProp = rlAuditType.GetProperty(propName);
@@ -248,7 +248,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
             else if (propName == "HaveBezelBg")
                 files = Directory.GetFiles(scanPath, "Background*.*");
             else if (propName == "HaveCards")
-                files = Directory.GetFiles(scanPath, "Instruction Card *.*");
+                files = Directory.GetFiles(scanPath, "Instruction Card*.*");
 
             if (files.Length > 0)
                 currProp.SetValue(game.RlAudit, true);
@@ -273,7 +273,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
                 files = Directory.GetFiles(scanPath, "Layer 2*.*");
             else if (propName == "HaveFadeLayer3")
                 files = Directory.GetFiles(scanPath, "Layer 3*.*");
-            else if (propName == "HaveExtraLayer")
+            else if (propName == "HaveExtraLayer1")
                 files = Directory.GetFiles(scanPath, "Extra Layer 1*.*");
             else
                 return;

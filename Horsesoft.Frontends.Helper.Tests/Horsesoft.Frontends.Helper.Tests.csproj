@@ -223,6 +223,27 @@
     <Content Include="RocketLauncherData\Media\Artwork\Amstrad CPC\_Default\10th Frame %28Europe%29.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="RocketLauncherData\Media\Bezels\Amstrad CPC\10th Frame %28Europe%29\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RocketLauncherData\Media\Bezels\Amstrad CPC\10th Frame %28Europe%29\Bezel - 16x9  %28Hypermint%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RocketLauncherData\Media\Bezels\Amstrad CPC\10th Frame %28Europe%29\Instruction Card.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RocketLauncherData\Media\Fade\Amstrad CPC\10th Frame %28Europe%29\Layer 3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RocketLauncherData\Media\Fade\Amstrad CPC\10th Frame %28Europe%29\Extra Layer 1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RocketLauncherData\Media\Fade\Amstrad CPC\10th Frame %28Europe%29\Layer 2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RocketLauncherData\Media\Fade\Amstrad CPC\10th Frame %28Europe%29\Layer 1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="RocketLauncherData\Settings\Amstrad CPC\Bezel.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -307,6 +328,7 @@
     <Folder Include="Fixtures\Fake\" />
     <Folder Include="Hyperspin Data\Media\Amstrad CPC\Sound\Background Music\" />
     <Folder Include="Hyperspin Data\Media\Amstrad CPC\Themes\" />
+    <Folder Include="RocketLauncherData\Media\Fade\Amstrad CPC\_Default\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
