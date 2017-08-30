@@ -155,7 +155,6 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
         }
 
-        [Obsolete]
         /// <summary>
         /// Gets the stats for system asynchronous.
         /// </summary>
