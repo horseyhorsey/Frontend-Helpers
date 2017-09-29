@@ -73,6 +73,7 @@
     <Compile Include="IntergrationTests\RocketLauncherRomMapTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherSettingsHelperTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherStatsTests.cs" />
+    <Compile Include="IntergrationTests\SystemBackupTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
