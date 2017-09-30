@@ -63,7 +63,7 @@ namespace Horsesoft.Frontends.Helper.Common
         protected internal IEnumerable<string> GetDatabaseFilesForSystem(string systemName, string dbFileExtFilter = "*.xml")
         {
             //Get db path for system
-            var dbPath = System.IO.Path.Combine(Path, Root.Databases, systemName);
+            var dbPath = System.IO.Path.Combine(Path, HyperspinRootPaths.Databases, systemName);
             if (!System.IO.Directory.Exists(dbPath))
                 throw new System.IO.DirectoryNotFoundException();
 

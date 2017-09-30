@@ -31,7 +31,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         public async void SearchAmstradGamesFromXml__SearchResultsAreGreaterThan0(string search)
         {
             var sysName = "Amstrad CPC";
-            var sysDbPath = PathHelper.GetSystemDatabasePath(_fixture._frontend.Path, sysName);
+            var sysDbPath = HyperspinPaths.GetSystemDatabasePath(_fixture._frontend.Path, sysName);
             var path = Path.Combine(sysDbPath, $"{sysName}.xml");
 
             ISearch<Game> searchXml = new XmlSearch<Game>();
@@ -47,7 +47,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         public async void SearchAmstradMultipleGamesFromXml__SearchResultsAreGreaterThan0(string search1, string search2)
         {
             var sysName = "Amstrad CPC";
-            var sysDbPath = PathHelper.GetSystemDatabasePath(_fixture._frontend.Path, sysName);
+            var sysDbPath = HyperspinPaths.GetSystemDatabasePath(_fixture._frontend.Path, sysName);
             var path = Path.Combine(sysDbPath, $"{sysName}.xml");
 
             ISearch<Game> searchXml = new XmlSearch<Game>();
@@ -60,7 +60,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         public async void BuildGamesFromFavoritesText()
         {
             var sysName = "Amstrad CPC";
-            var sysDbPath = PathHelper.GetSystemDatabasePath(_fixture._frontend.Path, sysName);
+            var sysDbPath = HyperspinPaths.GetSystemDatabasePath(_fixture._frontend.Path, sysName);
             var path = Path.Combine(sysDbPath, $"{sysName}.xml");
 
             _fixture._hyperSerializer.ChangeSystemAndDatabase(sysName);

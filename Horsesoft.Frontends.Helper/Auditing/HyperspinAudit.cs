@@ -73,7 +73,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
 
                     if (systemName != "_Default")
                     {
-                        tempPath = Path.Combine(hsPath, Root.Media, systemName);
+                        tempPath = Path.Combine(hsPath, HyperspinRootPaths.Media, systemName);
 
                         FullPath = Path.Combine(tempPath, Images.Wheels, currentGameAudit.RomName + ".png");
                         currentGameAudit.MenuAudit.HaveWheel = CheckForFile(FullPath);
@@ -99,7 +99,7 @@ namespace Horsesoft.Frontends.Helper.Auditing
                             currentGameAudit.RomName + ".mp3");
                         currentGameAudit.MenuAudit.HaveBGMusic = CheckForFile(FullPath);
 
-                        FullPath = Path.Combine(tempPath, Root.Themes, currentGameAudit.RomName + ".zip");
+                        FullPath = Path.Combine(tempPath, HyperspinRootPaths.Themes, currentGameAudit.RomName + ".zip");
                         currentGameAudit.MenuAudit.HaveTheme = CheckForFile(FullPath);
 
                         currentGameAudit.MenuAudit.HaveVideo = CheckForVideo(tempPath, currentGameAudit.RomName);
@@ -124,61 +124,61 @@ namespace Horsesoft.Frontends.Helper.Auditing
                         switch (hsMenuType)
                         {
                             case "Letters":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Images.Letters);
                                 gameMenu.MenuAudit.HaveLetters = CheckMediaFolderFiles(fullPath, "*.*");
                                 break;
                             case "Special":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Images.Special);
                                 gameMenu.MenuAudit.HaveSpecial = CheckMediaFolderFiles(fullPath, "*.*");
                                 break;
                             case "Wheel":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, "Main Menu");
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, "Main Menu");
                                 fullPath = Path.Combine(tempPath, Images.Wheels, gameMenu.RomName + ".png");
                                 gameMenu.MenuAudit.HaveWheel = CheckForFile(fullPath);
                                 break;
                             case "WheelSounds":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Sound.WheelSounds);
                                 gameMenu.MenuAudit.HaveWheelSounds = CheckMediaFolderFiles(fullPath, "*.mp3");
                                 break;
                             case "Video":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, "Main Menu");
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, "Main Menu");
                                 gameMenu.MenuAudit.HaveVideo = CheckForVideo(tempPath, gameMenu.RomName);
                                 break;
                             case "Theme":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, "Main Menu");
-                                fullPath = Path.Combine(tempPath, Root.Themes, gameMenu.RomName + ".zip");
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, "Main Menu");
+                                fullPath = Path.Combine(tempPath, HyperspinRootPaths.Themes, gameMenu.RomName + ".zip");
                                 gameMenu.MenuAudit.HaveTheme = CheckForFile(fullPath);
                                 break;
                             case "GenreBg":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Images.GenreBackgrounds);
                                 gameMenu.MenuAudit.HaveGenreBG = CheckMediaFolderFiles(fullPath, "*.*");
                                 break;
                             case "Pointer":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Images.Pointer);
                                 gameMenu.MenuAudit.HavePointer = CheckMediaFolderFiles(fullPath, "*.*");
                                 break;
                             case "GenreWheel":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Images.GenreWheel);
                                 gameMenu.MenuAudit.HaveGenreWheel = CheckMediaFolderFiles(fullPath, "*.*");
                                 break;
                             case "SystemStart":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Sound.SystemStart);
                                 gameMenu.MenuAudit.HaveS_Start = CheckMediaFolderFiles(fullPath, "*.mp3");
                                 break;
                             case "SystemExit":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, Sound.SystemExit);
                                 gameMenu.MenuAudit.HaveS_Exit = CheckMediaFolderFiles(fullPath, "*.mp3");
                                 break;
                             case "WheelClick":
-                                tempPath = Path.Combine(_frontEnd.Path, Root.Media, gameMenu.RomName);
+                                tempPath = Path.Combine(_frontEnd.Path, HyperspinRootPaths.Media, gameMenu.RomName);
                                 fullPath = Path.Combine(tempPath, "Sound", "Wheel Click.mp3");
                                 gameMenu.MenuAudit.HaveWheelClick = CheckForFile(fullPath);
                                 break;
@@ -201,13 +201,13 @@ namespace Horsesoft.Frontends.Helper.Auditing
         private bool CheckForVideo(string feSystemMediaPath, string gameName)
         {
             //Video slightly different, where you have flvs & pngs
-            var FullPath = Path.Combine(feSystemMediaPath, Root.Video, gameName + ".mp4");
+            var FullPath = Path.Combine(feSystemMediaPath, HyperspinRootPaths.Video, gameName + ".mp4");
             if (CheckForFile(FullPath)) return true;
 
-            FullPath = Path.Combine(feSystemMediaPath, Root.Video, gameName + ".flv");
+            FullPath = Path.Combine(feSystemMediaPath, HyperspinRootPaths.Video, gameName + ".flv");
             if (CheckForFile(FullPath)) return true;
 
-            FullPath = Path.Combine(feSystemMediaPath, Root.Video, gameName + ".png");
+            FullPath = Path.Combine(feSystemMediaPath, HyperspinRootPaths.Video, gameName + ".png");
             if (CheckForFile(FullPath)) return true;
 
             return false;

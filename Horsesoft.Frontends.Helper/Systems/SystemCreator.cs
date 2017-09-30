@@ -56,7 +56,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// <param name="existingDb">if set to <c>true</c> [existing database].</param>
         private void CreateSystemForHyperspin(string systemName, string existingDb = "")
         {
-            var systemSettingsPath = Path.Combine(_frontend.Path, Paths.Hyperspin.Root.Settings);
+            var systemSettingsPath = Path.Combine(_frontend.Path, Paths.Hyperspin.HyperspinRootPaths.Settings);
             var systemSettingsIniPath = Path.Combine(systemSettingsPath, $"{systemName}.ini");
 
             //Generate settings from the embedded resource if not available
@@ -80,7 +80,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// <param name="existingDb">if set to <c>true</c> [existing database]. Leave empty string</param>
         private void CreateEmptyHyperspinDb(string systemName, string existingDb = "")
         {
-            var newSystemDbPath = Path.Combine(_frontend.Path, Root.Databases, systemName);
+            var newSystemDbPath = Path.Combine(_frontend.Path, HyperspinRootPaths.Databases, systemName);
             var dbFile = Path.Combine(newSystemDbPath, systemName + ".xml");
 
             if (string.IsNullOrWhiteSpace(existingDb)) //Create a blank database with new system name.
@@ -143,8 +143,8 @@ namespace Horsesoft.Frontends.Helper.Systems
         /// <param name="systemName">The system name</param>
         private void CreateDirectoriesForHyperspin(string systemName)
         {
-            var newSystemMediaPath = Path.Combine(_frontend.Path, Root.Media, systemName);
-            var newSystemDbPath = Path.Combine(_frontend.Path, Root.Databases, systemName);
+            var newSystemMediaPath = Path.Combine(_frontend.Path, HyperspinRootPaths.Media, systemName);
+            var newSystemDbPath = Path.Combine(_frontend.Path, HyperspinRootPaths.Databases, systemName);
 
             //Media Directories
             for (int i = 1; i < 5; i++)
@@ -158,12 +158,12 @@ namespace Horsesoft.Frontends.Helper.Systems
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Images.Pointer);
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Images.Special);
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Images.Wheels);
-            Directory.CreateDirectory(newSystemMediaPath + "\\" + Root.Themes);
+            Directory.CreateDirectory(newSystemMediaPath + "\\" + HyperspinRootPaths.Themes);
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Sound.BackgroundMusic);
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Sound.SystemExit);
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Sound.SystemStart);
             Directory.CreateDirectory(newSystemMediaPath + "\\" + Sound.WheelSounds);
-            Directory.CreateDirectory(newSystemMediaPath + "\\" + Root.Video);
+            Directory.CreateDirectory(newSystemMediaPath + "\\" + HyperspinRootPaths.Video);
 
             //Create the database directory
             if (!Directory.Exists(newSystemDbPath))

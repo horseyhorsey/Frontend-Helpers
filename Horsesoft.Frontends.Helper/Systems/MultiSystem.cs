@@ -76,7 +76,7 @@ namespace Horsesoft.Frontends.Helper.Systems
                 }
 
                 //Create multisystem folder and add a games.ini
-                var dbPath = PathHelper.GetSystemDatabasePath(frontEndPath, Options.MultiSystemName) + "\\MultiSystem";
+                var dbPath = HyperspinPaths.GetSystemDatabasePath(frontEndPath, Options.MultiSystemName) + "\\MultiSystem";
                 Directory.CreateDirectory(dbPath);
                 await _romMapper.CreateGamesIniAsync(games, dbPath);
 
@@ -125,7 +125,7 @@ namespace Horsesoft.Frontends.Helper.Systems
         {
             if (File.Exists(Options.SettingsTemplateFile))
             {
-                var settingsIniPath = Path.Combine(frontEndPath, Root.Settings, multiSystemName + ".ini");
+                var settingsIniPath = Path.Combine(frontEndPath, HyperspinRootPaths.Settings, multiSystemName + ".ini");
 
                 if (File.Exists(settingsIniPath))
                     File.Delete(settingsIniPath);

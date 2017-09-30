@@ -44,8 +44,8 @@ namespace Horsesoft.Frontends.Helper.Tools
         {
             await Task.Run(() =>
             {
-                var srcPath = PathHelper.GetMediaDirectoryForMediaType(_frontend.Path, game.System, hsMediaType);
-                var destPath = PathHelper.GetMediaDirectoryForMediaType(_frontend.Path, systemName, hsMediaType);
+                var srcPath = HyperspinPaths.GetMediaDirectory(_frontend.Path, game.System, hsMediaType);
+                var destPath = HyperspinPaths.GetMediaDirectory(_frontend.Path, systemName, hsMediaType);
                 CopyMedia(game, srcPath, destPath, symbolicLink);
             });
         }

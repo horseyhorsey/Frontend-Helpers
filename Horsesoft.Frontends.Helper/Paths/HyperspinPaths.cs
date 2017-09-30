@@ -5,31 +5,31 @@ using System.IO;
 
 namespace Horsesoft.Frontends.Helper.Paths.Hyperspin
 {
-    public static class PathHelper
+    public static class HyperspinPaths
     {
         /// <summary>
         /// Returns the full path for the given mediatype with the system set to this.
         /// </summary>
         /// <param name="mediaType">Type of the media.</param>
         /// <returns></returns>
-        public static string GetMediaDirectoryForMediaType(string frontendPath, string systemName, HsMediaType mediaType)
+        public static string GetMediaDirectory(string frontendPath, string systemName, HsMediaType mediaType)
         {
             switch (mediaType)
             {
                 case HsMediaType.Artwork1:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Images.Artwork1);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, Images.Artwork1);
                 case HsMediaType.Artwork2:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Images.Artwork2);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, Images.Artwork2);
                 case HsMediaType.Artwork3:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Images.Artwork3);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, Images.Artwork3);
                 case HsMediaType.Artwork4:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Images.Artwork4);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, Images.Artwork4);
                 case HsMediaType.Backgrounds:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Images.Backgrounds);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, Images.Backgrounds);
                 case HsMediaType.Wheel:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Images.Wheels);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, Images.Wheels);
                 case HsMediaType.Video:
-                    return Path.Combine(frontendPath, Root.Media, systemName, Root.Video);
+                    return Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, HyperspinRootPaths.Video);
                 default:
                     return string.Empty;
             }
@@ -41,7 +41,7 @@ namespace Horsesoft.Frontends.Helper.Paths.Hyperspin
         /// <param name="frontendPath">The frontend path.</param>
         /// <param name="systemName">Name of the system.</param>
         /// <returns></returns>
-        public static string GetSystemDatabasePath(string frontendPath, string systemName) => Path.Combine(frontendPath, Root.Databases, systemName);
+        public static string GetSystemDatabasePath(string frontendPath, string systemName) => Path.Combine(frontendPath, HyperspinRootPaths.Databases, systemName);
 
         /// <summary>
         /// Gets the media files for game.
@@ -53,7 +53,7 @@ namespace Horsesoft.Frontends.Helper.Paths.Hyperspin
         /// <returns></returns>
         public static IEnumerable<string> GetMediaFilesForGame(string frontendPath, string systemName, string mediaPath, string filter = "*.*")
         {            
-            var pathToScan = Path.Combine(frontendPath, Root.Media, systemName, mediaPath);
+            var pathToScan = Path.Combine(frontendPath, HyperspinRootPaths.Media, systemName, mediaPath);
 
             var mediaFiles = new List<string>();
             if (Directory.Exists(pathToScan))
@@ -65,7 +65,7 @@ namespace Horsesoft.Frontends.Helper.Paths.Hyperspin
         }
     }
 
-    public static class Root
+    public static class HyperspinRootPaths
     {
         public const string Databases = "Databases";
         public const string Media = "Media";

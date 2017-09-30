@@ -43,7 +43,7 @@ namespace Horsesoft.Frontends.Helper.Common
         {
             serializer.ChangeSystemAndDatabase(systemName);
 
-            var path = PathHelper.GetSystemDatabasePath(Path, systemName);
+            var path = HyperspinPaths.GetSystemDatabasePath(Path, systemName);
 
             return await serializer.GetGenresAsync(path + "\\genre.xml");
         }
@@ -88,7 +88,7 @@ namespace Horsesoft.Frontends.Helper.Common
             {
                 var fetchedGames = new List<Game>();
 
-                string mainMenuXml = System.IO.Path.Combine(PathHelper.GetSystemDatabasePath(Path, systemName), $"{systemName}.xml");
+                string mainMenuXml = System.IO.Path.Combine(HyperspinPaths.GetSystemDatabasePath(Path, systemName), $"{systemName}.xml");
 
                 //Set up reader , returning null games list.
                 XDocument xdoc = null;

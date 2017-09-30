@@ -41,7 +41,7 @@ namespace Horsesoft.Frontends.Helper.Settings
                         systemName = _systemName;
                 }
 
-                var iniPath = Path.Combine(_frontend.Path, Root.Settings, $"{systemName}.ini");
+                var iniPath = Path.Combine(_frontend.Path, HyperspinRootPaths.Settings, $"{systemName}.ini");
 
                 if (!File.Exists(iniPath))
                     throw new FileNotFoundException($"Ini not found: {iniPath}");

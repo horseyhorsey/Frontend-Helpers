@@ -84,7 +84,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
         {
             return await Task.Run<IEnumerable<Game>>(() =>
             {
-                var systemDbPath = Path.Combine(_frontEndPath, Root.Databases, _systemName);
+                var systemDbPath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName);
                 var dbPath = Path.Combine(systemDbPath, _databaseName + ".xml");
 
                 if (!Directory.Exists(systemDbPath))
@@ -200,7 +200,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
                try
                {
-                   var favoriteTextFile = Path.Combine(_frontEndPath, Root.Databases, _systemName, "favorites.txt");
+                   var favoriteTextFile = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName, "favorites.txt");
 
                    if (!File.Exists(favoriteTextFile)) return null;
 
@@ -238,7 +238,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
         {
             return Task.Run<IEnumerable<MainMenu>>(() =>
             {
-                var mainMenuXmlPath = Path.Combine(_frontEndPath, Root.Databases, "Main Menu", _databaseName + ".xml");
+                var mainMenuXmlPath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, "Main Menu", _databaseName + ".xml");
 
                 if (!File.Exists(mainMenuXmlPath))
                     throw new FileNotFoundException($"Main menu xml doesn't exist: {mainMenuXmlPath}");
@@ -313,7 +313,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
             if (!Directory.Exists(_frontEndPath))
                 throw new DirectoryNotFoundException("Frontend path doesn't exist");
 
-            var databasePath = Path.Combine(_frontEndPath, Root.Databases, _systemName);
+            var databasePath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName);
 
             if (!Directory.Exists(databasePath))
                 Directory.CreateDirectory(databasePath);
@@ -329,7 +329,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
                 }
 
                 var dbXmlFileName = _databaseName + ".xml";
-                string finalPath = Path.Combine(_frontEndPath, Root.Databases, _systemName, dbXmlFileName);
+                string finalPath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName, dbXmlFileName);
 
                 //Create a folder if its a multisystem
                 if (isMultiSystem)
@@ -393,8 +393,8 @@ namespace Horsesoft.Frontends.Helper.Serialization
         {
             return Task.Run(() =>
             {
-                var finalPath = Path.Combine(_frontEndPath, Root.Databases, "Main Menu", _databaseName + ".xml");
-                var databasePath = Path.Combine(_frontEndPath, Root.Databases, "Main Menu");
+                var finalPath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, "Main Menu", _databaseName + ".xml");
+                var databasePath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, "Main Menu");
 
                 //objectsToSerialize.Remove(new MainMenu("Main Menu"));
 
@@ -448,7 +448,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
             {
                 if (games.Any(x => x.IsFavorite))
                 {
-                    var favoritesTxtPath = Path.Combine(_frontEndPath, Root.Databases, _systemName);
+                    var favoritesTxtPath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName);
 
                     if (!Directory.Exists(favoritesTxtPath)) Directory.CreateDirectory(favoritesTxtPath);
 
@@ -572,8 +572,8 @@ namespace Horsesoft.Frontends.Helper.Serialization
         private bool SerializeGenreMainMenu(IEnumerable<Genre> genres)
         {
             var genreXml = "genre.xml";
-            var finalPath = Path.Combine(_frontEndPath, Root.Databases, _systemName, genreXml);
-            var databasePath = Path.Combine(_frontEndPath, Root.Databases, _systemName);
+            var finalPath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName, genreXml);
+            var databasePath = Path.Combine(_frontEndPath, HyperspinRootPaths.Databases, _systemName);
             TextWriter textWriter = new StreamWriter(finalPath);
 
             if (!Directory.Exists(databasePath))
@@ -612,7 +612,7 @@ namespace Horsesoft.Frontends.Helper.Serialization
 
             foreach (MainMenu system in systems)
             {
-                var sysPath = Path.Combine(frontEndPath, Root.Databases, system.Name);
+                var sysPath = Path.Combine(frontEndPath, HyperspinRootPaths.Databases, system.Name);
                 var isMultiSystem = File.Exists(sysPath + "\\MultiSystem");
 
                 // Dont want to be scanning the favorites of a multisystem

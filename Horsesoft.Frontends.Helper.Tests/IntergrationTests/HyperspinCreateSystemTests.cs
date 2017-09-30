@@ -36,7 +36,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         {
             var result = await _fixture._sysCreator
                 .CreateSystem(systemNameToCreate,
-                Path.Combine(Paths.Hyperspin.PathHelper.GetSystemDatabasePath(_fixture._frontend.Path, "Amstrad CPC"), "Amstrad CPC.xml"));
+                Path.Combine(Paths.Hyperspin.HyperspinPaths.GetSystemDatabasePath(_fixture._frontend.Path, "Amstrad CPC"), "Amstrad CPC.xml"));
 
             Assert.True(result);
         }
