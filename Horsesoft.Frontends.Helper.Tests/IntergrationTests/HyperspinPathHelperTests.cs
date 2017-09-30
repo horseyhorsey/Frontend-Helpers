@@ -15,7 +15,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
         {
             var hsPath = Environment.CurrentDirectory + "\\Hyperspin Data\\";
 
-            var files = Paths.Hyperspin.PathHelper.GetMediaFilesForGame(hsPath, "Amstrad CPC", Images.Wheels, "1943*.*");
+            var files = Paths.Hyperspin.HyperspinPaths.GetMediaFilesForGame(hsPath, "Amstrad CPC", Images.Wheels, "1943*.*");
         }
     }
 }

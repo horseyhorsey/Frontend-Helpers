@@ -40,7 +40,7 @@ namespace Horsesoft.Frontends.Helper.Media
         public async Task<IEnumerable<IFile>> GetUnusedMediaFilesAsync(IEnumerable<Game> gamesList, HsMediaType mediaType)
         {            
             //Join the path for this media type
-            var fullPath = PathHelper.GetMediaDirectoryForMediaType(_frontendPath,_systemName, mediaType);
+            var fullPath = HyperspinPaths.GetMediaDirectory(_frontendPath,_systemName, mediaType);
 
             if (!Directory.Exists(fullPath))
                 throw new DirectoryNotFoundException(fullPath);
