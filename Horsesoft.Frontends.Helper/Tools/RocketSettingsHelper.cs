@@ -45,10 +45,10 @@ namespace Horsesoft.Frontends.Helper.Tools
             {
                 if (paths[i].Contains(@"..\") || paths[i].Contains(@".\"))
                 {
-                    var romPath = new Uri(paths[i], UriKind.Relative);
-                    var rocketRoot = new Uri(rlPath);
-                    var combined = new Uri(rocketRoot, romPath);
-                    paths[i] = combined.OriginalString;                    
+                    var romPath = new Uri(paths[i], UriKind.RelativeOrAbsolute);                    
+                    var comb = Path.Combine(rlPath, romPath.OriginalString);
+                    var combined = new Uri(comb, UriKind.RelativeOrAbsolute);                    
+                    paths[i] = combined.LocalPath;                    
                 }
             }
 
