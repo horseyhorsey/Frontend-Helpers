@@ -109,7 +109,7 @@ namespace Horsesoft.Frontends.Helper.Tests.IntergrationTests
             directoryInfos.Add($"Total Media Size: {totalSize}");
         }
 
-        [Fact]
+        [Fact(Skip = "Don't be lazy....and come back please.")]
         public void BackUpSystemsMedia()
         {
             HyperspinBackup hsb = new HyperspinBackup(@"I:\\Hyperspin", "Amstrad CPC");
