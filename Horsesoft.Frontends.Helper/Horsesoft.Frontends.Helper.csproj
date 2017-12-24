@@ -12,8 +12,8 @@
     <PackageTags>arcade hyperspin rocketlauncher pinballx</PackageTags>
     <Version>1.0.57</Version> 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.56</AssemblyVersion>
-    <FileVersion>1.0.0.56</FileVersion>
+    <AssemblyVersion>1.0.0.57</AssemblyVersion>
+    <FileVersion>1.0.0.57</FileVersion>
     <Product>Horsesoft Frontends Helper</Product>
     <AssemblyName>Horsesoft.Frontends.Helper</AssemblyName>
     <RootNamespace>Horsesoft.Frontends.Helper</RootNamespace>
