@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Horsesoft.Frontends.Helper.Tests</RootNamespace>
     <AssemblyName>Horsesoft.Frontends.Helper.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -70,6 +70,7 @@
     <Compile Include="IntergrationTests\HyperspinSearchTests.cs" />
     <Compile Include="IntergrationTests\HyperspinSerializerTests.cs" />
     <Compile Include="IntergrationTests\HyperspinSettingsTests.cs" />
+    <Compile Include="IntergrationTests\RockeLauncherRomScanTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherAuditTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherRomMapTests.cs" />
     <Compile Include="IntergrationTests\RocketLauncherSettingsHelperTests.cs" />

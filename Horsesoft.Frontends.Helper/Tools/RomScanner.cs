@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using Frontends.Models.Hyperspin;
 using Frontends.Models.Interfaces;
+using System;
 
 namespace Horsesoft.Frontends.Helper.Tools
 {
@@ -34,7 +35,10 @@ namespace Horsesoft.Frontends.Helper.Tools
                         game.RomExists = RomExists(paths, exts, game.RomName);
                     }
                 }
-                catch { return false; }
+                catch(Exception ex)
+                {
+                    return false;
+                }
 
                 return true;
             });

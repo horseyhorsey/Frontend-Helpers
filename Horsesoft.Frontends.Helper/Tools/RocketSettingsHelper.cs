@@ -1,4 +1,5 @@
 ﻿using Hs.Hypermint.Services.Helpers;
+using System;
 using System.IO;
 
 namespace Horsesoft.Frontends.Helper.Tools
@@ -38,23 +39,16 @@ namespace Horsesoft.Frontends.Helper.Tools
 
             var iniFile = BuildEmuIniPath(rlPath, systemName);
 
-            var dInfo = new DirectoryInfo(rlPath);
-
-            var rlRootDir = rlPath.Replace(dInfo.Name, "");
-
             var paths = GetIniValue(iniFile, section, key).Split('|');
 
             for (int i = 0; i < paths.Length; i++)
             {
-                if (paths[i].Contains(@"..\"))
+                if (paths[i].Contains(@"..\") || paths[i].Contains(@".\"))
                 {
-                    do
-                    {
-                        paths[i] = paths[i].Replace(@"..\", "");
-
-                    } while (paths[i].Contains(@"..\"));
-
-                    paths[i] = rlRootDir + paths[i];
+                    var romPath = new Uri(paths[i], UriKind.Relative);
+                    var rocketRoot = new Uri(rlPath);
+                    var combined = new Uri(rocketRoot, romPath);
+                    paths[i] = combined.OriginalString;                    
                 }
             }
 
